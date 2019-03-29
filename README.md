@@ -38,3 +38,7 @@ En resumidas cuentas se espera que el usuario pueda realizar las siguientes acci
   <li>Ver publicaciones recientes</li>
   <li>Ver ranking de novelas</li>
 </ul>
+
+# Para despliegue de la aplicación:
+
+ejecutar comando npm start en la carpeta frontend. (es necesario tener nodemon instalado)
