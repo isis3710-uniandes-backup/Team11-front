@@ -77,8 +77,8 @@ class NovelaDetail extends React.Component {
                 <td scope="row">{el.fecha}</td>
                 <td>{grupo}</td>
                 <td><a href={el.texto}>{el.titulo}</a></td>
-                <td><button><img src={iconUpdate}></img></button>
-                <button><img src={iconDelete}></img></button></td>
+                {/* <td><button><img src={iconUpdate}></img></button>
+                <button><img src={iconDelete}></img></button></td> */}
                 </tr>
             );
         });
@@ -104,8 +104,8 @@ class NovelaDetail extends React.Component {
                 <td scope="row"><strong>{usuario}</strong></td>
                 <td>{el.comentario}</td>
                 <td>{el.fecha}</td>
-                <td><button><img src={iconUpdate}></img></button>
-                <button><img src={iconDelete}></img></button></td>
+                {/* <td><button><img src={iconUpdate}></img></button>
+                <button><img src={iconDelete}></img></button></td> */}
                 </tr>
             );
         });
@@ -174,7 +174,7 @@ class NovelaDetail extends React.Component {
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Grupo</th>
                                 <th scope="col">Publicacion</th>
-                                <th scope="col">Opciones</th>
+                                {/* <th scope="col">Opciones</th> */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -188,7 +188,7 @@ class NovelaDetail extends React.Component {
                                 <th scope="col">Usuario</th>
                                 <th scope="col">Comentario</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Opciones</th>
+                                {/* <th scope="col">Opciones</th> */}
                                 </tr>
                             </thead>
                             <tbody>

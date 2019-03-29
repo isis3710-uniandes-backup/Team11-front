@@ -19,6 +19,13 @@ class AdminGenre extends React.Component {
             }); 
     }
 
+    postGeneros=()=>{
+        let genero=document.getElementById('genreInput').value;
+        let id=parseInt(document.getElementById('idInput').value);
+        let genre={id:id,genero:genero,novelas:[]};
+        axios.post('http://localhost:3001/Generos',genre);
+    }
+    
     rendGeneros=()=>{
         let rows=this.state.generos.map((el,i)=>{
             return(
@@ -37,7 +44,14 @@ class AdminGenre extends React.Component {
         return (
             <div>
                 <h1>Lista Generos</h1>
-                <button className="btn btn-info" type="button">Añadir</button>
+                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <div className="collapse" id="addForm">
+                    <form>
+                        <input type="text" id="idInput" placeholder="id de genero"/>
+                        <input type="text" id="genreInput" placeholder="nombre de genero"/>
+                        <button className="btn btn-info" onClick={this.postGeneros}>Agregar Genero</button>
+                    </form>
+                </div>
                 <table className="table">
                     <thead className="thead-dark">
                         <tr>

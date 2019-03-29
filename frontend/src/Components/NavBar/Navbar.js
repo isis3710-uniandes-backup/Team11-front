@@ -6,7 +6,7 @@ import perfilImage from '../../assets/img/user.png'
 const Navbar = (props) => (
     <div>
         <div className="row text-center">
-            <a href="/"><img src={bilbo} id="titulo"></img></a>
+            <a href="/"><img src={bilbo} height="100px" id="titulo"></img></a>
         </div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,6 @@ const Navbar = (props) => (
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a className="dropdown-item" href="/admin/usuarios" >Manejo Usuarios</a>
                             <a className="dropdown-item" href="/admin/generos" >Manejo Generos</a>
-                            <a className="dropdown-item" href="/admin/novelas" >Manejo Novelas</a>
                             <a className="dropdown-item" href="/admin/grupos" >Manejo Grupos</a>
                             <a className="dropdown-item" href="/admin/autores" >Manejo Autores</a>
                             <a className="dropdown-item" href="/admin/recomendaciones" >Manejo Recomendaciones</a>

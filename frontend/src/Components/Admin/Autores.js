@@ -34,11 +34,27 @@ class AdminAutor extends React.Component {
         return rows;
     }
 
+    postAutores=()=>{
+        let autor=document.getElementById('Input').value;
+        let id=parseInt(document.getElementById('idInput').value);
+        let lang=document.getElementById('languageInput').value;
+        let genre={id:id,nombre:autor,idioma:lang,novelas:[1,2]};
+        axios.post('http://localhost:3001/Autores',genre);
+    }
+
     render() {
         return (
             <div>
                 <h1>Lista Autores</h1>
-                <button className="btn btn-info" type="button">Añadir</button>
+                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <div className="collapse" id="addForm">
+                    <form>
+                        <input type="text" id="idInput" placeholder="id del autor"/>
+                        <input type="text" id="Input" placeholder="nombre del autor"/>
+                        <input type="text" id="languageInput" placeholder="idioma del autor"/>
+                        <button className="btn btn-info" onClick={this.postAutores}>Agregar autores</button>
+                    </form>
+                </div>
                 <table className="table">
                     <thead className="thead-dark">
                         <tr>
