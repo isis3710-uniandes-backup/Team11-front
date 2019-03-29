@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#tablaNovelas tr{
+  border-bottom: 1pt solid black;  
+}
+th{
+  background-color: #769BD1;  
+}
+#tablaDeHome tr:nth-child(even) {
+  background-color: #DAE8FC;
+}
+
+#titulo, #perfilPequeño{
+  cursor: pointer;
+}
+#foot {		
+ 	padding: 0px;	
+}
+#foot a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  transition: all .5s ease;
+}
+.navbar, .dropdown-menu{
+  background-color: rgba(209, 203, 171, 0.9) !important;
+}
+#foot a:hover {
+  color: white;
+}
+.column {
+  float: left;
+  width: 33.3%;
+  padding: 10px;
+  height: 300px;
+}
+#faq{
+  text-align: left;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
