@@ -17,6 +17,7 @@ import NovelaDetail from './Novelas/NovelaDetail'
 class Vista extends Component {
     constructor(props) {
         super(props);
+        
     }
 
     render() {
