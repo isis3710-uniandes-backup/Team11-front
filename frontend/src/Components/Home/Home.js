@@ -47,19 +47,25 @@ class Home extends React.Component {
         }
         return (
             <div>
-                <table className="table" id="tablaDeHome">
-                    <thead>
-                        <tr>
-                            <th scope="col">Titulo Novela</th>
-                            <th scope="col">Publicación</th>
-                            <th scope="col">Grupo</th>
-                            <th scope="col">Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody >
+                <div className="row">
+                <div className="col-md-1"></div>
+                <div className="col-md-10">
+                    <table className="table" id="tablaDeHome">
+                        <thead>
+                            <tr>
+                                <th scope="col">Titulo Novela</th>
+                                <th scope="col">Publicación</th>
+                                <th scope="col">Grupo</th>
+                                <th scope="col">Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody >
                         {this.state.tablasPublicaciones[this.state.pagina].map((cap) => <Publicacion key={cap.id} data={cap} />)}
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div className="col-md-1"></div>
+                </div>
                 {A.map((i) => <button key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
             </div>
         )

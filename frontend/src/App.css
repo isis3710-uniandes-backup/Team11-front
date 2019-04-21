@@ -46,9 +46,16 @@ th{
   text-align: left;
 }
 
+.row{
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
+}
+.table{
+  margin-top: 4vw;
 }
