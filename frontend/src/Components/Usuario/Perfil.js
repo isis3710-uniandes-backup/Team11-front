@@ -3,6 +3,7 @@ import perfilImage from '../../assets/img/user.png'
 import axios from 'axios'
 import iconUpdate from '../../assets/img/iconUpdate.PNG';
 import iconDelete from '../../assets/img/iconDelete.PNG';
+import {FormattedMessage} from 'react-intl';
 
 class Perfil extends Component {
 
@@ -57,7 +58,7 @@ class Perfil extends Component {
                 {el.titulo}
             </button>
             <button onClick={()=>this.cambiarActual(el)} type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addNovelaForm" aria-label="Left Align">
-                Agregar novela
+                <FormattedMessage id="AddNovel"/> 
             </button>
         </h5>
         </div>
@@ -66,7 +67,7 @@ class Perfil extends Component {
         <div className="card-body">
             <table className="table table-striped">
                 <tbody>
-                    {novelas.map((elem)=><tr><td><a href={"/novelas/"+elem.id}>{elem.titulo}</a>
+                    {novelas.map((elem)=><tr key={elem.id}><td><a href={"/novelas/"+elem.id}>{elem.titulo}</a>
                     <button onClick={()=>this.deleteListaNovela(el.id,elem.id)}><a href=""><img src={iconDelete}></img></a></button>
                     </td></tr>)}
                 </tbody>
@@ -87,7 +88,7 @@ class Perfil extends Component {
         return (<div>
                     <table className="table table-striped">
                         <tbody>
-                                {novelas.map((elem)=><tr><td>
+                                {novelas.map((elem)=><tr key={elem.id}><td>
                                     <a href={"/novelas/"+elem.id}>{elem.titulo}</a>
                                     <a href=""><button onClick={()=>this.deleteFavorito(elem.id)}><img src={iconDelete}></img></button></a>
                                     </td></tr>)}
@@ -156,7 +157,6 @@ class Perfil extends Component {
     addFavorito=()=>{
         let user=this.state.user;
         let idNov=parseInt(document.getElementById('selectNovelas2').value);
-        console.log(user,idNov);
         if(!user.favoritos.includes(idNov)){
             user.favoritos.push(idNov);
         }
@@ -195,31 +195,30 @@ class Perfil extends Component {
         let buttonGrupo1=(
             <div className="row">
                 <p>
-                    Grupo:
+                    <FormattedMessage id="Group"/>:
                 </p>
                 <select className="col-4 form-control" id="selectGrupo">
                     <option value=""> </option>
                     {this.state.grupos.map((el)=><option value={el.id} key={el.id}>{el.nombre}</option>)}
                 </select>
-                <a href=""><button type="button" onClick={this.unirseGrupo} className="btn btn-info">Unirse</button></a>   
+                <a href=""><button type="button" onClick={this.unirseGrupo} className="btn btn-info"><FormattedMessage id="Join"/></button></a>   
             </div>
         );
         let buttonGrupo2=(
             <div className="text-left">
-                <button type="button" className="btn btn-info" data-toggle="collapse" data-target="#createGroupForm">Crear</button>   
+                <button type="button" className="btn btn-info" data-toggle="collapse" data-target="#createGroupForm"><FormattedMessage id="Create"/></button>   
                 <div className="collapse" id="createGroupForm">
                     <form>
                         <input type="text" id="groupIdInput" placeholder="id del grupo"/>
                         <input type="text" id="groupNameInput" placeholder="nombre de grupo"/>
                         <input type="text" id="groupUrlInput" placeholder="url de grupo"/>
-                        <button className="btn btn-info" onClick={this.createGrupo}>Agregar Lista</button>
+                        <button className="btn btn-info" onClick={this.createGrupo}><FormattedMessage id="AddList"/></button>
                     </form>
                 </div>
-                <p color="red">Se necesita estar en un grupo para publicar releases</p>
+                <p color="red"><FormattedMessage id="GroupMessage"/></p>
             </div>
         );
         let idBus = this.state.grupos.findIndex((el)=>el.id===this.state.user.grupo);
-        console.log(idBus,this.state.user);
         let nombreGrupo="";
         if(idBus>-1){
              nombreGrupo=this.state.grupos[idBus].nombre;
@@ -228,14 +227,14 @@ class Perfil extends Component {
             buttonGrupo1=(
                 <div className="row">
                     <p> 
-                        Grupo: {nombreGrupo}
+                        <FormattedMessage id="Group"/>: {nombreGrupo}
                     </p>
-                    <a href=""><button type="button" onClick={this.exitGrupo} className="btn btn-info">Salir</button></a>   
+                    <a href=""><button type="button" onClick={this.exitGrupo} className="btn btn-info"><FormattedMessage id="Exit"/></button></a>   
                 </div>  
             );
             buttonGrupo2=(
                 <div className="text-left">
-                    <button type="button" className="btn btn-info">Publicar release</button>   
+                    <button type="button" className="btn btn-info"><FormattedMessage id="PublishRelease"/></button>   
                 </div>
             );
         }
@@ -246,20 +245,20 @@ class Perfil extends Component {
                         <img src={perfilImage} height="200px"/>
                     </div>
                     <div className="col-9">
-                        <h4 className="text-left">Usuario Global</h4>
+                        <h4 className="text-left"><FormattedMessage id="GlobalUser"/></h4>
                         {buttonGrupo1}
                         {buttonGrupo2}
                         <div className="row"> 
-                            <h5>Mis Listas:</h5>
+                            <h5><FormattedMessage id="MyLists"/>:</h5>
                             <button type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addListaForm" aria-label="Left Align">
-                                Crear Lista
+                                <FormattedMessage id="CreateList"/>
                             </button>
                         </div>
                         <div className="collapse" id="addListaForm">
                             <form>
                                 <input type="text" id="listIdInput" placeholder="id de lista"/>
                                 <input type="text" id="listNameInput" placeholder="nombre de Lista"/>
-                                <button className="btn btn-info" onClick={this.postLista}>Agregar Lista</button>
+                                <button className="btn btn-info" onClick={this.postLista}><FormattedMessage id="AddList"/></button>
                             </form>
                         </div>
                         <div className="collapse" id="addNovelaForm">
@@ -267,7 +266,7 @@ class Perfil extends Component {
                                 <select id="selectNovelas">
                                     {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
                                 </select>
-                                <button className="btn btn-info" onClick={this.putListaNovela}>Agregar Novela a {this.state.actualList.titulo}</button>
+                                <button className="btn btn-info" onClick={this.putListaNovela}><FormattedMessage id="AddNovelTo"/> {this.state.actualList.titulo}</button>
                             </form>
                         </div>
                         <div className=" col-9 row"> 
@@ -276,9 +275,9 @@ class Perfil extends Component {
                             </div>
                         </div>
                         <div className="row"> 
-                            <h5>favoritos:</h5>
+                            <h5><FormattedMessage id="Favorites"/>:</h5>
                             <button type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addFavoritoForm" aria-label="Left Align">
-                                Agregar favorito
+                                <FormattedMessage id="AddFavorite"/>
                             </button>
                         </div>
                         <div className="collapse" id="addFavoritoForm">
@@ -286,7 +285,7 @@ class Perfil extends Component {
                                 <select id="selectNovelas2">
                                     {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
                                 </select>
-                                <button className="btn btn-info" onClick={this.addFavorito}>Agregar Novela a Favoritos</button>
+                                <button className="btn btn-info" onClick={this.addFavorito}><FormattedMessage id="AddNovelToFavorites"/></button>
                             </form>
                         </div>
                         <div className=" col-9 row"> 

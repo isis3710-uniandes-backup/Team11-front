@@ -151,7 +151,7 @@ class Novelas extends React.Component {
                         <p><FormattedMessage id="Type"/> </p>
                         <select className="form-control" id="selectTipo">
                             <option value="all">All</option>
-                            <option value="Web">Web</option>
+                            <option value="Web">Web</option> 
                             <option value="Fisico">Physical </option>
                         </select>
                         <p><FormattedMessage id="Author"/> </p>
