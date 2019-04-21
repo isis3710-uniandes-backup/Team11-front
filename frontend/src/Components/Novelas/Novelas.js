@@ -1,6 +1,8 @@
 import React from 'react';
 import Novela from './Novela';
 import axios from 'axios'
+import {FormattedMessage} from 'react-intl';
+
 class Novelas extends React.Component {
     constructor(props) {
         super(props);
@@ -135,37 +137,37 @@ class Novelas extends React.Component {
             <div>
                 <div className="row">
                 <button type="button" className="btn btn-info btn-outline-info" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
-                        Filtrar
+                    <FormattedMessage id="Filter"/> 
                     </button>
                     <input className="form-control col-1 mr-sm-2" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
-                    <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.findNovelas}>Search</button>
+                    <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.findNovelas}><FormattedMessage id="Search"/> </button>
                 </div>
                 <div id="filterForm" className="collapse">
-                        <p>Genero</p>
+                        <p><FormattedMessage id="Genre"/> </p>
                         <select className="form-control" id="selectGenero">
-                            <option value="all">Todos</option>
+                            <option value="all">All</option>
                             {this.state.generos.map((el)=><option value={el[1]} key={el[1]}>{el[0]}</option>)}
                         </select>
-                        <p>Tipo</p>
+                        <p><FormattedMessage id="Type"/> </p>
                         <select className="form-control" id="selectTipo">
-                            <option value="all">Todos</option>
+                            <option value="all">All</option>
                             <option value="Web">Web</option>
-                            <option value="Fisico">Fisico</option>
+                            <option value="Fisico">Physical </option>
                         </select>
-                        <p>Autor</p>
+                        <p><FormattedMessage id="Author"/> </p>
                         <select className="form-control" id="selectAutor">
-                            <option value="all">Todos</option>
+                            <option value="all">All</option>
                             {this.state.autores.map((el)=><option value={el[1]} key={el[1]}>{el[0]}</option>)}
                         </select>
-                        <button onClick={this.filtrarNovelasHandler} className="btn btn-outline-success my-2 my-sm-0">Aplicar Filtros</button>
+                        <button onClick={this.filtrarNovelasHandler} className="btn btn-outline-success my-2 my-sm-0"><FormattedMessage id="ApplyFilter"/></button>
                 </div>
                 
                 <table id="tablaNovelas">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Idioma</th>
-                            <th>Titulo</th>
+                            <th><FormattedMessage id="Language"/></th>
+                            <th><FormattedMessage id="Title"/></th>
                         </tr>
                     </thead>
                     {this.state.tablasNovela[this.state.pagina].map((novela) => <tbody key={novela.id}><Novela data={novela} /></tbody>)}

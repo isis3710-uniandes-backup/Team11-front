@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import {FormattedMessage} from 'react-intl';
 
 const Novela = (props) => (
     <tr>
@@ -9,7 +10,7 @@ const Novela = (props) => (
             <Link to={{
                 pathname:"/novelas/"+props.data.id,
             }}>{props.data.titulo}</Link>
-            <p><strong>Descripcion</strong></p>
+            <p><strong><FormattedMessage id="Description"/></strong></p>
             <p>{props.data.descripcion}</p>
         </td>
     </tr>
