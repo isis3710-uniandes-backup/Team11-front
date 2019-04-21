@@ -22,9 +22,8 @@ class SeriesPops extends Novelas {
             .then((newState) => {
                 this.setState(newState);
             });
-        axios.get('http://localhost:3001/Novelas')
+        axios.get('http://localhost:3001/Generos')
             .then((response) => {
-                console.log(response+"yesss");
                 var gen = response.data.map((el)=>[el.genero,el.id,el.novelas]);
                 this.setState({generos:gen});
             });
