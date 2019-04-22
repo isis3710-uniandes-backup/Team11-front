@@ -191,24 +191,24 @@ class NovelaDetail extends React.Component {
                <div className="row">
                     <div className="inline col-4 marg-top-5vw">
                         <img alt="portada" src={this.state.novela.imagen}></img>
-                        <h3>Autores</h3>
+                        <h3><FormattedMessage id="Authors"/></h3>
                           {this.renderAutores()}
-                        <h3>Generos</h3>
+                        <h3><FormattedMessage id="Genres"/> </h3>
                           {this.renderGeneros()}
                     </div>
                     <div className="inline col-8 marg-top-5vw">
                         <h2>{this.state.novela.titulo}</h2>
-                        <h3>Descripción</h3>
+                        <h3><FormattedMessage id="Description"/> </h3>
                         <p className="col-12">{this.state.novela.descripcion}</p>
-                        <h3>Recomendaciones</h3>
+                        <h3><FormattedMessage id="Recomendations"/> </h3>
                         {this.renderRecomedaciones()}
-                        <h3>Publicaciones</h3>
+                        <h3><FormattedMessage id="Publications"/> </h3>
                         <table className="table">
                             <thead className="thead-dark">
                                 <tr>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Grupo</th>
-                                <th scope="col">Publicacion</th>
+                                <th scope="col"><FormattedMessage id="DateEntry"/></th>
+                                <th scope="col"><FormattedMessage id="GroupEntry"/></th>
+                                <th scope="col"><FormattedMessage id="PublicationEntry"/></th>
                                 {/* <th scope="col">Opciones</th> */}
                                 </tr>
                             </thead>
@@ -216,13 +216,13 @@ class NovelaDetail extends React.Component {
                                 {this.renderPublicaciones()}
                             </tbody>
                         </table>
-                        <h3>Comentarios</h3>
+                        <h3><FormattedMessage id="Comments"/></h3>
                         <table className="table">
                             <thead className="thead-dark">
                                 <tr>
-                                <th scope="col">Usuario</th>
-                                <th scope="col">Comentario</th>
-                                <th scope="col">Fecha</th>
+                                <th scope="col"><FormattedMessage id="User"/></th>
+                                <th scope="col"><FormattedMessage id="Comments"/></th>
+                                <th scope="col"><FormattedMessage id="DateEntry"/></th>
                                 {/* <th scope="col">Opciones</th> */}
                                 </tr>
                             </thead>
@@ -233,7 +233,7 @@ class NovelaDetail extends React.Component {
                         <form>
                             <input aria-label="id2" type="text" id="commentIdInput" placeholder="id del comentario"/>
                             <input  aria-label="nombre2" type="textarea" id="commentInput" placeholder="comentario"/>
-                            <button className="btn btn-info" onClick={this.postComment}>Publicar</button>
+                            <button className="btn btn-info" onClick={this.postComment}><FormattedMessage id="Publish"/></button>
                         </form>
                     </div>
                </div>

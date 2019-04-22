@@ -68,20 +68,20 @@ class AdminGenre extends React.Component {
     render() {
         return (
             <div className="heightWeb" role="contentinfo">
-                <h1>Lista Generos</h1>
-                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <h1><FormattedMessage id="ListGenresAdmin"/></h1>
+                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm"><FormattedMessage id="AddAdmin"/></button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input  aria-label="id" type="text" id="idInput" placeholder="id de genero"/>
                         <input  aria-label="nombre" type="text" id="genreInput" placeholder="nombre de genero"/>
-                        <button className="btn btn-info btnz" onClick={this.postGeneros}>Agregar Genero</button>
+                        <button className="btn btn-info btnz" onClick={this.postGeneros}><FormattedMessage id="AddAdmin"/></button>
                     </form>
                 </div>
                 <div className="collapse" id="editForm">
                     <form>
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualGen.id}</p>
                         <input type="text" id="editUsernameInput" placeholder="genero"/>
-                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Genero</button>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}><FormattedMessage id="EditAdmin"/></button>
                     </form>
                 </div>
                 <div className="row">

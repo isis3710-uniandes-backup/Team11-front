@@ -56,12 +56,20 @@
 
 	"ListUsersAdmin":"lista usuarios",
 	"AddAdmin":"Añadir",
+	"EditAdmin":"Editar",
 	"ListGenreAdmin":"lista Generos",
 	"ListGroupAdmin":"lista Grupos",
 	"ListAuthorAdmin":"lista autores",
 
 	"ListRecomendationsAdmin":"lista de recomendaciones",
 	"RecomendedNovelAdmin":"novela recomendada",
-	"NovelThatWasRecomendedAdmin":"Novela que fue recomendada"
+	"NovelThatWasRecomendedAdmin":"Novela que fue recomendada",
+
+	"Authors":"Autores",
+	"Genres":"Generos",
+	"Recomendatios":"Recomendaciones",
+	"Publications":"Publicaciones",
+	"Comments":"Comments",
+	"Publish": "Publicar"
 
 }

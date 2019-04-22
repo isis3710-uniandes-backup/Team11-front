@@ -174,7 +174,7 @@ class Novelas extends React.Component {
                         <table role="table" id="tablaNovelas">
                             <thead>
                                 <tr role="row">
-                                    <th>Portada</th>
+                                    <th><FormattedMessage id="PortraitNovel"/></th>
                                     <th className='lang'><FormattedMessage id="Language"/></th>
                                     <th className="titl"><FormattedMessage id="Title"/></th>
                                 </tr>

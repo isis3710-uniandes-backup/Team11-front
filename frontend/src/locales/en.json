@@ -50,18 +50,23 @@
 	"PortraitNovel":"Portrait",
 	"ChineseNovel": "chinese",
 
-	"PortraitPopular":"Portrait",
-	"LanguagePopular":"Language",
-	"TitleNovelPopular":"Title",
 
 	"ListUsersAdmin":"User list",
 	"AddAdmin":"Add",
-	"ListGenreAdmin":"Genre list",
-	"ListGroupAdmin":"Group list",
-	"ListAuthorAdmin":"Author list",
+	"EditAdmin":"Edit",
+	"ListGenresAdmin":"Genre list",
+	"ListGroupsAdmin":"Group list",
+	"ListAuthorsAdmin":"Author list",
 
 	"ListRecomendationsAdmin":"Recomendation list",
 	"RecomendedNovelAdmin":"Recomended novel",
-	"NovelThatWasRecomendedAdmin":"Novel that was recomended"
+	"NovelThatWasRecomendedAdmin":"Novel that was recomended",
+
+	"Authors":"Authors",
+	"Genres":"Genres",
+	"Recomendatios":"Recomendatios",
+	"Publications":"Publications",
+	"Comments":"Comments",
+	"Publish": "Publish"
 
 }

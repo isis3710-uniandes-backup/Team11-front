@@ -59,12 +59,12 @@ class AdminGroups extends React.Component {
     render() {
         return (
             <div className="heightWeb" role="contentinfo">
-                <h1>Lista Grupos</h1>
+                <h1><FormattedMessage id="ListGroupsAdmin"/></h1>
                 <div className="collapse" id="editForm">
                     <form>
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualGroup.id}</p>
                         <input  aria-label="grupo" type="text" id="editUsernameInput" placeholder="grupo"/>
-                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Grupo</button>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}><FormattedMessage id="EditAdmin"/></button>
                     </form>
                 </div>
                 <div className="row">
