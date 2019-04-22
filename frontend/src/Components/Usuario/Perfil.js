@@ -209,9 +209,9 @@ class Perfil extends Component {
                 <button type="button" className="btn btn-info btnz" data-toggle="collapse" data-target="#createGroupForm"><FormattedMessage id="Create"/></button>
                 <div className="collapse" id="createGroupForm">
                     <form>
-                        <input type="text" id="groupIdInput" placeholder="id del grupo"/>
-                        <input type="text" id="groupNameInput" placeholder="nombre de grupo"/>
-                        <input type="text" id="groupUrlInput" placeholder="url de grupo"/>
+                        <input aria-label="id2" type="text" id="groupIdInput" placeholder="id del grupo"/>
+                        <input  aria-label="nombre2" type="text" id="groupNameInput" placeholder="nombre de grupo"/>
+                        <input aria-label="url2" type="text" id="groupUrlInput" placeholder="url de grupo"/>
                         <button className="btn btn-info" onClick={this.createGrupo}><FormattedMessage id="AddList"/></button>
                     </form>
                 </div>
@@ -256,14 +256,14 @@ class Perfil extends Component {
                         </div>
                         <div className="collapse" id="addListaForm">
                             <form>
-                                <input type="text" id="listIdInput" placeholder="id de lista"/>
-                                <input type="text" id="listNameInput" placeholder="nombre de Lista"/>
+                                <input aria-label="id" type="text" id="listIdInput" placeholder="id de lista"/>
+                                <input aria-label="nombre" type="text" id="listNameInput" placeholder="nombre de Lista"/>
                                 <button className="btn btn-info btnz" onClick={this.postLista}><FormattedMessage id="AddList"/></button>
                             </form>
                         </div>
                         <div className="collapse" id="addNovelaForm">
                             <form>
-                                <select id="selectNovelas">
+                                <select aria-label="select1" id="selectNovelas">
                                     {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
                                 </select>
                                 <button className="btn btn-info btnz" onClick={this.putListaNovela}><FormattedMessage id="AddNovelTo"/> {this.state.actualList.titulo}</button>
@@ -282,7 +282,7 @@ class Perfil extends Component {
                         </div>
                         <div className="collapse" id="addFavoritoForm">
                             <form>
-                                <select id="selectNovelas2">
+                                <select aria-label="select2" id="selectNovelas2">
                                     {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
                                 </select>
                                 <button className="btn btn-info btnz" onClick={this.addFavorito}><FormattedMessage id="AddNovelToFavorites"/></button>

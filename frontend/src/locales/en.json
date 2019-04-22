@@ -37,5 +37,7 @@
 	"Edit":"Edit",
 	"Delete":"Delete",
 	"User":"User",
-	"EditUserofId":"Edit User of id"
+	"EditUserofId":"Edit User of id",
+	"Exit":"Salir",
+	"PublishRelease":"Publish Release"
 }

@@ -37,5 +37,7 @@
 	"Edit":"Editar",
 	"Delete":"Eliminar",
 	"User":"Usuario",
-	"EditUserofId":"Editar Usuario de id"
+	"EditUserofId":"Editar Usuario de id",
+	"Exit":"Salir",
+	"PublishRelease":"Publicar Release"
 }
