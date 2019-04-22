@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import iconUpdate from '../../assets/img/iconUpdate.PNG';
 import iconDelete from '../../assets/img/iconDelete.PNG';
+import {FormattedMessage} from 'react-intl';
 
 class NovelaDetail extends React.Component {
     constructor(props) {
@@ -150,6 +151,40 @@ class NovelaDetail extends React.Component {
             });
     }
 
+    formatDate=(date)=> {
+      var monthNames = [
+        "01", "02", "03",
+        "04", "05", "06", "07",
+        "08", "09", "10",
+        "11", "12"
+      ];
+
+      var day = date.getDate();
+      var monthIndex = date.getMonth();
+      var year = date.getFullYear();
+      var hour = date.getHours();
+      var minute = date.getMinutes();
+
+      return day + '/' + monthNames[monthIndex] + '/' + year+ ' '+hour+":"+minute;
+    }
+
+    postComment=()=>{
+
+        let id=parseInt(document.getElementById('commentIdInput').value);
+        let comment=document.getElementById('commentInput').value;
+        let fech = new Date();
+        let cap={
+            id:id,
+            novela:this.state.novela.id,
+            estrellas:4.5,
+            usuario:1,
+            fecha:this.formatDate(fech),
+            comentario:comment
+        }
+
+        axios.post('http://localhost:3001/Comentarios',cap);
+    }
+
     render() {
         return (
             <div role="contentinfo">
@@ -195,6 +230,11 @@ class NovelaDetail extends React.Component {
                                 {this.renderComentarios()}
                             </tbody>
                         </table>
+                        <form>
+                            <input aria-label="id2" type="text" id="commentIdInput" placeholder="id del comentario"/>
+                            <input  aria-label="nombre2" type="textarea" id="commentInput" placeholder="comentario"/>
+                            <button className="btn btn-info" onClick={this.postComment}>Publicar</button>
+                        </form>
                     </div>
                </div>
             </div>
