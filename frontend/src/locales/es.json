@@ -70,6 +70,13 @@
 	"Recomendatios":"Recomendaciones",
 	"Publications":"Publicaciones",
 	"Comments":"Comments",
-	"Publish": "Publicar"
+	"Publish": "Publicar",
+	
+	"pregunta1":"¿Como manejan las licencias?",
+	"respuesta1":"Al redirigir a otras paginas, no estamos violando ninguna ley de copyright",
+	"pregunta2":"¿Que pasa si se cae un link?",
+	"respuesta2":"Estamos constantemente mejorandor nuestros servicios, estamos mirando como automatizar esto",
+	"pregunta3":"¿Por qué estan haciendo esta biblioteca de novelas ligeras?",
+	"respuesta3":"Por amor al arte"
 
 }
