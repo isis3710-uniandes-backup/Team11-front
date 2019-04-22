@@ -37,5 +37,31 @@
 	"Edit":"Editar",
 	"Delete":"Eliminar",
 	"User":"Usuario",
-	"EditUserofId":"Editar Usuario de id"
+	"EditUserofId":"Editar Usuario de id",
+	"Exit":"Salir",
+	"PublishRelease":"Publicar Release",
+
+
+	"TitleNovelEntry":"Titulo novela",
+	"PublicationEntry":"Publicacion",
+	"GroupEntry":"Grupo",
+	"DateEntry":"fecha",
+
+
+	"PortraitNovel":"Portada",
+	"ChineseNovel": "chino",
+
+	"LanguagePopular":"Idioma",
+	"TitleNovelPopular":"Titulo",
+
+	"ListUsersAdmin":"lista usuarios",
+	"AddAdmin":"Añadir",
+	"ListGenreAdmin":"lista Generos",
+	"ListGroupAdmin":"lista Grupos",
+	"ListAuthorAdmin":"lista autores",
+
+	"ListRecomendationsAdmin":"lista de recomendaciones",
+	"RecomendedNovelAdmin":"novela recomendada",
+	"NovelThatWasRecomendedAdmin":"Novela que fue recomendada"
+
 }

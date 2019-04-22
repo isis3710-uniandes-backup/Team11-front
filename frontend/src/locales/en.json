@@ -37,5 +37,31 @@
 	"Edit":"Edit",
 	"Delete":"Delete",
 	"User":"User",
-	"EditUserofId":"Edit User of id"
+	"EditUserofId":"Edit User of id",
+
+
+
+	"TitleNovelEntry":"Novel title",
+	"PublicationEntry":"Publication",
+	"GroupEntry":"Group",
+	"DateEntry":"Date",
+
+
+	"PortraitNovel":"Portrait",
+	"ChineseNovel": "chinese",
+
+	"PortraitPopular":"Portrait",
+	"LanguagePopular":"Language",
+	"TitleNovelPopular":"Title",
+
+	"ListUsersAdmin":"User list",
+	"AddAdmin":"Add",
+	"ListGenreAdmin":"Genre list",
+	"ListGroupAdmin":"Group list",
+	"ListAuthorAdmin":"Author list",
+
+	"ListRecomendationsAdmin":"Recomendation list",
+	"RecomendedNovelAdmin":"Recomended novel",
+	"NovelThatWasRecomendedAdmin":"Novel that was recomended"
+
 }
