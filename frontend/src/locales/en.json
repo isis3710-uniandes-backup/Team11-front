@@ -67,6 +67,13 @@
 	"Recomendatios":"Recomendatios",
 	"Publications":"Publications",
 	"Comments":"Comments",
-	"Publish": "Publish"
+	"Publish": "Publish",
+
+	"pregunta1":"How do you handle licenses?",
+	"respuesta1":"since we are redirecting to other pages, we are not violating any copryight law",
+	"pregunta2":"What if a link is broken?",
+	"respuesta2":"We are consttly bettering ourselves to provide the best services, we are looking how to automtize that",
+	"pregunta3":"why are you doing this library?",
+	"respuesta3":"to enrich society"
 
 }

@@ -91,7 +91,7 @@ class AdminGenre extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Genero</th>
+                                    <th scope="col"><FormattedMessage id="Genre"/></th>
                                     <th scope="col"><FormattedMessage id="Edit"/></th>
                                     <th scope="col"><FormattedMessage id="Delete"/></th>
                                 </tr>
