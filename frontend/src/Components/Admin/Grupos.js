@@ -1,13 +1,19 @@
 import React from 'react';
 import axios from 'axios'
+import {FormattedMessage} from 'react-intl';
+
 class AdminGroups extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-                        grupos:[]
+        this.state = {
+                        grupos:[],
+                        actualGroup:{}
                     };
     }
 
+    cambiarActual=(recom)=>{
+        this.setState({actualGroup:recom});
+    }
 
     componentDidMount() {
         axios.get('http://localhost:3001/Fansubs')
@@ -16,7 +22,18 @@ class AdminGroups extends React.Component {
                 var grupos = response.data;
                 state.grupos=grupos;
                 this.setState(state);
-            }); 
+            });
+    }
+
+    putUsuario=()=>{
+        let username=document.getElementById('editUsernameInput').value;
+        let user={...this.state.actualGroup};
+        user.nombre=username;
+        axios.put('http://localhost:3001/Fansubs/'+user.id,user);
+    }
+
+    deleteUsuario=(idUser)=>{
+        axios.delete('http://localhost:3001/Fansubs/'+idUser);
     }
 
     rendGrupos=()=>{
@@ -25,8 +42,14 @@ class AdminGroups extends React.Component {
                 <tr key={i}>
                     <th scope="row">{i}</th>
                     <td>{el.nombre}</td>
-                    <td>editar</td>
-                    <td>eliminar</td>
+                    <td>
+                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success btnz" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
+                    </td>
+                    <td>
+                        <form>
+                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
+                        </form>
+                    </td>
                 </tr>
             );
         });
@@ -35,8 +58,15 @@ class AdminGroups extends React.Component {
 
     render() {
         return (
-            <div>
+            <div role="contentinfo">
                 <h1>Lista Grupos</h1>
+                <div className="collapse" id="editForm">
+                    <form>
+                        <p><FormattedMessage id="EditUserofId"/>: {this.state.actualGroup.id}</p>
+                        <input  aria-label="grupo" type="text" id="editUsernameInput" placeholder="grupo"/>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Grupo</button>
+                    </form>
+                </div>
                 <div className="row">
                     <div className="col-md-1"/>
                     <div className="col-md-10">
@@ -45,8 +75,8 @@ class AdminGroups extends React.Component {
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Grupo</th>
-                                    <th scope="col">Editar</th>
-                                    <th scope="col">Eliminar</th>
+                                    <th scope="col"><FormattedMessage id="Edit"/></th>
+                                    <th scope="col"><FormattedMessage id="Delete"/></th>
                                 </tr>
                             </thead>
                             <tbody>

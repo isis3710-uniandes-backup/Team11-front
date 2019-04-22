@@ -15,11 +15,7 @@ import AdminAutor from './Admin/Autores'
 import NovelaDetail from './Novelas/NovelaDetail'
 
 class Vista extends Component {
-    constructor(props) {
-        super(props);
-        
-    }
-
+  
     render() {
         return(
             <div>
