@@ -7,7 +7,7 @@ import iconDelete from '../../assets/img/iconDelete.PNG';
 class NovelaDetail extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
                         novela:{},
                         autores:[],
                         generos:[],
@@ -29,7 +29,7 @@ class NovelaDetail extends React.Component {
                 }
             });
         }
-        return autors.map((el,i)=><li key={i}>{el.nombre}</li>);
+        return autors.map((el,i)=><p key={i}>{el.nombre}</p>);
     }
 
     renderRecomedaciones=()=>{
@@ -40,7 +40,7 @@ class NovelaDetail extends React.Component {
                     let idBus=this.state.novelas.findIndex((elem)=>el.novelaRecomendada===elem.id);
                     if(idBus>-1){
                         novels.push(this.state.novelas[idBus]);
-                    }      
+                    }
                 }
             });
         }
@@ -54,8 +54,8 @@ class NovelaDetail extends React.Component {
                 generos.push(el);
             }
         });
-        
-        return generos.map((el,i)=><li key={i}>{el.genero}</li>);
+
+        return generos.map((el,i)=><p key={i}>{el.genero}</p>);
     }
 
     renderPublicaciones=()=>{
@@ -65,7 +65,7 @@ class NovelaDetail extends React.Component {
                 caps.push(el);
             }
         });
-        
+
         return caps.map((el,i)=>{
             let idBus=this.state.grupos.findIndex((elem)=>el.fansub===elem.id);
             let grupo=""
@@ -74,7 +74,7 @@ class NovelaDetail extends React.Component {
             }
             return(
                 <tr key={i}>
-                <td scope="row">{el.fecha}</td>
+                <td >{el.fecha}</td>
                 <td>{grupo}</td>
                 <td><a href={el.texto}>{el.titulo}</a></td>
                 {/* <td><button><img src={iconUpdate}></img></button>
@@ -91,7 +91,7 @@ class NovelaDetail extends React.Component {
                 comms.push(el);
             }
         });
-        
+
         return comms.map((el,i)=>{
             console.log(this.state.usuarios);
             let idBus=this.state.usuarios.findIndex((elem)=>el.usuario===elem.id);
@@ -101,7 +101,7 @@ class NovelaDetail extends React.Component {
             }
             return(
                 <tr key={i}>
-                <td scope="row"><strong>{usuario}</strong></td>
+                <td ><strong>{usuario}</strong></td>
                 <td>{el.comentario}</td>
                 <td>{el.fecha}</td>
                 {/* <td><button><img src={iconUpdate}></img></button>
@@ -152,22 +152,22 @@ class NovelaDetail extends React.Component {
 
     render() {
         return (
-            <div>
-               <h1>{this.state.novela.titulo}</h1>
+            <div role="contentinfo">
+               <h2>{this.state.novela.titulo}</h2>
                <div className="row">
                     <div className="inline col-4">
-                        <img src={this.state.novela.imagen}></img>
-                        <h6>Autores</h6>
-                        {this.renderAutores()}
-                        <h6>Generos</h6>
-                        {this.renderGeneros()}
+                        <img alt="portada" src={this.state.novela.imagen}></img>
+                        <h3>Autores</h3>
+                          {this.renderAutores()}
+                        <h3>Generos</h3>
+                          {this.renderGeneros()}
                     </div>
                     <div className="inline col-8">
-                        <h6>Descripción</h6>
+                        <h3>Descripción</h3>
                         <p className="col-12">{this.state.novela.descripcion}</p>
-                        <h6>Recomendaciones</h6>
+                        <h3>Recomendaciones</h3>
                         {this.renderRecomedaciones()}
-                        <h6>Publicaciones</h6>
+                        <h3>Publicaciones</h3>
                         <table className="table">
                             <thead className="thead-dark">
                                 <tr>
@@ -181,7 +181,7 @@ class NovelaDetail extends React.Component {
                                 {this.renderPublicaciones()}
                             </tbody>
                         </table>
-                        <h6>Comentarios</h6>
+                        <h3>Comentarios</h3>
                         <table className="table">
                             <thead className="thead-dark">
                                 <tr>

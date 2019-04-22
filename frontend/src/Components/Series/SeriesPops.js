@@ -1,4 +1,3 @@
-import React from 'react';
 import Novelas from '../Novelas/Novelas';
 import axios from 'axios'
 
@@ -35,4 +34,4 @@ class SeriesPops extends Novelas {
     }
 }
 
-export default SeriesPops;
+export default Novelas;

@@ -4,7 +4,7 @@ import {FormattedMessage} from 'react-intl';
 
 const Novela = (props) => (
     <tr role="row">
-        <td><img role="img" alt="FotoNovela" src={props.data.imagen}></img></td>
+        <td><img alt="FotoNovela" src={props.data.imagen}></img></td>
         <td>{props.data.idioma}</td>
         <td>
             <Link to={{

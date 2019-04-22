@@ -5,7 +5,7 @@ import {FormattedMessage} from 'react-intl';
 class AdminUsers extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
                         usuarios:[],
                         grupos:[],
                         actualUser:{}
@@ -23,14 +23,14 @@ class AdminUsers extends React.Component {
                 var usuarios = response.data;
                 state.usuarios=usuarios;
                 this.setState(state);
-            }); 
+            });
         axios.get('http://localhost:3001/Fansubs')
             .then((response) => {
                 var state = this.state;
                 var grupos = response.data;
                 state.grupos=grupos;
                 this.setState(state);
-            }); 
+            });
     }
 
     rendUsuarios=()=>{
@@ -82,13 +82,13 @@ class AdminUsers extends React.Component {
 
     render() {
         return (
-            <div>
+            <div role="contentinfo">
                 <h1>Lista Usuarios</h1>
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
                     <form>
-                        <input type="text" id="idInput" placeholder="id de usuario"/>
-                        <input type="text" id="usernameInput" placeholder="nombre de usuario"/>
+                        <input aria-label="userid" type="text" id="idInput" placeholder="id de usuario"/>
+                        <input aria-label="username" type="text" id="usernameInput" placeholder="nombre de usuario"/>
                         <button className="btn btn-info btnz" onClick={this.postUsuario}>Agregar Usuario</button>
                     </form>
                 </div>

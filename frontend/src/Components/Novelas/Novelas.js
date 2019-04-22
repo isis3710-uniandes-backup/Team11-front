@@ -6,7 +6,7 @@ import {FormattedMessage} from 'react-intl';
 class Novelas extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { pagina: 0, 
+        this.state = { pagina: 0,
                        tablasNovela: [[]],
                        generos:[],
                        autores:[],
@@ -114,7 +114,7 @@ class Novelas extends React.Component {
                 var aut = response.data.map((el)=>[el.nombre,el.id,el.novelas]);
                 this.setState({autores:aut});
             });
-        
+
     }
 
     getTablasNovela(novelas,tamanioTablasNovela) {
@@ -134,14 +134,14 @@ class Novelas extends React.Component {
             A.push(i);
         }
         return (
-            <div className="novs">
+            <div role="search" className="novs">
                 <div className="row busq">
                     <div className="col-md-1"/>
-                    <button role="button" type="button" className="btn btn-info btn-outline-info filt" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
-                        <FormattedMessage id="Filter"/> 
+                    <button type="button" className="btn btn-info btn-outline-info filt" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
+                        <FormattedMessage id="Filter"/>
                     </button>
-                    <input role="searchbox" className="form-control col-1 mr-sm-2 serc" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
-                    <button role="button" className="btn btn-outline-success my-2 my-sm-0 busB" onClick={this.findNovelas}><FormattedMessage id="Search"/> </button>
+                    <input className="form-control col-1 mr-sm-2 serc" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
+                    <button  className="btn btn-outline-success my-2 my-sm-0 busB" onClick={this.findNovelas}><FormattedMessage id="Search"/> </button>
                 </div>
                 <div id="filterForm" className="collapse">
                         <p><FormattedMessage id="Genre"/> </p>
@@ -152,7 +152,7 @@ class Novelas extends React.Component {
                         <p><FormattedMessage id="Type"/> </p>
                         <select aria-label="tipo" className="form-control" id="selectTipo">
                             <option value="all">All</option>
-                            <option value="Web">Web</option> 
+                            <option value="Web">Web</option>
                             <option value="Fisico">Physical </option>
                         </select>
                         <p><FormattedMessage id="Author"/> </p>
@@ -179,7 +179,10 @@ class Novelas extends React.Component {
                     <div className="col-md-1"></div>
                 </div>
                 </div>
-                {A.map((i) => <button role="button"  key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
+                <div role="search">
+                  {A.map((i) => <button   key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
+                </div>
+
             </div>
         )
     }

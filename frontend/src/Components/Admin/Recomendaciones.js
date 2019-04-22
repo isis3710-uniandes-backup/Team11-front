@@ -5,9 +5,9 @@ import {FormattedMessage} from 'react-intl';
 class AdminRecomm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-                        recomendaciones:[],       
-                        actualRecom:{}           
+        this.state = {
+                        recomendaciones:[],
+                        actualRecom:{}
                     };
     }
 
@@ -23,7 +23,7 @@ class AdminRecomm extends React.Component {
                 var recon = response.data;
                 state.recomendaciones=recon;
                 this.setState(state);
-            }); 
+            });
     }
 
     rendRecon=()=>{
@@ -61,8 +61,10 @@ class AdminRecomm extends React.Component {
 
     putUsuario=()=>{
         let username=document.getElementById('editUsernameInput').value;
+        let novel=document.getElementById('editNovelInput').value;
         let user={...this.state.actualRecom};
-        user.nombre=username;
+        user.novela=username;
+        user.novelaRecomendada=novel;
         axios.put('http://localhost:3001/Recomendaciones/'+user.id,user);
     }
 
@@ -72,7 +74,7 @@ class AdminRecomm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div role="contentinfo">
                 <h1>Lista Recomendaciones</h1>
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
@@ -86,7 +88,8 @@ class AdminRecomm extends React.Component {
                 <div className="collapse" id="editForm">
                     <form>
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualRecom.id}</p>
-                        <input type="text" id="editUsernameInput" placeholder={this.state.actualRecom.nombre}/>
+                        <input type="text" id="editUsernameInput" placeholder="Novela"/>
+                        <input type="text" id="editNovelInput" placeholder="Novela que recomienda"/>
                         <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Recomendacion</button>
                     </form>
                 </div>

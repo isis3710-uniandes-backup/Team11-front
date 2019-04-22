@@ -1,11 +1,18 @@
 import React from 'react';
 import axios from 'axios'
+import {FormattedMessage} from 'react-intl';
+
 class AdminAutor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-                        autores:[]
+        this.state = {
+                        autores:[],
+                        actualAut:{}
                     };
+    }
+
+    cambiarActual=(recom)=>{
+        this.setState({actualAut:recom});
     }
 
 
@@ -16,7 +23,7 @@ class AdminAutor extends React.Component {
                 var autores = response.data;
                 state.autores=autores;
                 this.setState(state);
-            }); 
+            });
     }
 
     rendGrupos=()=>{
@@ -26,8 +33,14 @@ class AdminAutor extends React.Component {
                     <td scope="row">{i}</td>
                     <td>{el.nombre}</td>
                     <td>{el.idioma}</td>
-                    <td>editar</td>
-                    <td>eliminar</td>
+                    <td>
+                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success btnz" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
+                    </td>
+                    <td>
+                        <form>
+                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
+                        </form>
+                    </td>
                 </tr>
             );
         });
@@ -42,9 +55,22 @@ class AdminAutor extends React.Component {
         axios.post('http://localhost:3001/Autores',genre);
     }
 
+    putUsuario=()=>{
+        let username=document.getElementById('editUsernameInput').value;
+        let novel=document.getElementById('editNovelInput').value;
+        let user={...this.state.actualAut};
+        user.nombre=username;
+        user.idioma=novel;
+        axios.put('http://localhost:3001/Autores/'+user.id,user);
+    }
+
+    deleteUsuario=(idUser)=>{
+        axios.delete('http://localhost:3001/Autores/'+idUser);
+    }
+
     render() {
         return (
-            <div>
+            <div role="contentinfo">
                 <h1>Lista Autores</h1>
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
@@ -53,6 +79,14 @@ class AdminAutor extends React.Component {
                         <input type="text" id="Input" placeholder="nombre del autor"/>
                         <input type="text" id="languageInput" placeholder="idioma del autor"/>
                         <button className="btn btn-info btnz" onClick={this.postAutores}>Agregar autores</button>
+                    </form>
+                </div>
+                <div className="collapse" id="editForm">
+                    <form>
+                        <p><FormattedMessage id="EditUserofId"/>: {this.state.actualAut.id}</p>
+                        <input type="text" id="editUsernameInput" placeholder="nombre"/>
+                        <input type="text" id="editNovelInput" placeholder="idioma"/>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Recomendacion</button>
                     </form>
                 </div>
                 <div className="row">
@@ -64,8 +98,8 @@ class AdminAutor extends React.Component {
                                     <th scope="col">#</th>
                                     <th scope="col">Autor</th>
                                     <th scope="col">Idioma</th>
-                                    <th scope="col">Editar</th>
-                                    <th scope="col">Eliminar</th>
+                                    <th scope="col"><FormattedMessage id="Edit"/></th>
+                                    <th scope="col"><FormattedMessage id="Delete"/></th>
                                 </tr>
                             </thead>
                             <tbody>

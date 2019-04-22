@@ -58,7 +58,7 @@ class Perfil extends Component {
                 {el.titulo}
             </button>
             <button onClick={()=>this.cambiarActual(el)} type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addNovelaForm" aria-label="Left Align">
-                <FormattedMessage id="AddNovel"/> 
+                <FormattedMessage id="AddNovel"/>
             </button>
         </h3>
         </div>
@@ -113,9 +113,9 @@ class Perfil extends Component {
                     var playlist = response.data;
                     var playlists=[...this.state.listas];
                     playlists.push(playlist);
-                    this.setState({listas:playlists});     
+                    this.setState({listas:playlists});
                 });
-                
+
             });
         });
         axios.get('http://localhost:3001/Novelas/')
@@ -147,7 +147,7 @@ class Perfil extends Component {
         let user=this.state.user;
         for(let i =0;i<user.favoritos.length;i++){
             if(user.favoritos[i]===idNov){
-                
+
                 user.favoritos.splice(i,1);
             }
         }
@@ -201,12 +201,12 @@ class Perfil extends Component {
                     <option value=""> </option>
                     {this.state.grupos.map((el)=><option value={el.id} key={el.id}>{el.nombre}</option>)}
                 </select>
-                <a href=""><button type="button" onClick={this.unirseGrupo} className="btn btn-info btnz"><FormattedMessage id="Join"/></button></a>   
+                <a href=""><button type="button" onClick={this.unirseGrupo} className="btn btn-info btnz"><FormattedMessage id="Join"/></button></a>
             </div>
         );
         let buttonGrupo2=(
             <div className="text-left">
-                <button type="button" className="btn btn-info btnz" data-toggle="collapse" data-target="#createGroupForm"><FormattedMessage id="Create"/></button>   
+                <button type="button" className="btn btn-info btnz" data-toggle="collapse" data-target="#createGroupForm"><FormattedMessage id="Create"/></button>
                 <div className="collapse" id="createGroupForm">
                     <form>
                         <input type="text" id="groupIdInput" placeholder="id del grupo"/>
@@ -226,20 +226,20 @@ class Perfil extends Component {
         if(this.state.user.grupo>-1){
             buttonGrupo1=(
                 <div className="row">
-                    <p> 
+                    <p>
                         <FormattedMessage id="Group"/>: {nombreGrupo}
                     </p>
-                    <a href=""><button type="button" onClick={this.exitGrupo} className="btn btn-info btnz"><FormattedMessage id="Exit"/></button></a>   
-                </div>  
+                    <a href=""><button type="button" onClick={this.exitGrupo} className="btn btn-info btnz"><FormattedMessage id="Exit"/></button></a>
+                </div>
             );
             buttonGrupo2=(
                 <div className="text-left">
-                    <button type="button" className="btn btn-info btnz"><FormattedMessage id="PublishRelease"/></button>   
+                    <button type="button" className="btn btn-info btnz"><FormattedMessage id="PublishRelease"/></button>
                 </div>
             );
         }
         return (
-            <div className="container">
+            <div role="contentinfo" className="container">
                 <div className="row">
                     <div className="col-3">
                         <img aria-label="image" src={perfilImage} height="200px"/>
@@ -248,7 +248,7 @@ class Perfil extends Component {
                         <h2 className="text-left"><FormattedMessage id="GlobalUser"/></h2>
                         {buttonGrupo1}
                         {buttonGrupo2}
-                        <div className="row"> 
+                        <div className="row">
                             <h3><FormattedMessage id="MyLists"/>:</h3>
                             <button type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addListaForm" aria-label="Left Align">
                                 <FormattedMessage id="CreateList"/>
@@ -269,12 +269,12 @@ class Perfil extends Component {
                                 <button className="btn btn-info btnz" onClick={this.putListaNovela}><FormattedMessage id="AddNovelTo"/> {this.state.actualList.titulo}</button>
                             </form>
                         </div>
-                        <div className=" col-9 row"> 
+                        <div className=" col-9 row">
                             <div className="col-12" id="accordion1">
                                 {this.state.listas.map((el)=>this.elemList(el))}
                             </div>
                         </div>
-                        <div className="row"> 
+                        <div className="row">
                             <h3><FormattedMessage id="Favorites"/>:</h3>
                             <button type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addFavoritoForm" aria-label="Left Align">
                                 <FormattedMessage id="AddFavorite"/>
@@ -288,7 +288,7 @@ class Perfil extends Component {
                                 <button className="btn btn-info btnz" onClick={this.addFavorito}><FormattedMessage id="AddNovelToFavorites"/></button>
                             </form>
                         </div>
-                        <div className=" col-9 row"> 
+                        <div className=" col-9 row">
                             <div className="col-12" id="accordion2">
                                 {this.elemListFavoritos()}
                             </div>

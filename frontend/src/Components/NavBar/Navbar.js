@@ -60,8 +60,9 @@ const Navbar = (props) => (
                     <li className="nav-item">
                         <div className="row">
                             <a className="nav-link" href="/perfil"><FormattedMessage id="Profile"/></a>
-                            <a href="/perfil"><img className="rounded-corners" alt="profile" src={perfilImage} height="40px" id="perfilPequeño" /></a>
-                        </div>                </li>
+                            <a href="/perfil"><img className="rounded-corners" alt="perfil" src={perfilImage} height="40px" id="perfilPequeño" /></a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>
