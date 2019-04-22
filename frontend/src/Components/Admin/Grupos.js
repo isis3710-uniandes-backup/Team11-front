@@ -63,7 +63,7 @@ class AdminGroups extends React.Component {
                 <div className="collapse" id="editForm">
                     <form>
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualGroup.id}</p>
-                        <input type="text" id="editUsernameInput" placeholder="grupo"/>
+                        <input  aria-label="grupo" type="text" id="editUsernameInput" placeholder="grupo"/>
                         <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Grupo</button>
                     </form>
                 </div>

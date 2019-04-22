@@ -30,7 +30,7 @@ class AdminAutor extends React.Component {
         let rows=this.state.autores.map((el,i)=>{
             return(
                 <tr key={i}>
-                    <td scope="row">{i}</td>
+                    <td>{i}</td>
                     <td>{el.nombre}</td>
                     <td>{el.idioma}</td>
                     <td>
@@ -75,9 +75,9 @@ class AdminAutor extends React.Component {
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
                     <form>
-                        <input type="text" id="idInput" placeholder="id del autor"/>
-                        <input type="text" id="Input" placeholder="nombre del autor"/>
-                        <input type="text" id="languageInput" placeholder="idioma del autor"/>
+                        <input aria-label="id" type="text" id="idInput" placeholder="id del autor"/>
+                        <input  aria-label="nombre" type="text" id="Input" placeholder="nombre del autor"/>
+                        <input  aria-label="idioma" type="text" id="languageInput" placeholder="idioma del autor"/>
                         <button className="btn btn-info btnz" onClick={this.postAutores}>Agregar autores</button>
                     </form>
                 </div>

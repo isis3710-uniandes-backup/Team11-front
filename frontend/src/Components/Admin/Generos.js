@@ -72,8 +72,8 @@ class AdminGenre extends React.Component {
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
                     <form>
-                        <input type="text" id="idInput" placeholder="id de genero"/>
-                        <input type="text" id="genreInput" placeholder="nombre de genero"/>
+                        <input  aria-label="id" type="text" id="idInput" placeholder="id de genero"/>
+                        <input  aria-label="nombre" type="text" id="genreInput" placeholder="nombre de genero"/>
                         <button className="btn btn-info btnz" onClick={this.postGeneros}>Agregar Genero</button>
                     </form>
                 </div>
