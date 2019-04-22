@@ -37,19 +37,25 @@ class AdminGroups extends React.Component {
         return (
             <div>
                 <h1>Lista Grupos</h1>
-                <table className="table">
-                    <thead className="thead-dark">
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Grupo</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.rendGrupos()}
-                    </tbody>
-                    </table>
+                <div className="row">
+                    <div className="col-md-1"/>
+                    <div className="col-md-10">
+                        <table className="table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Grupo</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.rendGrupos()}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-1"/>
+                </div>
             </div>
         )
     }

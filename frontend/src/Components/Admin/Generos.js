@@ -44,27 +44,33 @@ class AdminGenre extends React.Component {
         return (
             <div>
                 <h1>Lista Generos</h1>
-                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input type="text" id="idInput" placeholder="id de genero"/>
                         <input type="text" id="genreInput" placeholder="nombre de genero"/>
-                        <button className="btn btn-info" onClick={this.postGeneros}>Agregar Genero</button>
+                        <button className="btn btn-info btnz" onClick={this.postGeneros}>Agregar Genero</button>
                     </form>
                 </div>
-                <table className="table">
-                    <thead className="thead-dark">
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Genero</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.rendGeneros()}
-                    </tbody>
-                    </table>
+                <div className="row">
+                    <div className="col-md-1"/>
+                    <div className="col-md-10">
+                        <table className="table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Genero</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.rendGeneros()}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-1"/>
+                </div>
             </div>
         )
     }

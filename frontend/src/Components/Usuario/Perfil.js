@@ -54,10 +54,10 @@ class Perfil extends Component {
         return (<div key={"llave"+el.id} className="card">
         <div className="card-header" id={"heading"+el.id}>
         <h3 className="mb-0">
-            <button className="btn btn-link" data-toggle="collapse" data-target={"#collapse"+el.id} aria-expanded="true" aria-controls={"collapse"+el.id}>
+            <button className="btn btn-link btnz" data-toggle="collapse" data-target={"#collapse"+el.id} aria-expanded="true" aria-controls={"collapse"+el.id}>
                 {el.titulo}
             </button>
-            <button onClick={()=>this.cambiarActual(el)} type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addNovelaForm" aria-label="Left Align">
+            <button onClick={()=>this.cambiarActual(el)} type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addNovelaForm" aria-label="Left Align">
                 <FormattedMessage id="AddNovel"/> 
             </button>
         </h3>
@@ -67,7 +67,7 @@ class Perfil extends Component {
         <div className="card-body">
             <table className="table table-striped">
                 <tbody>
-                    {novelas.map((elem)=><tr key={elem.id}><td><a href={"/novelas/"+elem.id}>{elem.titulo}</a>
+                    {novelas.map((elem)=><tr key={elem.id}><td ><a className="linkNv" href={"/novelas/"+elem.id}>{elem.titulo}</a>
                     <button onClick={()=>this.deleteListaNovela(el.id,elem.id)}><a href=""><img aria-label="delete"src={iconDelete}></img></a></button>
                     </td></tr>)}
                 </tbody>
@@ -89,7 +89,7 @@ class Perfil extends Component {
                     <table className="table table-striped">
                         <tbody>
                                 {novelas.map((elem)=><tr key={elem.id}><td>
-                                    <a href={"/novelas/"+elem.id}>{elem.titulo}</a>
+                                    <a className="linkNv" href={"/novelas/"+elem.id}>{elem.titulo}</a>
                                     <a href=""><button onClick={()=>this.deleteFavorito(elem.id)}><img aria-label="delete" src={iconDelete}></img></button></a>
                                     </td></tr>)}
                         </tbody>
@@ -201,12 +201,12 @@ class Perfil extends Component {
                     <option value=""> </option>
                     {this.state.grupos.map((el)=><option value={el.id} key={el.id}>{el.nombre}</option>)}
                 </select>
-                <a href=""><button type="button" onClick={this.unirseGrupo} className="btn btn-info"><FormattedMessage id="Join"/></button></a>   
+                <a href=""><button type="button" onClick={this.unirseGrupo} className="btn btn-info btnz"><FormattedMessage id="Join"/></button></a>   
             </div>
         );
         let buttonGrupo2=(
             <div className="text-left">
-                <button type="button" className="btn btn-info" data-toggle="collapse" data-target="#createGroupForm"><FormattedMessage id="Create"/></button>   
+                <button type="button" className="btn btn-info btnz" data-toggle="collapse" data-target="#createGroupForm"><FormattedMessage id="Create"/></button>   
                 <div className="collapse" id="createGroupForm">
                     <form>
                         <input type="text" id="groupIdInput" placeholder="id del grupo"/>
@@ -229,12 +229,12 @@ class Perfil extends Component {
                     <p> 
                         <FormattedMessage id="Group"/>: {nombreGrupo}
                     </p>
-                    <a href=""><button type="button" onClick={this.exitGrupo} className="btn btn-info"><FormattedMessage id="Exit"/></button></a>   
+                    <a href=""><button type="button" onClick={this.exitGrupo} className="btn btn-info btnz"><FormattedMessage id="Exit"/></button></a>   
                 </div>  
             );
             buttonGrupo2=(
                 <div className="text-left">
-                    <button type="button" className="btn btn-info"><FormattedMessage id="PublishRelease"/></button>   
+                    <button type="button" className="btn btn-info btnz"><FormattedMessage id="PublishRelease"/></button>   
                 </div>
             );
         }
@@ -250,7 +250,7 @@ class Perfil extends Component {
                         {buttonGrupo2}
                         <div className="row"> 
                             <h3><FormattedMessage id="MyLists"/>:</h3>
-                            <button type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addListaForm" aria-label="Left Align">
+                            <button type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addListaForm" aria-label="Left Align">
                                 <FormattedMessage id="CreateList"/>
                             </button>
                         </div>
@@ -258,7 +258,7 @@ class Perfil extends Component {
                             <form>
                                 <input type="text" id="listIdInput" placeholder="id de lista"/>
                                 <input type="text" id="listNameInput" placeholder="nombre de Lista"/>
-                                <button className="btn btn-info" onClick={this.postLista}><FormattedMessage id="AddList"/></button>
+                                <button className="btn btn-info btnz" onClick={this.postLista}><FormattedMessage id="AddList"/></button>
                             </form>
                         </div>
                         <div className="collapse" id="addNovelaForm">
@@ -266,7 +266,7 @@ class Perfil extends Component {
                                 <select id="selectNovelas">
                                     {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
                                 </select>
-                                <button className="btn btn-info" onClick={this.putListaNovela}><FormattedMessage id="AddNovelTo"/> {this.state.actualList.titulo}</button>
+                                <button className="btn btn-info btnz" onClick={this.putListaNovela}><FormattedMessage id="AddNovelTo"/> {this.state.actualList.titulo}</button>
                             </form>
                         </div>
                         <div className=" col-9 row"> 
@@ -276,7 +276,7 @@ class Perfil extends Component {
                         </div>
                         <div className="row"> 
                             <h3><FormattedMessage id="Favorites"/>:</h3>
-                            <button type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addFavoritoForm" aria-label="Left Align">
+                            <button type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addFavoritoForm" aria-label="Left Align">
                                 <FormattedMessage id="AddFavorite"/>
                             </button>
                         </div>
@@ -285,7 +285,7 @@ class Perfil extends Component {
                                 <select id="selectNovelas2">
                                     {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
                                 </select>
-                                <button className="btn btn-info" onClick={this.addFavorito}><FormattedMessage id="AddNovelToFavorites"/></button>
+                                <button className="btn btn-info btnz" onClick={this.addFavorito}><FormattedMessage id="AddNovelToFavorites"/></button>
                             </form>
                         </div>
                         <div className=" col-9 row"> 

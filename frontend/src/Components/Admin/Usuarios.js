@@ -43,11 +43,11 @@ class AdminUsers extends React.Component {
                     <td>{el.nombre}</td>
                     <td>{nombreGrupo}</td>
                     <td>
-                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
+                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success btnz" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
                     </td>
                     <td>
                         <form>
-                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success" type="button" ><FormattedMessage id="Delete"/></a>
+                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
                         </form>
                     </td>
                 </tr>
@@ -84,35 +84,41 @@ class AdminUsers extends React.Component {
         return (
             <div>
                 <h1>Lista Usuarios</h1>
-                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input type="text" id="idInput" placeholder="id de usuario"/>
                         <input type="text" id="usernameInput" placeholder="nombre de usuario"/>
-                        <button className="btn btn-info" onClick={this.postUsuario}>Agregar Usuario</button>
+                        <button className="btn btn-info btnz" onClick={this.postUsuario}>Agregar Usuario</button>
                     </form>
                 </div>
                 <div className="collapse" id="editForm">
                     <form>
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualUser.id}</p>
                         <input type="text" id="editUsernameInput" placeholder={this.state.actualUser.nombre}/>
-                        <button className="btn btn-info" onClick={this.putUsuario}>Editar Usuario</button>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Usuario</button>
                     </form>
                 </div>
-                <table className="table">
-                    <thead className="thead-dark">
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col"><FormattedMessage id="User"/></th>
-                        <th scope="col"><FormattedMessage id="Group"/></th>
-                        <th scope="col"><FormattedMessage id="Edit"/></th>
-                        <th scope="col"><FormattedMessage id="Delete"/></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.rendUsuarios()}
-                    </tbody>
+                <div className="row">
+                    <div className="col-md-1"/>
+                    <div className="col-md-10">
+                    <table className="table">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col"><FormattedMessage id="User"/></th>
+                                <th scope="col"><FormattedMessage id="Group"/></th>
+                                <th scope="col"><FormattedMessage id="Edit"/></th>
+                                <th scope="col"><FormattedMessage id="Delete"/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.rendUsuarios()}
+                        </tbody>
                     </table>
+                    </div>
+                    <div className="col-md-1"/>
+                </div>
             </div>
         )
     }

@@ -134,14 +134,14 @@ class Novelas extends React.Component {
             A.push(i);
         }
         return (
-            <div>
+            <div className="novs">
                 <div className="row busq">
                     <div className="col-md-1"/>
-                    <button role="button" type="button" className="btn btn-info btn-outline-info" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
+                    <button role="button" type="button" className="btn btn-info btn-outline-info filt" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
                         <FormattedMessage id="Filter"/> 
                     </button>
-                    <input role="searchbox" className="form-control col-1 mr-sm-2" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
-                    <button role="button" className="btn btn-outline-success my-2 my-sm-0" onClick={this.findNovelas}><FormattedMessage id="Search"/> </button>
+                    <input role="searchbox" className="form-control col-1 mr-sm-2 serc" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
+                    <button role="button" className="btn btn-outline-success my-2 my-sm-0 busB" onClick={this.findNovelas}><FormattedMessage id="Search"/> </button>
                 </div>
                 <div id="filterForm" className="collapse">
                         <p><FormattedMessage id="Genre"/> </p>

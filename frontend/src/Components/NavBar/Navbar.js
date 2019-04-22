@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router'
 import perfilImage from '../../assets/img/user.png'
 import { FormattedMessage } from 'react-intl';
-import { Header } from '../../Components/NavBar/header';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
 import bilbo from '../../assets/img/bilbo.PNG';
 
@@ -61,7 +60,7 @@ const Navbar = (props) => (
                     <li className="nav-item">
                         <div className="row">
                             <a className="nav-link" href="/perfil"><FormattedMessage id="Profile"/></a>
-                            <a href="/perfil"><img alt="profile" src={perfilImage} height="40px" id="perfilPequeño" /></a>
+                            <a href="/perfil"><img className="rounded-corners" alt="profile" src={perfilImage} height="40px" id="perfilPequeño" /></a>
                         </div>                </li>
                 </ul>
             </div>

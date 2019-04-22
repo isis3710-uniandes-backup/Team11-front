@@ -34,11 +34,11 @@ class AdminRecomm extends React.Component {
                     <td>{el.novela}</td>
                     <td>{el.novelaRecomendada}</td>
                     <td>
-                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
+                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success btnz" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
                     </td>
                     <td>
                         <form>
-                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success" type="button" ><FormattedMessage id="Delete"/></a>
+                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
                         </form>
                     </td>
                 </tr>
@@ -74,36 +74,42 @@ class AdminRecomm extends React.Component {
         return (
             <div>
                 <h1>Lista Recomendaciones</h1>
-                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input type="text" id="idInput" placeholder="id de recomendacion"/>
                         <input type="text" id="Input" placeholder="id de novela que recomienda"/>
                         <input type="text" id="Input2" placeholder="id de novela recomendada"/>
-                        <button className="btn btn-info" onClick={this.postRecomendacion}>Agregar recomedacion</button>
+                        <button className="btn btn-info btnz" onClick={this.postRecomendacion}>Agregar recomedacion</button>
                     </form>
                 </div>
                 <div className="collapse" id="editForm">
                     <form>
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualRecom.id}</p>
                         <input type="text" id="editUsernameInput" placeholder={this.state.actualRecom.nombre}/>
-                        <button className="btn btn-info" onClick={this.putUsuario}>Editar Recomendacion</button>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Recomendacion</button>
                     </form>
                 </div>
-                <table className="table">
-                    <thead className="thead-dark">
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Novela que recomienda</th>
-                        <th scope="col">Novela recomendada</th>
-                        <th scope="col"><FormattedMessage id="Edit"/></th>
-                        <th scope="col"><FormattedMessage id="Delete"/></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.rendRecon()}
-                    </tbody>
-                    </table>
+                <div className="row">
+                    <div className="col-md-1"/>
+                    <div className="col-md-10">
+                        <table className="table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Novela que recomienda</th>
+                                    <th scope="col">Novela recomendada</th>
+                                    <th scope="col"><FormattedMessage id="Edit"/></th>
+                                    <th scope="col"><FormattedMessage id="Delete"/></th>
+                                </tr>
+                            </thead>
+                        <tbody>
+                            {this.rendRecon()}
+                        </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-1"/>
+                    </div>
             </div>
         )
     }

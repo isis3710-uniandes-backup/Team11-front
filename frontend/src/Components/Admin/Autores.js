@@ -46,29 +46,35 @@ class AdminAutor extends React.Component {
         return (
             <div>
                 <h1>Lista Autores</h1>
-                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input type="text" id="idInput" placeholder="id del autor"/>
                         <input type="text" id="Input" placeholder="nombre del autor"/>
                         <input type="text" id="languageInput" placeholder="idioma del autor"/>
-                        <button className="btn btn-info" onClick={this.postAutores}>Agregar autores</button>
+                        <button className="btn btn-info btnz" onClick={this.postAutores}>Agregar autores</button>
                     </form>
                 </div>
-                <table className="table">
-                    <thead className="thead-dark">
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Autor</th>
-                        <th scope="col">Idioma</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.rendGrupos()}
-                    </tbody>
-                    </table>
+                <div className="row">
+                    <div className="col-md-1"/>
+                    <div className="col-md-10">
+                        <table className="table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Autor</th>
+                                    <th scope="col">Idioma</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.rendGrupos()}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-1"/>
+                </div>
             </div>
         )
     }

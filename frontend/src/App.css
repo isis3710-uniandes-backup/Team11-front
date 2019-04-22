@@ -2,15 +2,42 @@
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
+    background-color: #F1F3F5;
 }
+
+.rounded-corners{
+  border-radius: 50%;
+  background-color: white;
+}
+/* Clases genericas para poder cambair colores botones para contrastes*/
+.btnz{
+  color: black;
+}
+.linkNv{
+  color:#0050A6 !important;
+}
+/* css que se usa para dejar bonita y sin issues la pag de novelas y series populares esto incluye los botones de paginacion filtado y eso */
 
 .busq{
   margin-top: 15px;
   margin-bottom: 0px;
 }
-
+.novs, .home{
+  padding-bottom: 1vw;
+}
 .lang{
   width: 15%;
+}
+.busB{
+  color: black;
+  background-color:#2AE956;
+}
+.filt{
+  color: black;
+  background-color:#1DC6E1;
+}
+.serc{
+  min-width:15%;;
 }
 table {
     font-family: arial, sans-serif;
@@ -21,24 +48,27 @@ table {
     margin-top: 2vw;
     margin-bottom: 1vw;
 }
-
 #tablaNovelas tr {
     border-bottom: 1pt solid black;
 }
-
-th {
-    background-color: #769BD1;
+#tablaNovelas a{
+  color:#0050A6;
 }
 
+#tablaNovelas a:hover{
+  color:#33ACE3;
+}
+th {
+    background-color: #33ACE3;
+}
 #tablaDeHome tr:nth-child(even) {
     background-color: #DAE8FC;
-}
 
+}/* No se donde se usan estos ids y clases,supongo que el footer y la imag de usario? att:Gabriel */
 #titulo,
 #perfilPequeño {
     cursor: pointer;
 }
-
 .foot {
     padding: 0px;
 }
@@ -49,14 +79,15 @@ th {
     padding: 10px;
     transition: all .5s ease;
 }
+.foot a:hover {
+    color: blue;
+}
 
+/*Css que deja la navbar funcionando sin issues y bonita*/
 .navbar,
 .dropdown-menu {
   color:#F6F6F6 !important;
-  background-color: #353481 !important;
-}
-.navbar a {
-  color:#F6F6F6 !important;
+  background-color: #025b83 !important;
 }
 .navbar a {
   color:#F6F6F6 !important;
@@ -64,9 +95,7 @@ th {
 .dropdown-menu a:hover{
   background-color: blue;
 }
-.foot a:hover {
-    color: blue;
-}
+
 
 .column {
     float: left;
@@ -84,24 +113,24 @@ th {
     margin-left: 0px !important;
 }
 
-/* Clear floats after the columns */
+/* Limpia los floats despues de las columnas */
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
 
+/*Css que en un comienzo se hiba a usar en un Jumbotron, pero al final se uso solo en el estilo del header de la pag*/
 .jumbo {
     background: url(./assets/img/bosque.jpg) no-repeat fixed bottom;
     background-size: cover;
     color: #efefef;
     height: 100px;
     position: relative;
-    z-index: -2;
+    z-index: 1;
     margin-bottom: 0;
     padding: 0 0 0;
 }
-
 .overlay {
     background-color: transparent;
     opacity: 1;
@@ -111,5 +140,5 @@ th {
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: -1;
+    z-index: 2;
 }

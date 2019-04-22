@@ -46,7 +46,7 @@ class Home extends React.Component {
             A.push(i);
         }
         return (
-            <div>
+            <div className="home">
                 <div className="row">
                 <div className="col-md-1"></div>
                 <div className="col-md-10">
@@ -67,6 +67,7 @@ class Home extends React.Component {
                 <div className="col-md-1"></div>
                 </div>
                 {A.map((i) => <button key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
+                <div className="row"></div>
             </div>
         )
     }
