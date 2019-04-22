@@ -16,6 +16,15 @@
 .linkNv{
   color:#0050A6 !important;
 }
+
+/*Css de la pag de detalles de novela*/
+.titNovD{
+  margin: 0px 0px 0px 0px !important;
+}
+.margin-top-5vw{
+  margin-top: 5vw !important;
+}
+
 /* css que se usa para dejar bonita y sin issues la pag de novelas y series populares esto incluye los botones de paginacion filtado y eso */
 
 .busq{
@@ -24,6 +33,7 @@
 }
 .novs, .home{
   padding-bottom: 1vw;
+  height: -webkit-fill-available;
 }
 .lang{
   width: 15%;
