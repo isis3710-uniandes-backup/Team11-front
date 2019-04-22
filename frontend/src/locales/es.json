@@ -36,5 +36,6 @@
 	"Add":"Añadir",
 	"Edit":"Editar",
 	"Detete":"Eliminar",
-	"User":"Usuario"
+	"User":"Usuario",
+	"EditUserofId":"Editar Usuario de id"
 }

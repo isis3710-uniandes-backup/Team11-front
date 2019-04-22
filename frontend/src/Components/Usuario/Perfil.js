@@ -103,7 +103,7 @@ class Perfil extends Component {
             var group = response.data;
             this.setState({grupos:group});
         });
-        axios.get('http://localhost:3001/Usuarios/1')
+        axios.get('http://localhost:3001/Usuarios/2')
         .then((response) => {
             var user = response.data;
             this.setState({user:user});

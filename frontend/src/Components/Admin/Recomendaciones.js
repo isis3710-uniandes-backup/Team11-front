@@ -1,11 +1,18 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import {FormattedMessage} from 'react-intl';
+
 class AdminRecomm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-                        recomendaciones:[],                  
+                        recomendaciones:[],       
+                        actualRecom:{}           
                     };
+    }
+
+    cambiarActual=(recom)=>{
+        this.setState({actualRecom:recom});
     }
 
 
@@ -26,8 +33,14 @@ class AdminRecomm extends React.Component {
                     <th scope="row">{i}</th>
                     <td>{el.novela}</td>
                     <td>{el.novelaRecomendada}</td>
-                    <td>editar</td>
-                    <td>eliminar</td>
+                    <td>
+                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
+                    </td>
+                    <td>
+                        <form>
+                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success" type="button" ><FormattedMessage id="Delete"/></a>
+                        </form>
+                    </td>
                 </tr>
             );
         });
@@ -46,6 +59,17 @@ class AdminRecomm extends React.Component {
         axios.post('http://localhost:3001/Recomendaciones',genre);
     }
 
+    putUsuario=()=>{
+        let username=document.getElementById('editUsernameInput').value;
+        let user={...this.state.actualRecom};
+        user.nombre=username;
+        axios.put('http://localhost:3001/Recomendaciones/'+user.id,user);
+    }
+
+    deleteUsuario=(idUser)=>{
+        axios.delete('http://localhost:3001/Recomendaciones/'+idUser);
+    }
+
     render() {
         return (
             <div>
@@ -59,14 +83,21 @@ class AdminRecomm extends React.Component {
                         <button className="btn btn-info" onClick={this.postRecomendacion}>Agregar recomedacion</button>
                     </form>
                 </div>
+                <div className="collapse" id="editForm">
+                    <form>
+                        <p><FormattedMessage id="EditUserofId"/>: {this.state.actualRecom.id}</p>
+                        <input type="text" id="editUsernameInput" placeholder={this.state.actualRecom.nombre}/>
+                        <button className="btn btn-info" onClick={this.putUsuario}>Editar Recomendacion</button>
+                    </form>
+                </div>
                 <table className="table">
                     <thead className="thead-dark">
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Novela que recomienda</th>
                         <th scope="col">Novela recomendada</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col"><FormattedMessage id="Edit"/></th>
+                        <th scope="col"><FormattedMessage id="Delete"/></th>
                         </tr>
                     </thead>
                     <tbody>

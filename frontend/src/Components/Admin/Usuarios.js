@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios'
+import {FormattedMessage} from 'react-intl';
+
 class AdminUsers extends React.Component {
     constructor(props) {
         super(props);
@@ -41,11 +43,11 @@ class AdminUsers extends React.Component {
                     <td>{el.nombre}</td>
                     <td>{nombreGrupo}</td>
                     <td>
-                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#editForm">Editar</button>
+                        <button onClick={()=>this.cambiarActual(el)} className="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#editForm"><FormattedMessage id="Edit"/></button>
                     </td>
                     <td>
                         <form>
-                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success" type="button" >Borrar</a>
+                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success" type="button" ><FormattedMessage id="Delete"/></a>
                         </form>
                     </td>
                 </tr>
@@ -92,7 +94,7 @@ class AdminUsers extends React.Component {
                 </div>
                 <div className="collapse" id="editForm">
                     <form>
-                        <p>Editar usuario de id: {this.state.actualUser.id}</p>
+                        <p><FormattedMessage id="EditUserofId"/>: {this.state.actualUser.id}</p>
                         <input type="text" id="editUsernameInput" placeholder={this.state.actualUser.nombre}/>
                         <button className="btn btn-info" onClick={this.putUsuario}>Editar Usuario</button>
                     </form>
@@ -101,10 +103,10 @@ class AdminUsers extends React.Component {
                     <thead className="thead-dark">
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Grupo</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col"><FormattedMessage id="User"/></th>
+                        <th scope="col"><FormattedMessage id="Group"/></th>
+                        <th scope="col"><FormattedMessage id="Edit"/></th>
+                        <th scope="col"><FormattedMessage id="Delete"/></th>
                         </tr>
                     </thead>
                     <tbody>
