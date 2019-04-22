@@ -28,12 +28,12 @@ const Contactenos = (props) => (
                 <div id="titulo-de-imagen2">
                     <div className="row">
                         <div className="col"><hr></hr></div>
-                        <div className="col-auto"><h2>Amilkar Eslava</h2></div>
+                        <div className="col-auto"><h2>Rafael Tejon</h2></div>
                         <div className="col"><hr></hr></div>
                     </div>
                     <div my-text="student"><p>Student</p></div>
                 </div>
-                <img src="https://raw.githubusercontent.com/aeslava97/primerProyecto/master/primerProyecto/images/img2.png" className="rounded-circle img-fluid" alt="img2" ></img>
+                <img src="https://raw.githubusercontent.com/rctejon/Personal-Web/master/images/about.jpg" className="rounded-circle img-fluid" alt="img2" ></img>
             </div>
             <div className="container-fluid px-0 foot">
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
