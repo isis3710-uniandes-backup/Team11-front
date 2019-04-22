@@ -1,63 +1,115 @@
 .App {
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
 }
 
-.navbar {
+.busq{
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
+.lang{
+  width: 15%;
+}
 table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 4vw;
-}
-#tablaNovelas tr{
-  border-bottom: 1pt solid black;  
-}
-th{
-  background-color: #769BD1;  
-}
-#tablaDeHome tr:nth-child(even) {
-  background-color: #DAE8FC;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: solid;
+    border-width: 1px;
+    margin-top: 2vw;
+    margin-bottom: 1vw;
 }
 
-#titulo, #perfilPequeño{
-  cursor: pointer;
+#tablaNovelas tr {
+    border-bottom: 1pt solid black;
 }
-.foot {		
- 	padding: 0px;	
+
+th {
+    background-color: #769BD1;
 }
+
+#tablaDeHome tr:nth-child(even) {
+    background-color: #DAE8FC;
+}
+
+#titulo,
+#perfilPequeño {
+    cursor: pointer;
+}
+
+.foot {
+    padding: 0px;
+}
+
 .foot a {
-  color: #70726F;
-  font-size: 20px;
-  padding: 10px;
-  transition: all .5s ease;
+    color: #70726F;
+    font-size: 20px;
+    padding: 10px;
+    transition: all .5s ease;
 }
-.navbar, .dropdown-menu{
-  background-color: rgba(209, 203, 171, 0.9) !important;
+
+.navbar,
+.dropdown-menu {
+  color:#F6F6F6 !important;
+  background-color: #353481 !important;
+}
+.navbar a {
+  color:#F6F6F6 !important;
+}
+.navbar a {
+  color:#F6F6F6 !important;
+}
+.dropdown-menu a:hover{
+  background-color: blue;
 }
 .foot a:hover {
-  color: blue;
-}
-.column {
-  float: left;
-  width: 33.3%;
-  padding: 10px;
-  height: 300px;
-}
-#faq{
-  text-align: left;
+    color: blue;
 }
 
-.row{
-  margin-right: 0px !important;
-  margin-left: 0px !important;
+.column {
+    float: left;
+    width: 33.3%;
+    padding: 10px;
+    height: 300px;
 }
+
+#faq {
+    text-align: left;
+}
+
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.jumbo {
+    background: url(./assets/img/bosque.jpg) no-repeat fixed bottom;
+    background-size: cover;
+    color: #efefef;
+    height: 100px;
+    position: relative;
+    z-index: -2;
+    margin-bottom: 0;
+    padding: 0 0 0;
+}
+
+.overlay {
+    background-color: transparent;
+    opacity: 1;
+    height: 100px;
+    position: absolute;
+    top:  0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
 }
