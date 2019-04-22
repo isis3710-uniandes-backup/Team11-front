@@ -1,12 +1,17 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
 }
 
+.navbar {
+}
 
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-top: 4vw;
 }
 #tablaNovelas tr{
   border-bottom: 1pt solid black;  
@@ -55,7 +60,4 @@ th{
   content: "";
   display: table;
   clear: both;
-}
-.table{
-  margin-top: 4vw;
 }
