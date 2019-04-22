@@ -63,6 +63,13 @@
 
 	"ListRecomendationsAdmin":"lista de recomendaciones",
 	"RecomendedNovelAdmin":"novela recomendada",
-	"NovelThatWasRecomendedAdmin":"Novela que fue recomendada"
+	"NovelThatWasRecomendedAdmin":"Novela que fue recomendada",
+
+	"Authors":"Autores",
+	"Genres":"Generos",
+	"Recomendatios":"Recomendaciones",
+	"Publications":"Publicaciones",
+	"Comments":"Comments",
+	"Publish": "Publicar"
 
 }
