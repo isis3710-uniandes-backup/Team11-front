@@ -84,7 +84,7 @@ class AdminUsers extends React.Component {
         return (
             <div className="heightWeb" role="contentinfo">
                 <h1>Lista Usuarios</h1>
-                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm"><FormattedMessage id="AddAdmin"/></button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input aria-label="userid" type="text" id="idInput" placeholder="id de usuario"/>

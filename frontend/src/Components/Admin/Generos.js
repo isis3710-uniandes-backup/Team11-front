@@ -69,7 +69,7 @@ class AdminGenre extends React.Component {
         return (
             <div className="heightWeb" role="contentinfo">
                 <h1>Lista Generos</h1>
-                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
+                <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm"><FormattedMessage id="AddAdmin"/></button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input  aria-label="id" type="text" id="idInput" placeholder="id de genero"/>

@@ -50,9 +50,6 @@
 	"PortraitNovel":"Portrait",
 	"ChineseNovel": "chinese",
 
-	"PortraitPopular":"Portrait",
-	"LanguagePopular":"Language",
-	"TitleNovelPopular":"Title",
 
 	"ListUsersAdmin":"User list",
 	"AddAdmin":"Add",
