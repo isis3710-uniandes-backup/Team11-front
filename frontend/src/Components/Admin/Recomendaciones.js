@@ -75,14 +75,14 @@ class AdminRecomm extends React.Component {
     render() {
         return (
             <div className="heightWeb" role="contentinfo">
-                <h1>Lista Recomendaciones</h1>
+                <h1><FormattedMessage id="ListRecomendationsAdmin"/></h1>
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm"><FormattedMessage id="AddAdmin"/></button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input type="text" id="idInput" placeholder="id de recomendacion"/>
                         <input type="text" id="Input" placeholder="id de novela que recomienda"/>
                         <input type="text" id="Input2" placeholder="id de novela recomendada"/>
-                        <button className="btn btn-info btnz" onClick={this.postRecomendacion}>Agregar recomedacion</button>
+                        <button className="btn btn-info btnz" onClick={this.postRecomendacion}><FormattedMessage id="AddAdmin"/></button>
                     </form>
                 </div>
                 <div className="collapse" id="editForm">
@@ -90,7 +90,7 @@ class AdminRecomm extends React.Component {
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualRecom.id}</p>
                         <input type="text" id="editUsernameInput" placeholder="Novela"/>
                         <input type="text" id="editNovelInput" placeholder="Novela que recomienda"/>
-                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Recomendacion</button>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}><FormattedMessage id="EditAdmin"/></button>
                     </form>
                 </div>
                 <div className="row">
@@ -100,8 +100,8 @@ class AdminRecomm extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Novela que recomienda</th>
-                                    <th scope="col">Novela recomendada</th>
+                                    <th scope="col"><FormattedMessage id="RecomendedNovelAdmin"/></th>
+                                    <th scope="col"><FormattedMessage id="NovelThatWasRecomendedAdmin"/></th>
                                     <th scope="col"><FormattedMessage id="Edit"/></th>
                                     <th scope="col"><FormattedMessage id="Delete"/></th>
                                 </tr>

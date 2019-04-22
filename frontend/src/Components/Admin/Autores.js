@@ -71,14 +71,14 @@ class AdminAutor extends React.Component {
     render() {
         return (
             <div className="heightWeb" role="contentinfo">
-                <h1>Lista Autores</h1>
+                <h1><FormattedMessage id="ListAuthorsAdmin"/></h1>
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm"><FormattedMessage id="AddAdmin"/></button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input aria-label="id" type="text" id="idInput" placeholder="id del autor"/>
                         <input  aria-label="nombre" type="text" id="Input" placeholder="nombre del autor"/>
                         <input  aria-label="idioma" type="text" id="languageInput" placeholder="idioma del autor"/>
-                        <button className="btn btn-info btnz" onClick={this.postAutores}>Agregar autores</button>
+                        <button className="btn btn-info btnz" onClick={this.postAutores}><FormattedMessage id="AddAdmin"/></button>
                     </form>
                 </div>
                 <div className="collapse" id="editForm">
@@ -86,7 +86,7 @@ class AdminAutor extends React.Component {
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualAut.id}</p>
                         <input type="text" id="editUsernameInput" placeholder="nombre"/>
                         <input type="text" id="editNovelInput" placeholder="idioma"/>
-                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Recomendacion</button>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}><FormattedMessage id="EditAdmin"/></button>
                     </form>
                 </div>
                 <div className="row">

@@ -83,20 +83,20 @@ class AdminUsers extends React.Component {
     render() {
         return (
             <div className="heightWeb" role="contentinfo">
-                <h1>Lista Usuarios</h1>
+                <h1><FormattedMessage id="ListUsersAdmin"/></h1>
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm"><FormattedMessage id="AddAdmin"/></button>
                 <div className="collapse" id="addForm">
                     <form>
                         <input aria-label="userid" type="text" id="idInput" placeholder="id de usuario"/>
                         <input aria-label="username" type="text" id="usernameInput" placeholder="nombre de usuario"/>
-                        <button className="btn btn-info btnz" onClick={this.postUsuario}>Agregar Usuario</button>
+                        <button className="btn btn-info btnz" onClick={this.postUsuario}><FormattedMessage id="AddAdmin"/></button>
                     </form>
                 </div>
                 <div className="collapse" id="editForm">
                     <form>
                         <p><FormattedMessage id="EditUserofId"/>: {this.state.actualUser.id}</p>
                         <input type="text" id="editUsernameInput" placeholder={this.state.actualUser.nombre}/>
-                        <button className="btn btn-info btnz" onClick={this.putUsuario}>Editar Usuario</button>
+                        <button className="btn btn-info btnz" onClick={this.putUsuario}><FormattedMessage id="EditAdmin"/></button>
                     </form>
                 </div>
                 <div className="row">
