@@ -67,7 +67,7 @@ class AdminGenre extends React.Component {
 
     render() {
         return (
-            <div role="contentinfo">
+            <div className="heightWeb" role="contentinfo">
                 <h1>Lista Generos</h1>
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm">Añadir</button>
                 <div className="collapse" id="addForm">

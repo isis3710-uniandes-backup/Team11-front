@@ -225,15 +225,17 @@ class Perfil extends Component {
         }
         if(this.state.user.grupo>-1){
             buttonGrupo1=(
-                <div className="row">
+                <div className="row marg-bot-2vw">
+                    <div className="col-md-4 align-middle">
                     <p>
                         <FormattedMessage id="Group"/>: {nombreGrupo}
                     </p>
+                    </div>
                     <a href=""><button type="button" onClick={this.exitGrupo} className="btn btn-info btnz"><FormattedMessage id="Exit"/></button></a>
                 </div>
             );
             buttonGrupo2=(
-                <div className="text-left">
+                <div className="text-left marg-bot-2vw">
                     <button type="button" className="btn btn-info btnz"><FormattedMessage id="PublishRelease"/></button>
                 </div>
             );
@@ -241,27 +243,27 @@ class Perfil extends Component {
         return (
             <div role="contentinfo" className="container">
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-3 marg-top-5vw">
                         <img aria-label="image" src={perfilImage} height="200px"/>
                     </div>
-                    <div className="col-9">
+                    <div className="col-9 marg-top-5vw">
                         <h2 className="text-left"><FormattedMessage id="GlobalUser"/></h2>
                         {buttonGrupo1}
                         {buttonGrupo2}
-                        <div className="row">
+                        <div className="row marg-bot-2vw">
                             <h3><FormattedMessage id="MyLists"/>:</h3>
                             <button type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addListaForm" aria-label="Left Align">
                                 <FormattedMessage id="CreateList"/>
                             </button>
                         </div>
-                        <div className="collapse" id="addListaForm">
+                        <div className="collapse marg-bot-2vw" id="addListaForm">
                             <form>
                                 <input type="text" id="listIdInput" placeholder="id de lista"/>
                                 <input type="text" id="listNameInput" placeholder="nombre de Lista"/>
                                 <button className="btn btn-info btnz" onClick={this.postLista}><FormattedMessage id="AddList"/></button>
                             </form>
                         </div>
-                        <div className="collapse" id="addNovelaForm">
+                        <div className="collapse marg-bot-2vw" id="addNovelaForm">
                             <form>
                                 <select id="selectNovelas">
                                     {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
@@ -269,12 +271,12 @@ class Perfil extends Component {
                                 <button className="btn btn-info btnz" onClick={this.putListaNovela}><FormattedMessage id="AddNovelTo"/> {this.state.actualList.titulo}</button>
                             </form>
                         </div>
-                        <div className=" col-9 row">
+                        <div className="col-9 row marg-bot-2vw">
                             <div className="col-12" id="accordion1">
                                 {this.state.listas.map((el)=>this.elemList(el))}
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row marg-bot-2vw">
                             <h3><FormattedMessage id="Favorites"/>:</h3>
                             <button type="button" className="btn btn-outline-success btnz" data-toggle="collapse" data-target="#addFavoritoForm" aria-label="Left Align">
                                 <FormattedMessage id="AddFavorite"/>
