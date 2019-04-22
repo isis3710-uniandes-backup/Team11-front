@@ -178,6 +178,39 @@ class Perfil extends Component {
         user.grupo=groupId;
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
+    formatDate=(date)=> {
+      var monthNames = [
+        "01", "02", "03",
+        "04", "05", "06", "07",
+        "08", "09", "10",
+        "11", "12"
+      ];
+
+      var day = date.getDate();
+      var monthIndex = date.getMonth();
+      var year = date.getFullYear();
+      var hour = date.getHours();
+      var minute = date.getMinutes();
+
+      return day + '/' + monthNames[monthIndex] + '/' + year+ ' '+hour+":"+minute;
+    }
+    postRelease=()=>{
+        let releaseName=document.getElementById('releaseNameInput').value;
+        let releaseId=parseInt(document.getElementById('releaseIdInput').value);
+        let releaseUrl=document.getElementById('releaseUrlInput').value;
+        let fech = new Date();
+        let cap={
+            id:releaseId,
+            titulo:releaseName,
+            texto:releaseUrl,
+            novela:parseInt(document.getElementById('selectNovelas3').value),
+            fansub:this.state.user.grupo,
+            fecha:this.formatDate(fech)
+        }
+        axios.post('http://localhost:3001/Capitulos',cap);
+    }
+
+
 
     exitGrupo=()=>{
         let user = this.state.user;
@@ -234,7 +267,18 @@ class Perfil extends Component {
             );
             buttonGrupo2=(
                 <div className="text-left">
-                    <button type="button" className="btn btn-info btnz"><FormattedMessage id="PublishRelease"/></button>
+                    <button type="button" className="btn btn-info btnz" data-toggle="collapse" data-target="#PublishReleaseForm" aria-label="Left Align"><FormattedMessage id="PublishRelease"/></button>
+                    <div className="collapse" id="PublishReleaseForm">
+                        <form>
+                            <select aria-label="select3" id="selectNovelas3">
+                                {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
+                            </select>
+                            <input aria-label="id" type="text" id="releaseIdInput" placeholder="id de release"/>
+                            <input aria-label="nombre" type="text" id="releaseNameInput" placeholder="nombre de release"/>
+                            <input aria-label="nombre" type="text" id="releaseUrlInput" placeholder="url de release"/>
+                            <button className="btn btn-info btnz" onClick={this.postRelease}><FormattedMessage id="PublishRelease"/></button>
+                        </form>
+                    </div>
                 </div>
             );
         }
