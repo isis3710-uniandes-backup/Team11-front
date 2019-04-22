@@ -137,7 +137,7 @@ class Novelas extends React.Component {
             <div className="novs">
                 <div className="row busq">
                     <div className="col-md-1"/>
-                    <button role="button" type="button" className="btn btn-info btn-outline-info filt" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
+                    <button role="button" type="button" className="btn btn-info btn-outline-info filt btnz" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
                         <FormattedMessage id="Filter"/> 
                     </button>
                     <input role="searchbox" className="form-control col-1 mr-sm-2 serc" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
@@ -160,7 +160,7 @@ class Novelas extends React.Component {
                             <option value="all">All</option>
                             {this.state.autores.map((el)=><option value={el[1]} key={el[1]}>{el[0]}</option>)}
                         </select>
-                        <button onClick={this.filtrarNovelasHandler} className="btn btn-outline-success my-2 my-sm-0"><FormattedMessage id="ApplyFilter"/></button>
+                        <button onClick={this.filtrarNovelasHandler} className="btn btn-outline-success my-2 my-sm-0 btnz"><FormattedMessage id="ApplyFilter"/></button>
                 </div>
                 <div className="row">
                     <div className="col-md-1"></div>
