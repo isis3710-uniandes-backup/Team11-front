@@ -135,9 +135,10 @@ class Novelas extends React.Component {
         }
         return (
             <div>
-                <div className="row">
-                <button role="button" type="button" className="btn btn-info btn-outline-info" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
-                    <FormattedMessage id="Filter"/> 
+                <div className="row busq">
+                    <div className="col-md-1"/>
+                    <button role="button" type="button" className="btn btn-info btn-outline-info" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
+                        <FormattedMessage id="Filter"/> 
                     </button>
                     <input role="searchbox" className="form-control col-1 mr-sm-2" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
                     <button role="button" className="btn btn-outline-success my-2 my-sm-0" onClick={this.findNovelas}><FormattedMessage id="Search"/> </button>
@@ -161,17 +162,23 @@ class Novelas extends React.Component {
                         </select>
                         <button onClick={this.filtrarNovelasHandler} className="btn btn-outline-success my-2 my-sm-0"><FormattedMessage id="ApplyFilter"/></button>
                 </div>
-                
-                <table role="table" id="tablaNovelas">
-                    <thead>
-                        <tr role="row">
-                            <th></th>
-                            <th><FormattedMessage id="Language"/></th>
-                            <th><FormattedMessage id="Title"/></th>
-                        </tr>
-                    </thead>
-                    {this.state.tablasNovela[this.state.pagina].map((novela) => <tbody key={novela.id}><Novela data={novela} /></tbody>)}
-                </table>
+                <div className="row">
+                    <div className="col-md-1"></div>
+                    <div className="col-md-10">
+                        <table role="table" id="tablaNovelas">
+                            <thead>
+                                <tr role="row">
+                                    <th>Portada</th>
+                                    <th className='lang'><FormattedMessage id="Language"/></th>
+                                    <th className="titl"><FormattedMessage id="Title"/></th>
+                                </tr>
+                            </thead>
+                            {this.state.tablasNovela[this.state.pagina].map((novela) => <tbody key={novela.id}><Novela data={novela} /></tbody>)}
+                        </table>
+                    <div/>
+                    <div className="col-md-1"></div>
+                </div>
+                </div>
                 {A.map((i) => <button role="button"  key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
             </div>
         )

@@ -1,3 +1,7 @@
-imagen{
+.imagen{
     margin-left: 1%;
+    color:white;
+}
+.imag{
+    background: url(../../assets/img/bosque.jpg);
 }

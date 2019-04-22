@@ -1,19 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router'
-import bilbo from '../../assets/img/bilbo.PNG';
 import perfilImage from '../../assets/img/user.png'
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import { Header } from '../../Components/NavBar/header';
+import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
+import bilbo from '../../assets/img/bilbo.PNG';
+
 import './NavBar.css'
 
 const Navbar = (props) => (
     <main>
-        <div className="row text-center">
-            <a className="row imagen" href="/">
-                <img alt="Home" src={bilbo} height="100px" id="titulo"></img>
-                <h1>Bilbo Web</h1>
-            </a>
-        </div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Jumbo fluid className="jumbo">
+            <div className="overlay">
+            <Container>
+                <a className="row imagen" href="/">
+                    <img alt="Home" src={bilbo} height="100px" id="titulo"></img>
+                    <h1>Bilbo Web</h1>
+                </a>
+            </Container></div>
+        </Jumbo>
+        <nav className="navbar navbar-expand-lg">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
