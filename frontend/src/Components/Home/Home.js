@@ -1,6 +1,8 @@
 import React from 'react';
 import Publicacion from './Publicacion';
 import axios from 'axios'
+import { FormattedMessage } from 'react-intl';
+
 //const getNovelas;
 class Home extends React.Component {
     constructor(props) {
@@ -53,10 +55,10 @@ class Home extends React.Component {
                     <table className="table" id="tablaDeHome">
                         <thead>
                             <tr>
-                                <th scope="col">Titulo Novela</th>
-                                <th scope="col">Publicación</th>
-                                <th scope="col">Grupo</th>
-                                <th scope="col">Fecha</th>
+                                <th scope="col"><FormattedMessage id="TitleNovelEntry"/></th>
+                                <th scope="col"><FormattedMessage id="PublicationEntry"/></th>
+                                <th scope="col"><FormattedMessage id="GroupEntry"/></th>
+                                <th scope="col"><FormattedMessage id="DateEntry"/></th>
                             </tr>
                         </thead>
                         <tbody >
