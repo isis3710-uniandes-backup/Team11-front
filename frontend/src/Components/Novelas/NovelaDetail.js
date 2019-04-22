@@ -188,16 +188,16 @@ class NovelaDetail extends React.Component {
     render() {
         return (
             <div role="contentinfo">
-               <h2>{this.state.novela.titulo}</h2>
                <div className="row">
-                    <div className="inline col-4">
+                    <div className="inline col-4 marg-top-5vw">
                         <img alt="portada" src={this.state.novela.imagen}></img>
                         <h3>Autores</h3>
                           {this.renderAutores()}
                         <h3>Generos</h3>
                           {this.renderGeneros()}
                     </div>
-                    <div className="inline col-8">
+                    <div className="inline col-8 marg-top-5vw">
+                        <h2>{this.state.novela.titulo}</h2>
                         <h3>Descripción</h3>
                         <p className="col-12">{this.state.novela.descripcion}</p>
                         <h3>Recomendaciones</h3>

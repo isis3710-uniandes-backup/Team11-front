@@ -58,7 +58,7 @@ class AdminGroups extends React.Component {
 
     render() {
         return (
-            <div role="contentinfo">
+            <div className="heightWeb" role="contentinfo">
                 <h1>Lista Grupos</h1>
                 <div className="collapse" id="editForm">
                     <form>
