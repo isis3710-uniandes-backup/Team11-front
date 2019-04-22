@@ -3,11 +3,15 @@ import { Link } from 'react-router'
 import bilbo from '../../assets/img/bilbo.PNG';
 import perfilImage from '../../assets/img/user.png'
 import {FormattedMessage} from 'react-intl';
+import './NavBar.css'
 
 const Navbar = (props) => (
-    <div>
+    <main>
         <div className="row text-center">
-            <a href="/"><img src={bilbo} height="100px" id="titulo"></img></a>
+            <a className="row imagen" href="/">
+                <img alt="Home" src={bilbo} height="100px" id="titulo"></img>
+                <h1>Bilbo Web</h1>
+            </a>
         </div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +36,7 @@ const Navbar = (props) => (
                         </div>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             ADMIN
                     </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -51,12 +55,12 @@ const Navbar = (props) => (
                     <li className="nav-item">
                         <div className="row">
                             <a className="nav-link" href="/perfil"><FormattedMessage id="Profile"/></a>
-                            <a href="/perfil"><img src={perfilImage} height="40px" id="perfilPequeño" /></a>
+                            <a href="/perfil"><img alt="profile" src={perfilImage} height="40px" id="perfilPequeño" /></a>
                         </div>                </li>
                 </ul>
             </div>
         </nav>
-    </div>
+    </main>
 
 );
 

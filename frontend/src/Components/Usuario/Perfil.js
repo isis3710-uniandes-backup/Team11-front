@@ -53,14 +53,14 @@ class Perfil extends Component {
         }
         return (<div key={"llave"+el.id} className="card">
         <div className="card-header" id={"heading"+el.id}>
-        <h5 className="mb-0">
+        <h3 className="mb-0">
             <button className="btn btn-link" data-toggle="collapse" data-target={"#collapse"+el.id} aria-expanded="true" aria-controls={"collapse"+el.id}>
                 {el.titulo}
             </button>
             <button onClick={()=>this.cambiarActual(el)} type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addNovelaForm" aria-label="Left Align">
                 <FormattedMessage id="AddNovel"/> 
             </button>
-        </h5>
+        </h3>
         </div>
 
         <div id={"collapse"+el.id} className="collapse " aria-labelledby={"heading"+el.id} data-parent="#accordion">
@@ -68,7 +68,7 @@ class Perfil extends Component {
             <table className="table table-striped">
                 <tbody>
                     {novelas.map((elem)=><tr key={elem.id}><td><a href={"/novelas/"+elem.id}>{elem.titulo}</a>
-                    <button onClick={()=>this.deleteListaNovela(el.id,elem.id)}><a href=""><img src={iconDelete}></img></a></button>
+                    <button onClick={()=>this.deleteListaNovela(el.id,elem.id)}><a href=""><img aria-label="delete"src={iconDelete}></img></a></button>
                     </td></tr>)}
                 </tbody>
             </table>
@@ -90,7 +90,7 @@ class Perfil extends Component {
                         <tbody>
                                 {novelas.map((elem)=><tr key={elem.id}><td>
                                     <a href={"/novelas/"+elem.id}>{elem.titulo}</a>
-                                    <a href=""><button onClick={()=>this.deleteFavorito(elem.id)}><img src={iconDelete}></img></button></a>
+                                    <a href=""><button onClick={()=>this.deleteFavorito(elem.id)}><img aria-label="delete" src={iconDelete}></img></button></a>
                                     </td></tr>)}
                         </tbody>
                     </table>
@@ -197,7 +197,7 @@ class Perfil extends Component {
                 <p>
                     <FormattedMessage id="Group"/>:
                 </p>
-                <select className="col-4 form-control" id="selectGrupo">
+                <select aria-label="selectgrupo" className="col-4 form-control" id="selectGrupo">
                     <option value=""> </option>
                     {this.state.grupos.map((el)=><option value={el.id} key={el.id}>{el.nombre}</option>)}
                 </select>
@@ -242,14 +242,14 @@ class Perfil extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-3">
-                        <img src={perfilImage} height="200px"/>
+                        <img aria-label="image" src={perfilImage} height="200px"/>
                     </div>
                     <div className="col-9">
-                        <h4 className="text-left"><FormattedMessage id="GlobalUser"/></h4>
+                        <h2 className="text-left"><FormattedMessage id="GlobalUser"/></h2>
                         {buttonGrupo1}
                         {buttonGrupo2}
                         <div className="row"> 
-                            <h5><FormattedMessage id="MyLists"/>:</h5>
+                            <h3><FormattedMessage id="MyLists"/>:</h3>
                             <button type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addListaForm" aria-label="Left Align">
                                 <FormattedMessage id="CreateList"/>
                             </button>
@@ -275,7 +275,7 @@ class Perfil extends Component {
                             </div>
                         </div>
                         <div className="row"> 
-                            <h5><FormattedMessage id="Favorites"/>:</h5>
+                            <h3><FormattedMessage id="Favorites"/>:</h3>
                             <button type="button" className="btn btn-outline-success" data-toggle="collapse" data-target="#addFavoritoForm" aria-label="Left Align">
                                 <FormattedMessage id="AddFavorite"/>
                             </button>
