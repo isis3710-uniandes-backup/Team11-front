@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+
 
 class Publicacion extends Component {
 
@@ -22,15 +24,17 @@ class Publicacion extends Component {
             this.setState({nombreGrupo:group.nombre})
         })
     }
-    
+
     render(){
         return(
             <tr>
                 <td>
-                    {this.state.tituloNovela}
+                    <Link to={{
+                        pathname:"/novelas/"+this.props.data.novela,
+                    }}>{this.state.tituloNovela}</Link>
                 </td>
                 <td>
-                    {this.props.data.titulo}
+                    <a href={this.props.data.texto}>{this.props.data.titulo}</a>
                 </td>
                 <td>
                     {this.state.nombreGrupo}

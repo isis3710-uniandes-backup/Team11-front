@@ -96,8 +96,8 @@ class AdminAutor extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Autor</th>
-                                    <th scope="col">Idioma</th>
+                                    <th scope="col"><FormattedMessage id="Author"/></th>
+                                    <th scope="col"><FormattedMessage id="Language"/></th>
                                     <th scope="col"><FormattedMessage id="Edit"/></th>
                                     <th scope="col"><FormattedMessage id="Delete"/></th>
                                 </tr>

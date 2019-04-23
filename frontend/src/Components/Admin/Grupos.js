@@ -74,7 +74,7 @@ class AdminGroups extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Grupo</th>
+                                    <th scope="col"><FormattedMessage id="Group"/></th>
                                     <th scope="col"><FormattedMessage id="Edit"/></th>
                                     <th scope="col"><FormattedMessage id="Delete"/></th>
                                 </tr>

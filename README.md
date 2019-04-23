@@ -41,4 +41,4 @@ En resumidas cuentas se espera que el usuario pueda realizar las siguientes acci
 
 # Para despliegue de la aplicación:
 
-ejecutar comando npm start en la carpeta frontend. (es necesario tener nodemon instalado)
+ejecutar comando npm start en la carpeta frontend de este repositorio y el backend del repositorio Team11-Back. (es necesario tener nodemon instalado)

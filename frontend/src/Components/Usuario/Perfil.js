@@ -15,7 +15,9 @@ class Perfil extends Component {
             grupo:"",
             novelas:[],
             listas:[],
-            actualList:{}
+            actualList:{},
+            textId:"",
+            errorText:""
         }
     }
 
@@ -224,6 +226,15 @@ class Perfil extends Component {
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
+    changeHandler=(data)=>{
+      let errorText=""
+      if(isNaN(data.currentTarget.value)){
+          errorText="Asigne un id numerico"
+      }
+      this.setState({textId:data.currentTarget.value,
+                      errorText:errorText});
+    }
+
     render() {
         let buttonGrupo1=(
             <div className="row">
@@ -275,11 +286,12 @@ class Perfil extends Component {
                             <select aria-label="select3" id="selectNovelas3">
                                 {this.state.novelas.map((el)=><option key={el.titulo} value={el.id}>{el.titulo}</option>)}
                             </select>
-                            <input aria-label="id" type="text" id="releaseIdInput" placeholder="id de release"/>
+                            <input aria-label="id" onChange={this.changeHandler} type="text" id="releaseIdInput" placeholder="id de release" value={this.state.textId}/>
                             <input aria-label="nombre" type="text" id="releaseNameInput" placeholder="nombre de release"/>
                             <input aria-label="nombre" type="text" id="releaseUrlInput" placeholder="url de release"/>
                             <button className="btn btn-info btnz" onClick={this.postRelease}><FormattedMessage id="PublishRelease"/></button>
                         </form>
+                        <p>{this.state.errorText}</p>
                     </div>
                 </div>
             );
