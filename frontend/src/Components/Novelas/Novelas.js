@@ -134,7 +134,7 @@ class Novelas extends React.Component {
             A.push(i);
         }
         return (
-            <div className="novs">
+            <div className="heightWeb">
                 <div className="row busq">
                     <div className="col-md-1"/>
                     <button role="button" type="button" className="btn btn-info btn-outline-info filt btnz" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">

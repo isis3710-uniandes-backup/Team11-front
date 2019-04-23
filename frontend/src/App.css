@@ -51,7 +51,7 @@
 }
 .novs, .home{
   padding-bottom: 1vw;
-  height: webkit !important;
+  height: auto !important;
 }
 .heightWeb{
   height: -webkit-fill-available;

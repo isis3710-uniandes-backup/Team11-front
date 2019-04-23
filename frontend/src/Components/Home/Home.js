@@ -48,7 +48,7 @@ class Home extends React.Component {
             A.push(i);
         }
         return (
-            <div role="contentinfo" className="home">
+            <div role="contentinfo" className="heightWeb">
                 <div className="row">
                 <div className="col-md-1"></div>
                 <div className="col-md-10">
