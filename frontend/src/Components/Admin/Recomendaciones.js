@@ -79,9 +79,9 @@ class AdminRecomm extends React.Component {
                 <button className="btn btn-info btnz" type="button" data-toggle="collapse" data-target="#addForm"><FormattedMessage id="AddAdmin"/></button>
                 <div className="collapse" id="addForm">
                     <form>
-                        <input type="text" id="idInput" placeholder="id de recomendacion"/>
-                        <input type="text" id="Input" placeholder="id de novela que recomienda"/>
-                        <input type="text" id="Input2" placeholder="id de novela recomendada"/>
+                        <label for="idInput">Id recom</label><input type="text" id="idInput" placeholder="id de recomendacion" label="idRecom"/>
+                        <label for="Input">Id Nov Recomien</label><input type="text" id="Input" placeholder="id de novela que recomienda" label="idNovRecomi"/>
+                        <label for="Input2">Id Nov Recomen</label><input type="text" id="Input2" placeholder="id de novela recomendada"/>
                         <button className="btn btn-info btnz" onClick={this.postRecomendacion}><FormattedMessage id="AddAdmin"/></button>
                     </form>
                 </div>

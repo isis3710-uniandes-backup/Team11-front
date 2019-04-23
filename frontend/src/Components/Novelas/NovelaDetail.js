@@ -77,7 +77,7 @@ class NovelaDetail extends React.Component {
                 <tr key={i}>
                 <td >{el.fecha}</td>
                 <td>{grupo}</td>
-                <td><a href={el.texto}>{el.titulo}</a></td>
+                <td><a className="colorLinkCont" href={el.texto}>{el.titulo}</a></td>
                 {/* <td><button><img src={iconUpdate}></img></button>
                 <button><img src={iconDelete}></img></button></td> */}
                 </tr>
@@ -201,7 +201,9 @@ class NovelaDetail extends React.Component {
                         <h3><FormattedMessage id="Description"/> </h3>
                         <p className="col-12">{this.state.novela.descripcion}</p>
                         <h3><FormattedMessage id="Recomendations"/> </h3>
+                        <div className="colorLinkCont">
                         {this.renderRecomedaciones()}
+                        </div>
                         <h3><FormattedMessage id="Publications"/> </h3>
                         <table className="table">
                             <thead className="thead-dark">
@@ -212,7 +214,7 @@ class NovelaDetail extends React.Component {
                                 {/* <th scope="col">Opciones</th> */}
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="colorLinkCont">
                                 {this.renderPublicaciones()}
                             </tbody>
                         </table>
@@ -230,10 +232,10 @@ class NovelaDetail extends React.Component {
                                 {this.renderComentarios()}
                             </tbody>
                         </table>
-                        <form>
+                        <form className="marg-bot-2vw">
                             <input aria-label="id2" type="text" id="commentIdInput" placeholder="id del comentario"/>
                             <input  aria-label="nombre2" type="textarea" id="commentInput" placeholder="comentario"/>
-                            <button className="btn btn-info" onClick={this.postComment}><FormattedMessage id="Publish"/></button>
+                            <button className="btn btn-info btnz" onClick={this.postComment}><FormattedMessage id="Publish"/></button>
                         </form>
                     </div>
                </div>

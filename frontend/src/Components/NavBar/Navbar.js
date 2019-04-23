@@ -13,8 +13,9 @@ const Navbar = (props) => (
             <div className="overlay">
             <Container>
                 <a className="row imagen" href="/">
-                    <img alt="Home" src={bilbo} height="100px" id="titulo"></img>
-                    <h1>Bilbo Web</h1>
+                    <img className="col-md-2" alt="Home" src={bilbo} height="100px" id="titulo"></img>
+                    <h1 className="col-md-2">Bilbo Web</h1>
+                    <div className="col-md-8"/>
                 </a>
             </Container></div>
         </Jumbo>
@@ -60,7 +61,7 @@ const Navbar = (props) => (
                     <li className="nav-item">
                         <div className="row">
                             <a className="nav-link" href="/perfil"><FormattedMessage id="Profile"/></a>
-                            <a href="/perfil"><img className="rounded-corners" alt="perfil" src={perfilImage} height="40px" id="perfilPequeño" /></a>
+                            <a href="/perfil"><img className="rounded-corners" alt="perf" src={perfilImage} height="40px" id="perfilPequeño" /></a>
                         </div>
                     </li>
                 </ul>

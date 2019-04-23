@@ -52,7 +52,7 @@ class Home extends React.Component {
                 <div className="row">
                 <div className="col-md-1"></div>
                 <div className="col-md-10">
-                    <table className="table" id="tablaDeHome">
+                    <table className="table tablaPub" id="tablaDeHome">
                         <thead>
                             <tr>
                                 <th scope="col"><FormattedMessage id="TitleNovelEntry"/></th>

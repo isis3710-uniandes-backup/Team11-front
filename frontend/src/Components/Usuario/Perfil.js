@@ -256,7 +256,7 @@ class Perfil extends Component {
                         <input aria-label="id2" type="text" id="groupIdInput" placeholder="id del grupo"/>
                         <input  aria-label="nombre2" type="text" id="groupNameInput" placeholder="nombre de grupo"/>
                         <input aria-label="url2" type="text" id="groupUrlInput" placeholder="url de grupo"/>
-                        <button className="btn btn-info" onClick={this.createGrupo}><FormattedMessage id="AddList"/></button>
+                        <button className="btn btn-info btnz" onClick={this.createGrupo}><FormattedMessage id="AddList"/></button>
                     </form>
                 </div>
                 <p color="red"><FormattedMessage id="GroupMessage"/></p>
@@ -291,7 +291,7 @@ class Perfil extends Component {
                             <input aria-label="nombre" type="text" id="releaseUrlInput" placeholder="url de release"/>
                             <button className="btn btn-info btnz" onClick={this.postRelease}><FormattedMessage id="PublishRelease"/></button>
                         </form>
-                        <p>{this.state.errorText}</p>
+                        <p className="posErr">{this.state.errorText}</p>
                     </div>
                 </div>
             );

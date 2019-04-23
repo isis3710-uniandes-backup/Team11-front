@@ -5,10 +5,7 @@
     background-color: #F1F3F5;
 }
 
-.rounded-corners{
-  border-radius: 50%;
-  background-color: white;
-}
+
 /* Clases genericas para poder cambair colores botones para contrastes*/
 .btnz{
   color: black;
@@ -40,8 +37,15 @@
   position: center;
 }
 /* CSS para la pagde perfil usuario*/
+.rounded-corners{
+  border-radius: 50%;
+  background-color: white;
+}
 #Group{
   font-size: 20px;
+}
+.posErr{
+  color:#B30000;
 }
 /* css que se usa para dejar bonita y sin issues la pag de novelas y series populares esto incluye los botones de paginacion filtado y eso */
 
@@ -85,8 +89,17 @@ table {
 #tablaNovelas a{
   color:#0050A6;
 }
-
+.colorLinkCont a{
+  color:#0050A6;
+}
 #tablaNovelas a:hover{
+  color:#33ACE3;
+}
+.tablaPub a{
+  color:#0050A6;
+}
+
+#tablaPub a:hover{
   color:#33ACE3;
 }
 th {
@@ -153,14 +166,21 @@ th {
 
 /*Css que en un comienzo se hiba a usar en un Jumbotron, pero al final se uso solo en el estilo del header de la pag*/
 .jumbo {
-    background: url(./assets/img/nightsky.jpg) no-repeat fixed bottom;
+    background:  url(./assets/img/nightsky.jpg) no-repeat fixed bottom;
     background-size: cover;
-    color: #efefef;
+    color: blue;
     height: 100px;
     position: relative;
     z-index: 1;
     margin-bottom: 0;
     padding: 0 0 0;
+}
+.jumbo h1{
+  background-color: #025b83;
+  text-align: center;
+}
+.jumbo a:hover{
+  color:blue;
 }
 .overlay {
     background-color: transparent;
