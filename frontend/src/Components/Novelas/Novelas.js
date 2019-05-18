@@ -177,6 +177,8 @@ class Novelas extends React.Component {
                 g.append("g")
                     .classed("y--axis", true)
                     .call(d3.axisLeft(y));
+
+                document.getElementById("botontonton").innerHTML="";
             })
 
     }
@@ -240,7 +242,9 @@ class Novelas extends React.Component {
                     {A.map((i) => <button role="button" key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
                 </div>
                 <div id="canvas">
-                    <button className="btn btn-primary"  onClick={this.createTablaGeneros}>informacion interesante</button>
+                    <div id="botontonton">
+                        <button className="btn btn-primary" onClick={this.createTablaGeneros}>informacion interesante</button>
+                    </div>
                 </div>
             </div>
         )
