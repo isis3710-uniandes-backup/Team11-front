@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 
+
 class Publicacion extends Component {
 
     constructor(props) {
@@ -24,7 +25,6 @@ class Publicacion extends Component {
             this.setState({nombreGrupo:group.nombre})
         })
     }
-
     render(){
         return(
             <tr>
