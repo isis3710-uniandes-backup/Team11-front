@@ -191,7 +191,7 @@ class NovelaDetail extends React.Component {
                <div className="row">
                     <div className="inline col-4 marg-top-5vw">
                         <img alt="portada" src={this.state.novela.imagen}></img>
-                        <h3><FormattedMessage id="Authors"/></h3>
+                        <h2><FormattedMessage id="Authors"/></h2>
                           {this.renderAutores()}
                         <h3><FormattedMessage id="Genres"/> </h3>
                           {this.renderGeneros()}
