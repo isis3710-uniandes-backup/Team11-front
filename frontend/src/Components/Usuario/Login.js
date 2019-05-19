@@ -24,13 +24,14 @@ export default class Login extends React.Component {
         }
         console.log("Se envia request login");
         axios.post('http://localhost:3001/login',dats).then((response)=>{
-            console.log('El estado del req es:'+response.getState());
-            if(response.getState()==='200'){
+            let bool=(response.status===200);
+            alert('El estado del req es:'+ bool);
+            if(bool){
                 let token = response.data.token;
                 let userid =response.data.userid;
-                console.log("El estado del req es :"+response.getState());
-                localStorage.setItem('token',token);
-                localStorage.setItem('userid',userid);
+                alert(JSON.stringify(response.data));
+                localStorage.setItem('token',JSON.stringify(token));
+                localStorage.setItem('userid',JSON.stringify(response.data.userid));
             }});
     }
     render() {
