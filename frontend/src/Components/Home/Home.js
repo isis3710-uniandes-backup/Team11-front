@@ -65,6 +65,8 @@ class Home extends React.Component {
                 //console.log(nombr);
 
             });
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1)
         axios.get('http://localhost:3001/Usuarios')
             .then((response) => {
                 data = response.data;
