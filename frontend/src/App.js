@@ -80,8 +80,7 @@ class App extends Component {
         });
       }
       let d=localStorage.getItem('token');
-      console.log(d.substr(1,d.length-2));
-      if(d!==''){
+      if(d!==''&&d!==null){
         this.setState({
           token:d.substr(1,d.length-2)
         });
