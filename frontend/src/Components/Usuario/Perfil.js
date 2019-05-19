@@ -18,6 +18,10 @@ class Perfil extends Component {
             textId:"",
             errorText:""
         }
+        console.log(this.props);
+        if(this.props.ADMIN){
+            window.location="/";
+        }
     }
 
     deleteListaNovela=(idList,idNov)=>{

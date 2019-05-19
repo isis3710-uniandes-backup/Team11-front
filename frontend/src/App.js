@@ -32,12 +32,18 @@ class App extends Component {
     }
   }
   actualizar=(token,id,admin)=>{
+    localStorage.setItem('admin','true');
     this.setState({
       token: token,
       userid:id,
       ADMIN:admin
     });
-    window.location='perfil';
+    if(admin){
+      window.location='/';
+    }
+    else{
+      window.location='perfil';
+    }
   }
   componentWillMount(){
       let a=localStorage.getItem('token');
@@ -51,8 +57,20 @@ class App extends Component {
           logged:false
         });
       }
+      let b=localStorage.getItem('admin');
+      if(b==='true'){
+        this.setState({
+          ADMIN:true
+        });
+      }
+      else{
+        this.setState({
+          ADMIN:false
+        });
+      }
   }
   render() {
+    console.log(this.state.ADMIN);
     addLocaleData(esLocaleData);
     addLocaleData(enLocaleData);
 

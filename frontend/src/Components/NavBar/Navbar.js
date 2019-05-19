@@ -60,7 +60,7 @@ const Navbar = (props) => (
                     <li className="nav-item" hidden={props.logged}>
                         <a className="nav-link" href="/login"><FormattedMessage id="Login"/></a>
                     </li>
-                    <li className="nav-item" hidden={!props.logged}>
+                    <li className="nav-item" hidden={!props.logged || props.ADMIN}>
                         <div className="row">
                             <a className="nav-link" href="/perfil"><FormattedMessage id="Profile"/></a>
                             <a href="/perfil"><img className="rounded-corners" alt="perf" src={perfilImage} height="40px" id="perfilPequeño" /></a>
