@@ -114,6 +114,7 @@ class Perfil extends Component {
         axios.get('http://localhost:3001/Usuarios/'+this.props.userid)
         .then((response) => {
             var user = response.data;
+            console.log("respuesta:"+response.body);
             this.setState({user:user});
             user.playlists.forEach((el)=>{
                 axios.get('http://localhost:3001/Playlists/'+el)

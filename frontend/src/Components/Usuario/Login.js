@@ -19,8 +19,8 @@ export default class Login extends React.Component {
         console.log("username"+username1);
         console.log("password"+password1);
         let dats={
-            username:"user1",
-            password:"password1"
+            username:username1,
+            password:password1
         }
         console.log("Se envia request login");
         axios.post('http://localhost:3001/login',dats).then((response)=>{
