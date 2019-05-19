@@ -38,7 +38,6 @@ export default class Login extends React.Component {
             console.log(dats);
             alert("Usuario o contraseña incorrecto");
         });
-            }});
     }
     render() {
         return (
