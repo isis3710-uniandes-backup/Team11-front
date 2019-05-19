@@ -26,6 +26,14 @@ class App extends Component {
       console.log(e);
     }
   }
+  actualizar=(token,id,admin)=>{
+    this.setState({
+      token: token,
+      userid:id,
+      ADMIN:admin
+    });
+    window.location='perfil';
+  }
   componentWillMount(){
       let a=localStorage.getItem('token');
       if(a!==null&&a.length>0){
@@ -54,7 +62,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <IntlProvider locale={language} messages= {messages}>
-            <Vista {...this.state}/>
+            <Vista {...this.state} actualizar={this.actualizar}/>
           </IntlProvider>
         </BrowserRouter>
       </div>
