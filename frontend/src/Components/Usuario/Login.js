@@ -13,7 +13,7 @@ export default class Login extends React.Component {
         console.log('el token actual es:'+ localStorage.getItem("token"));
     }
 
-    login(){  
+    login=()=>{  
         let username1=document.getElementById('usernameInput').value;
         let password1=document.getElementById('passwordInput').value;
         console.log("username"+username1);
@@ -23,13 +23,22 @@ export default class Login extends React.Component {
             password:password1
         }
         console.log("Se envia request login");
+        let actualizar=this.props.actualizar;
         axios.post('http://localhost:3001/login',dats).then((response)=>{
             let bool=(response.status===200);
             if(bool){
-                alert(JSON.stringify(response.data));
                 localStorage.setItem('token',JSON.stringify(response.data.token));
                 localStorage.setItem('userid',JSON.stringify(response.data.userid));
-            }});
+                actualizar(response.data.token,response.data.userid,false,true);
+            }
+            else{
+                alert('Usuario o contraseña incorrecto');
+            }
+        }).catch((e)=>{
+            console.log(e);
+            console.log(dats);
+            alert("Usuario o contraseña incorrecto");
+        });
     }
     render() {
         return (
