@@ -18,7 +18,14 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/Capitulos')
+        if (localStorage.getItem('pagina')&&localStorage.getItem('tablasPublicaciones')) {
+            console.log('t');
+            this.setState({ pagina: JSON.parse(localStorage.getItem('pagina')) });
+            this.setState({ tablasPublicaciones: JSON.parse(localStorage.getItem('tablasPublicaciones')) });
+        }
+        else{
+            console.log('f');
+            axios.get('http://localhost:3001/Capitulos')
             .then((response) => {
                 var state = this.state;
                 var caps = response.data;
@@ -30,6 +37,7 @@ class Home extends React.Component {
             .then((newState) => {
                 this.setState(newState);
             });
+        }
     }
 
     getTablasNovela(publicaciones, tamanioTabla) {
@@ -75,7 +83,6 @@ class Home extends React.Component {
                         rta[nombr[key]] = favs[key];
                     }
                 }
-                console.log(rta);
 
                 // set the dimensions and margins of the graph
                 var width = 450
@@ -138,7 +145,10 @@ class Home extends React.Component {
 
     }
 
-
+    componentWillUpdate(nextProps,nextState){
+        localStorage.setItem('pagina',JSON.stringify(nextState.pagina));
+        localStorage.setItem('tablasPublicaciones',JSON.stringify(nextState.tablasPublicaciones));
+    }
 
 
     render() {

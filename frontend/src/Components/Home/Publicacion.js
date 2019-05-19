@@ -13,17 +13,29 @@ class Publicacion extends Component {
 
 
     componentDidMount(){
-        axios.get('http://localhost:3001/Novelas/'+this.props.data.novela)
-        .then((response) => {
-            var nov = response.data;
-            this.setState({tituloNovela:nov.titulo})
-        });
-
-        axios.get('http://localhost:3001/Fansubs/'+this.props.data.fansub)
-        .then((response) => {
-            var group = response.data;
-            this.setState({nombreGrupo:group.nombre})
-        })
+        if (localStorage.getItem('tituloNovela'+this.props.data.id)&&localStorage.getItem('nombreGrupo'+this.props.data.id)) {
+            console.log('t');
+            this.setState({ tituloNovela: JSON.parse(localStorage.getItem('tituloNovela'+this.props.data.id)) });
+            this.setState({ nombreGrupo: JSON.parse(localStorage.getItem('nombreGrupo'+this.props.data.id)) });
+        }
+        else{
+            axios.get('http://localhost:3001/Novelas/'+this.props.data.novela)
+            .then((response) => {
+                var nov = response.data;
+                this.setState({tituloNovela:nov.titulo})
+            });
+    
+            axios.get('http://localhost:3001/Fansubs/'+this.props.data.fansub)
+            .then((response) => {
+                var group = response.data;
+                this.setState({nombreGrupo:group.nombre})
+            })
+        }
+    }
+    componentWillUpdate(nextProps,nextState){
+        console.log(nextState);
+        localStorage.setItem('tituloNovela'+nextProps.data.id,JSON.stringify(nextState.tituloNovela));
+        localStorage.setItem('nombreGrupo'+nextProps.data.id,JSON.stringify(nextState.nombreGrupo));
     }
     render(){
         return(
