@@ -58,7 +58,7 @@ const Navbar = (props) => (
                     <li className="nav-item" hidden={props.logged}>
                         <a className="nav-link" href="/registro"><FormattedMessage id="Register"/></a>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item" hidden={props.logged}>
                         <a className="nav-link" href="/login"><FormattedMessage id="Login"/></a>
                     </li>
                     <li className="nav-item" hidden={!props.logged}>
