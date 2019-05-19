@@ -9,7 +9,14 @@ export default class Login extends React.Component {
         this.state={
             exito:false
         }
-
+        if(this.props.logged){
+            if(this.props.ADMIN){
+                window.location="/";
+            }
+            else{
+                window.location="perfil";
+            }
+        }
         console.log('el token actual es:'+ localStorage.getItem("token"));
     }
 
@@ -29,7 +36,9 @@ export default class Login extends React.Component {
             if(bool){
                 localStorage.setItem('token',JSON.stringify(response.data.token));
                 localStorage.setItem('userid',JSON.stringify(response.data.userid));
-                actualizar(response.data.token,response.data.userid,false,true);
+                if(response.data.userid==='admin'){
+                    actualizar(response.data.token,response.data.userid,true);
+                }
             }
             else{
                 alert('Usuario o contraseña incorrecto');
