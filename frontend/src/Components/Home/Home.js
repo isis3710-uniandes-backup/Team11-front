@@ -52,7 +52,7 @@ class Home extends React.Component {
     }
 
     async tablaNovelasMasGustadas() {
-        var data = [];
+        let data = [];
         var favs = {};
         var nombr = {};
         var rta = {};

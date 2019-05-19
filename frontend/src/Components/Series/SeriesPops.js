@@ -31,4 +31,4 @@ class SeriesPops extends Novelas {
     }
 }
 
-export default Novelas;
+export default SeriesPops;
