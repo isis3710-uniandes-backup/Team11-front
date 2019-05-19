@@ -9,6 +9,10 @@ import enLocaleData from 'react-intl/locale-data/en';
 import localeEnMessages from "./locales/en";
 
 class App extends Component {
+
+  componentDidMount(){
+    localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjM0Nzc2LCJleHAiOjE1NTgzMjExNzZ9.EflI1yi53-NkVEA_VdhKyR8BPzgcqv6GJCRaqUjBmRA');
+  }
   render() {
     addLocaleData(esLocaleData);
     addLocaleData(enLocaleData);

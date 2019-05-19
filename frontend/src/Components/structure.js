@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom'
+import {
+        BrowserRouter,
+        Route,
+        Redirect
+        } from 'react-router-dom'
 import Navbar from './NavBar/Navbar'
 import Novelas from './Novelas/Novelas'
 import Faq from './AboutUs/faq'
@@ -13,6 +17,7 @@ import AdminRecomm from './Admin/Recomendaciones'
 import AdminGenre from './Admin/Generos'
 import AdminAutor from './Admin/Autores'
 import NovelaDetail from './Novelas/NovelaDetail'
+import AuthPerf from './AuthPerf';
 
 class Vista extends Component {
   
@@ -25,7 +30,7 @@ class Vista extends Component {
                 <Route path="/faq" exact component={Faq}/>
                 <Route path="/contacto" exact component={Contactenos}/>
                 <Route path="/series" exact component={SeriesPops}/>
-                <Route path="/perfil" exact component={Perfil}/>
+                <Route path="/perfil" component={AuthPerf}/>
                 <Route path="/admin/usuarios" exact component={AdminUsers}/>
                 <Route path="/admin/grupos" exact component={AdminGroups}/>
                 <Route path="/admin/recomendaciones" exact component={AdminRecomm}/>
