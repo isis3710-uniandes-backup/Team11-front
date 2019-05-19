@@ -36,7 +36,7 @@ class Vista extends Component {
                 <Route path="/series" exact component={SeriesPops}/>
                 <Route path="/perfil" render={(props)=><AuthPerf {...this.props}/>} />
                 <Route path="/registro" exact component={Registro}/>
-                <Route path="/login" exact component={Login}/>
+                <Route path="/login" render={(props)=><Login {...this.props}/>}/>
                 <Route path="/admin/usuarios" exact component={AdminUsers}/>
                 <Route path="/admin/grupos" exact component={AdminGroups}/>
                 <Route path="/admin/recomendaciones" exact component={AdminRecomm}/>

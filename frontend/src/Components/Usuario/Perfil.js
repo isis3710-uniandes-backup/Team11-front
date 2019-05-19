@@ -111,12 +111,9 @@ class Perfil extends Component {
         });
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token');
-        console.log("El id del usuario es :"+this.props.userid);
-        console.log("El id del usuario es :"+this.props.token);
         axios.get('http://localhost:3001/Usuarios/'+this.props.userid)
         .then((response) => {
             var user = response.data;
-            console.log('la respuesta del serv es'+user.nombre);
             this.setState({user:user});
             user.playlists.forEach((el)=>{
                 axios.get('http://localhost:3001/Playlists/'+el)

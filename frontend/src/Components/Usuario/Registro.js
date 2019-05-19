@@ -2,10 +2,7 @@ import React from 'react';
 import './login.css'
 
 export default class Registro extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+    
     render() {
         return (
             <div>

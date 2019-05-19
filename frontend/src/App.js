@@ -19,9 +19,9 @@ class App extends Component {
     }
   }
   componentDidMount(){
-    try{
-    localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjQxNzQ4LCJleHAiOjE1NTgzMjgxNDh9.WzxdTtj6JrAE_h79gX-ktBJrCMoEtpo5PoLX1xnxnzU');
-    localStorage.setItem('userid', '2');}
+    try{/*
+    localStorage.setItem('token', '');
+    localStorage.setItem('userid', '2');*/}
     catch(e){
       console.log(e);
     }

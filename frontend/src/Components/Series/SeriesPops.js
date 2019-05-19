@@ -3,10 +3,7 @@ import axios from 'axios'
 
 //const getNovelas;
 class SeriesPops extends Novelas {
-    constructor(props) {
-        super(props);
-    }
-
+    
     componentDidMount() {
         axios.get('http://localhost:3001/Novelas')
             .then((response) => {
