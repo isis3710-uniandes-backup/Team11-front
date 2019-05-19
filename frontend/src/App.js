@@ -13,15 +13,20 @@ class App extends Component {
     super(props);
     this.state={
       token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjQxNzQ4LCJleHAiOjE1NTgzMjgxNDh9.WzxdTtj6JrAE_h79gX-ktBJrCMoEtpo5PoLX1xnxnzU',
-      userid:'2',
+      userid:-1,
       ADMIN:false,
       logged:false
     }
   }
   componentDidMount(){
     try{/*
-    localStorage.setItem('token', '');
-    localStorage.setItem('userid', '2');*/}
+    let tok = localStorage.getItem('token', '');
+    let usu = localStorage.getItem('userid', '2');
+    if(tok && usu && userid==-1){
+      this.setState(
+        userid: usu;
+      )
+    }*/}
     catch(e){
       console.log(e);
     }
