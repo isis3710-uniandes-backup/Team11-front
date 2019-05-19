@@ -41,6 +41,7 @@
 	"Name":"Name",
 	"EditUserofId":"Edit User of id",
 	"Login":"Login",
+	"Logout":"Logout",
 	"password":"Password",
 	"mail":"Mail",
 	"Register":"Register",

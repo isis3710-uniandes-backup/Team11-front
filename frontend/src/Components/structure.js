@@ -21,7 +21,7 @@ class Vista extends Component {
     render() {
         return(
             <div>
-                <Navbar ADMIN={this.props.ADMIN} logged={this.props.logged}/>
+                <Navbar ADMIN={this.props.ADMIN} logged={this.props.logged} logout={this.props.logout}/>
                 <Route path="/" exact component={Home}/>
                 <Route path="/novelas" exact component={Novelas}/>
                 <Route path="/faq" exact component={Faq}/>

@@ -17,6 +17,13 @@ class App extends Component {
       ADMIN:false,
       logged:false
     }
+    this.logout = this.logout.bind(this)
+  }
+  logout(){
+    localStorage.removeItem('token');
+    localStorage.setItem('userid','-1'); 
+    console.log('se borro el token');
+    alert('Se cerro sesión exitosamente');
   }
   componentDidMount(){
     try{/*
@@ -80,8 +87,9 @@ class App extends Component {
         });
       }
       let d=localStorage.getItem('token');
-      console.log(d.substr(1,d.length-2));
-      if(d!==''){
+      if(d){
+      console.log(d.substr(1,d.length-2));}
+      if(d!==''&& d){
         this.setState({
           token:d.substr(1,d.length-2)
         });
@@ -108,7 +116,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <IntlProvider locale={language} messages= {messages}>
-            <Vista {...this.state} actualizar={this.actualizar}/>
+            <Vista {...this.state} actualizar={this.actualizar} logout={this.logout}/>
           </IntlProvider>
         </BrowserRouter>
       </div>
