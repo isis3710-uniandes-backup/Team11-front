@@ -41,7 +41,7 @@ const Navbar = (props) => (
                             <a className="dropdown-item" href="/contacto" ><FormattedMessage id="Contact"/></a>
                         </div>
                     </li>
-                    <li className="nav-item dropdown">
+                    <li className="nav-item dropdown" hidden={!props.ADMIN}>
                         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             ADMIN
                     </a>
@@ -55,13 +55,13 @@ const Navbar = (props) => (
                     </li>
                 </ul>
                 <ul className="navbar-nav my-2 my-lg-0">
-                    <li className="nav-item">
+                    <li className="nav-item" hidden={props.logged}>
                         <a className="nav-link" href="/registro"><FormattedMessage id="Register"/></a>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item" hidden={props.logged}>
                         <a className="nav-link" href="/login"><FormattedMessage id="Login"/></a>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item" hidden={!props.logged}>
                         <div className="row">
                             <a className="nav-link" href="/perfil"><FormattedMessage id="Profile"/></a>
                             <a href="/perfil"><img className="rounded-corners" alt="perf" src={perfilImage} height="40px" id="perfilPequeño" /></a>

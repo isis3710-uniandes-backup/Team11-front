@@ -13,7 +13,9 @@ class App extends Component {
     super(props);
     this.state={
       token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjQxNzQ4LCJleHAiOjE1NTgzMjgxNDh9.WzxdTtj6JrAE_h79gX-ktBJrCMoEtpo5PoLX1xnxnzU',
-      userid:'2'
+      userid:'2',
+      ADMIN:false,
+      logged:true
     }
   }
   componentDidMount(){
