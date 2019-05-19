@@ -1,8 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-import iconUpdate from '../../assets/img/iconUpdate.PNG';
-import iconDelete from '../../assets/img/iconDelete.PNG';
 import {FormattedMessage} from 'react-intl';
 
 class NovelaDetail extends React.Component {

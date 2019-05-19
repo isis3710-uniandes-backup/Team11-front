@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router'
 import perfilImage from '../../assets/img/user.png'
 import { FormattedMessage } from 'react-intl';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';

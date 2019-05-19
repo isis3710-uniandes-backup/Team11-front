@@ -37,10 +37,15 @@
 	"Edit":"Editar",
 	"Delete":"Eliminar",
 	"User":"Usuario",
+	"Username":"Nombre de usuario",
+	"Name":"Nombre",
 	"EditUserofId":"Editar Usuario de id",
 	"Exit":"Salir",
 	"PublishRelease":"Publicar Release",
 	"Login":"Login",
+	"password":"Contraseña",
+	"mail":"Correo",
+	"Register":"Registrarse",
 
 
 	"TitleNovelEntry":"Titulo novela",

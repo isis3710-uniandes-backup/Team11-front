@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import {
-        BrowserRouter,
-        Route,
-        Redirect
-        } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Navbar from './NavBar/Navbar'
 import Novelas from './Novelas/Novelas'
 import Faq from './AboutUs/faq'
 import Contactenos from './AboutUs/contactenos';
 import SeriesPops from './Series/SeriesPops';
 import Home from './Home/Home'
-import Perfil from './Usuario/Perfil'
 import Registro from './Usuario/Registro'
 import Login from './Usuario/Login'
 import AdminUsers from './Admin/Usuarios'
@@ -22,9 +17,7 @@ import NovelaDetail from './Novelas/NovelaDetail'
 import AuthPerf from './AuthPerf';
 
 class Vista extends Component {
-    constructor(props){
-        super(props);
-    }
+    
     render() {
         return(
             <div>

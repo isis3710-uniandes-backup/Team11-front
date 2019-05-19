@@ -191,11 +191,11 @@ class Novelas extends React.Component {
             <div role="contentinfo" className="novs">
                 <div className="row busq">
                     <div className="col-md-1" />
-                    <button role="button" type="button" className="btn btn-info btn-outline-info filt btnz" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
+                    <button type="button" className="btn btn-info btn-outline-info filt btnz" id="botonFiltro" data-toggle="collapse" data-target="#filterForm">
                         <FormattedMessage id="Filter" />
                     </button>
                     <input role="searchbox" className="form-control col-1 mr-sm-2 serc" type="search" placeholder="Search" id="searchNovela" aria-label="Search"></input>
-                    <button role="button" className="btn btn-outline-success my-2 my-sm-0 busB" onClick={this.findNovelas}><FormattedMessage id="Search" /> </button>
+                    <button className="btn btn-outline-success my-2 my-sm-0 busB" onClick={this.findNovelas}><FormattedMessage id="Search" /> </button>
                 </div>
                 <div className="row">
                     <div className="col-md-1"></div>
@@ -239,7 +239,7 @@ class Novelas extends React.Component {
                     <div className="col-md-1"></div>
                 </div>
                 <div className="marg-bot-2vw">
-                    {A.map((i) => <button role="button" key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
+                    {A.map((i) => <button key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
                 </div>
                 <div id="canvas">
                     <div id="botontonton">

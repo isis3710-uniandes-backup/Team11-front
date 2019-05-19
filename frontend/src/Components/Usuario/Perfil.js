@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import perfilImage from '../../assets/img/user.png'
 import axios from 'axios'
-import iconUpdate from '../../assets/img/iconUpdate.PNG';
 import iconDelete from '../../assets/img/iconDelete.PNG';
 import {FormattedMessage} from 'react-intl';
 
@@ -110,11 +109,10 @@ class Perfil extends Component {
             this.setState({grupos:group});
         });
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.get('http://localhost:3001/Usuarios/'+this.props.userid)
         .then((response) => {
             var user = response.data;
-            console.log("respuesta:"+response.body);
             this.setState({user:user});
             user.playlists.forEach((el)=>{
                 axios.get('http://localhost:3001/Playlists/'+el)

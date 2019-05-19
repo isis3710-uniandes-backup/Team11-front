@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-        BrowserRouter,
         Route,
         Redirect
         } from 'react-router-dom';
@@ -24,7 +23,11 @@ class AuthPerf extends Component {
         }
         try{
             const  tok = decode(token);
+            if(!tok){
+        		return false;
+        	}
         }catch(e){
+
             return false;
         }
         return true;
