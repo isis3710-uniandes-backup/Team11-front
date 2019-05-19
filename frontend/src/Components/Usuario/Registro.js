@@ -14,23 +14,31 @@ export default class Registro extends React.Component {
     }
 
     registro(){  
-        let username1=document.getElementById('usernameInput').value;
+        let username1=document.getElementById('userInput').value;
         let password1=document.getElementById('passwordInput').value;
-        let mail=document.getElementById('usernameInput').value;
+        let mail=document.getElementById('mailInput').value;
         console.log("username"+username1);
         console.log("password"+password1);
-        let dats={
-            username:username1,
-            password:password1
+        let usu={
+            nombre:username1,
+            correo:mail,
+            password:password1,
+            playlists: [],
+            favoritos: [],
+            grupo: -1
         }
-        console.log("Se envia request login");
-        axios.post('http://localhost:3001/login',dats).then((response)=>{
+        let didit=false;
+        console.log("Se envia request registro");
+        axios.post('http://localhost:3001/usuarios',usu).then((response)=>{
             let bool=(response.status===200);
             if(bool){
-                alert(JSON.stringify(response.data));
-                localStorage.setItem('token',JSON.stringify(response.data.token));
-                localStorage.setItem('userid',JSON.stringify(response.data.userid));
+                alert("Cuenta creada exitosamente");
+                didit=true;
             }});
+        if(!didit){
+                alert("Correo o nombre de usuario ya en uso");
+        }
+
     }
     render() {
         return (
@@ -42,7 +50,7 @@ export default class Registro extends React.Component {
                     <input type="text" placeholder="Correo" name="correo" id="mailInput"></input>
                     <p><FormattedMessage id="password"/></p>
                     <input type="password" placeholder="Constraseña" name="contrasena" id="passwordInput"></input>
-                    <button className='btn btn-info' onClick={this.registro}><FormattedMessage id="register"/></button>
+                    <button className='btn btn-info' onClick={this.registro}><FormattedMessage id="Register"/></button>
                 </form>
             </div>
         )
