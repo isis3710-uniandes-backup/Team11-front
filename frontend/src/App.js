@@ -12,8 +12,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjQxNzQ4LCJleHAiOjE1NTgzMjgxNDh9.WzxdTtj6JrAE_h79gX-ktBJrCMoEtpo5PoLX1xnxnzU',
-      userid:'2',
+      token:'',
+      userid:'',
       ADMIN:false,
       logged:false
     }
@@ -61,6 +61,28 @@ class App extends Component {
       else{
         this.setState({
           ADMIN:false
+        });
+      }
+      let c=localStorage.getItem('userid');
+      if(c!=='admin'){
+        this.setState({
+          userid:parseInt(c)
+        });
+      }
+      else{
+        this.setState({
+          userid:0
+        });
+      }
+      let d=localStorage.getItem('token');
+      if(d!==''){
+        this.setState({
+          token:d
+        });
+      }
+      else{
+        this.setState({
+          token:''
         });
       }
   }
