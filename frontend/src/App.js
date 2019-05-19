@@ -20,8 +20,13 @@ class App extends Component {
   }
   componentDidMount(){
     try{/*
-    localStorage.setItem('token', '');
-    localStorage.setItem('userid', '2');*/}
+    let tok = localStorage.getItem('token', '');
+    let usu = localStorage.getItem('userid', '2');
+    if(tok && usu && userid==-1){
+      this.setState(
+        userid: usu;
+      )
+    }*/}
     catch(e){
       console.log(e);
     }
@@ -75,9 +80,10 @@ class App extends Component {
         });
       }
       let d=localStorage.getItem('token');
+      console.log(d.substr(1,d.length-2));
       if(d!==''){
         this.setState({
-          token:d
+          token:d.substr(1,d.length-2)
         });
       }
       else{
