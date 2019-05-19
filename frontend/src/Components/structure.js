@@ -22,7 +22,9 @@ import NovelaDetail from './Novelas/NovelaDetail'
 import AuthPerf from './AuthPerf';
 
 class Vista extends Component {
-  
+    constructor(props){
+        super(props);
+    }
     render() {
         return(
             <div>
@@ -32,7 +34,7 @@ class Vista extends Component {
                 <Route path="/faq" exact component={Faq}/>
                 <Route path="/contacto" exact component={Contactenos}/>
                 <Route path="/series" exact component={SeriesPops}/>
-                <Route path="/perfil" component={AuthPerf}/>
+                <Route path="/perfil" render={(props)=><AuthPerf {...this.props}/>} />
                 <Route path="/registro" exact component={Registro}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/admin/usuarios" exact component={AdminUsers}/>

@@ -9,10 +9,25 @@ import enLocaleData from 'react-intl/locale-data/en';
 import localeEnMessages from "./locales/en";
 
 class App extends Component {
-
-  componentDidMount(){
-    localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjM0Nzc2LCJleHAiOjE1NTgzMjExNzZ9.EflI1yi53-NkVEA_VdhKyR8BPzgcqv6GJCRaqUjBmRA');
+  constructor(props){
+    super(props);
+    this.state={
+      token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjQxNzQ4LCJleHAiOjE1NTgzMjgxNDh9.WzxdTtj6JrAE_h79gX-ktBJrCMoEtpo5PoLX1xnxnzU',
+      userid:'2'
+    }
   }
+  componentDidMount(){
+    try{
+    localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWF0IjoxNTU4MjQxNzQ4LCJleHAiOjE1NTgzMjgxNDh9.WzxdTtj6JrAE_h79gX-ktBJrCMoEtpo5PoLX1xnxnzU');
+    localStorage.setItem('userid', '2');}
+    catch(e){
+      console.log(e);
+    }
+  }
+  /*componentWillUpdate(nextProps, nextState){
+      localStorage.setItem('token', this.state.token);
+      localStorage.setItem('userid', this.state.userid);
+  }*/
   render() {
     addLocaleData(esLocaleData);
     addLocaleData(enLocaleData);
@@ -28,7 +43,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <IntlProvider locale={language} messages= {messages}>
-            <Vista/>
+            <Vista {...this.state}/>
           </IntlProvider>
         </BrowserRouter>
       </div>

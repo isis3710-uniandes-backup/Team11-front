@@ -34,7 +34,7 @@ class AuthPerf extends Component {
         		<Route render = {props => (
             		this.checkAuth() ? (
             	// Falta pasarle los props para que sepa cual usuario es por el id y que nombre tiene
-                <Perfil {...props}/>
+                <Perfil {...this.props}/>
                 ) : (
                     <Redirect to={{
                         pathname: '/login',

@@ -29,7 +29,9 @@ class Perfil extends Component {
                 list.novelas.splice(i,1);
             }
         }
-        axios.put('http://localhost:3001/Playlists/'+idList,list);
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
+        axios.put('http://localhost:3001/Playlists/'+idList, list);
     }
     putListaNovela=()=>{
         let idNovela=parseInt(document.getElementById('selectNovelas').value);
@@ -37,6 +39,8 @@ class Perfil extends Component {
         if(!list.novelas.includes(idNovela)){
             list.novelas.push(idNovela);
         }
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
         axios.put('http://localhost:3001/Playlists/'+list.id,list);
     }
 
@@ -105,9 +109,14 @@ class Perfil extends Component {
             var group = response.data;
             this.setState({grupos:group});
         });
-        axios.get('http://localhost:3001/Usuarios/2')
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
+        console.log("El id del usuario es :"+this.props.userid);
+        console.log("El id del usuario es :"+this.props.token);
+        axios.get('http://localhost:3001/Usuarios/'+this.props.userid)
         .then((response) => {
             var user = response.data;
+            console.log('la respuesta del serv es'+user.nombre);
             this.setState({user:user});
             user.playlists.forEach((el)=>{
                 axios.get('http://localhost:3001/Playlists/'+el)
@@ -139,6 +148,8 @@ class Perfil extends Component {
             anioCreacion:2019,
             novelas:[]
             };
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
         axios.post('http://localhost:3001/Playlists',list);
         let user={...this.state.user};
         user.playlists.push(listid);
@@ -153,6 +164,8 @@ class Perfil extends Component {
                 user.favoritos.splice(i,1);
             }
         }
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
@@ -162,6 +175,8 @@ class Perfil extends Component {
         if(!user.favoritos.includes(idNov)){
             user.favoritos.push(idNov);
         }
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
@@ -178,6 +193,8 @@ class Perfil extends Component {
         axios.post('http://localhost:3001/Fansubs',grupo);
         let user = this.state.user;
         user.grupo=groupId;
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
     formatDate=(date)=> {
@@ -217,12 +234,16 @@ class Perfil extends Component {
     exitGrupo=()=>{
         let user = this.state.user;
         user.grupo=-1;
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
     unirseGrupo=()=>{
         let user = this.state.user;
         user.grupo=parseInt(document.getElementById('selectGrupo').value);
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token');
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
@@ -303,7 +324,7 @@ class Perfil extends Component {
                         <img aria-label="image" src={perfilImage} height="200px"/>
                     </div>
                     <div className="col-9 marg-top-5vw">
-                        <h2 className="text-left"><FormattedMessage id="GlobalUser"/></h2>
+                        <h2 className="text-left">{this.state.user.nombre}</h2>
                         {buttonGrupo1}
                         {buttonGrupo2}
                         <div className="row marg-bot-2vw">
