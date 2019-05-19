@@ -96,7 +96,26 @@ class Novelas extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/Novelas')
+                /*
+                    pagina: 0,
+            tablasNovela: [[]],
+            generos: [],
+            autores: [],
+            novelas: [],
+            novelasAct: []
+        */
+        if (localStorage.getItem('novelasAct')&&localStorage.getItem('novelas')&&localStorage.getItem('autores')&&localStorage.getItem('generos')&&localStorage.getItem('paginaNovela')&&localStorage.getItem('tablasNovela')) {
+            console.log(localStorage.getItem('tablasNovela'));
+            this.setState({ pagina: JSON.parse(localStorage.getItem('paginaNovela')) });
+            this.setState({ tablasNovela: JSON.parse(localStorage.getItem('tablasNovela')) });
+            this.setState({ generos: JSON.parse(localStorage.getItem('generos')) });
+            this.setState({ autores: JSON.parse(localStorage.getItem('autores')) });
+            this.setState({ novelas: JSON.parse(localStorage.getItem('novelas')) });
+            this.setState({ novelasAct: JSON.parse(localStorage.getItem('novelasAct')) });
+
+        }
+        else{
+            axios.get('http://localhost:3001/Novelas')
             .then((response) => {
                 var state = this.state;
                 var novelas = response.data;
@@ -118,6 +137,7 @@ class Novelas extends React.Component {
                 this.setState({ autores: aut });
             });
 
+        }
     }
 
     getTablasNovela(novelas, tamanioTablasNovela) {
@@ -180,6 +200,25 @@ class Novelas extends React.Component {
 
                 document.getElementById("botontonton").innerHTML="";
             })
+
+    }
+    componentWillUpdate(nextProps,nextState){
+        /*
+                    pagina: 0,
+            tablasNovela: [[]],
+            generos: [],
+            autores: [],
+            novelas: [],
+            novelasAct: []
+        */
+       console.log(nextState);
+        localStorage.setItem('paginaNovela',JSON.stringify(nextState.pagina));
+        localStorage.setItem('tablasNovela',JSON.stringify(nextState.tablasNovela));
+        localStorage.setItem('generos',JSON.stringify(nextState.generos));
+        localStorage.setItem('autores',JSON.stringify(nextState.autores));
+        localStorage.setItem('novelas',JSON.stringify(nextState.novelas));
+        localStorage.setItem('novelasAct',JSON.stringify(nextState.novelasAct));
+
 
     }
     render() {

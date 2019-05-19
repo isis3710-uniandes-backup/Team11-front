@@ -26,7 +26,6 @@ export default class Login extends React.Component {
         axios.post('http://localhost:3001/login',dats).then((response)=>{
             let bool=(response.status===200);
             if(bool){
-                alert(JSON.stringify(response.data));
                 localStorage.setItem('token',JSON.stringify(response.data.token));
                 localStorage.setItem('userid',JSON.stringify(response.data.userid));
             }});
