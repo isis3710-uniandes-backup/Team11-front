@@ -44,7 +44,7 @@ En resumidas cuentas se espera que el usuario pueda realizar las siguientes acci
 ejecutar comando npm start en la carpeta frontend de este repositorio y el backend del repositorio Team11-Back. (es necesario tener nodemon instalado)
 # Url de video demostrando funcionalidad:
 El url demostrando la funcionalidad de la pagina es el siguiente:
-https://youtu.be/UelgsTEtuNI
+https://youtu.be/jgMR3HNG1pk
 # URL del front desplegado en Heroku
 El siguiente es el URL del frontend desplegado en heroku:
 https://frontwebteam11.firebaseapp.com/
