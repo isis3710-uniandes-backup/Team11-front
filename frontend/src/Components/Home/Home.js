@@ -182,7 +182,7 @@ class Home extends React.Component {
                 {A.map((i) => <button key={i} onClick={() => this.toPagina(i)}>{i + 1}</button>)}
                 <div className="row"></div>
                 <div id="canvas">
-                    <div id="botontonton">
+                    <div id="botontonton" hidden={!this.props.logged}>
                         <button className="btn btn-primary" onClick={this.tablaNovelasMasGustadas}>informacion interesante</button>
                     </div>
                 </div>
