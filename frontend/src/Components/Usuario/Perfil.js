@@ -48,7 +48,8 @@ class Perfil extends Component {
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('https://backwebteam11.herokuapp.com/Playlists/'+idList, list);
     }
-    putListaNovela=()=>{
+    putListaNovela=(event)=>{
+        event.preventDefault();
         let idNovela=parseInt(document.getElementById('selectNovelas').value);
         let list={...this.state.actualList};
         if(!list.novelas.includes(idNovela)){
@@ -56,7 +57,8 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+list.id,list);
+        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+list.id,list).then(prueb=>{
+                window.location.reload();});
     }
 
     cambiarActual=(list)=>{
@@ -170,7 +172,8 @@ class Perfil extends Component {
         }
     }
 
-    postLista=()=>{
+    postLista=(event)=>{
+        event.preventDefault();
         let listname=document.getElementById('listNameInput').value;
         let listid=parseInt(document.getElementById('listIdInput').value);
         let list={
@@ -186,7 +189,9 @@ class Perfil extends Component {
         axios.post('https://backwebteam11.herokuapp.com/Playlists',list);
         let user={...this.state.user};
         user.playlists.push(listid);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        alert("Lista:"+user.playlists);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(prueb=>{
+                window.location.reload();});
     }
 
     deleteFavorito=(idNov)=>{
