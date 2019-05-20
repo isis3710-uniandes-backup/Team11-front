@@ -25,7 +25,8 @@ class AdminGroups extends React.Component {
             });
     }
 
-    putUsuario=()=>{
+    putUsuario=(event)=>{
+        event.preventDefault();
         let username=document.getElementById('editUsernameInput').value;
         let user={...this.state.actualGroup};
         user.nombre=username;
@@ -33,16 +34,17 @@ class AdminGroups extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Fansubs/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Fansubs/'+user.id,user).then(res=>window.location.reload());
         }
     }
 
-    deleteUsuario=(idUser)=>{
+    deleteUsuario=(idUser,event)=>{
+        event.preventDefault();
         let tok = localStorage.getItem('token')
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.delete('https://backwebteam11.herokuapp.com/Fansubs/'+idUser);
+        axios.delete('https://backwebteam11.herokuapp.com/Fansubs/'+idUser).then(res=>window.location.reload());
         }
     }
 
@@ -57,7 +59,7 @@ class AdminGroups extends React.Component {
                     </td>
                     <td>
                         <form>
-                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
+                            <a href="" onClick={(event)=>this.deleteUsuario(el.id,event)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
                         </form>
                     </td>
                 </tr>

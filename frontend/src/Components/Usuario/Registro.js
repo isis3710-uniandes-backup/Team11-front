@@ -13,7 +13,8 @@ export default class Registro extends React.Component {
         console.log('el token actual es:'+ localStorage.getItem("token"));
     }
 
-    registro(){  
+    registro(event){  
+        event.preventDefault();
         let username1=document.getElementById('userInput').value;
         let password1=document.getElementById('passwordInput').value;
         let mail=document.getElementById('mailInput').value;
@@ -38,6 +39,7 @@ export default class Registro extends React.Component {
                 if(!didit){
                     alert("Correo o nombre de usuario ya en uso");
                 }
+                window.location.reload();
             });
         
 

@@ -38,7 +38,7 @@ class AdminAutor extends React.Component {
                     </td>
                     <td>
                         <form>
-                            <a href="/" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
+                            <a href="/" onClick={(event)=>this.deleteUsuario(el.id,event)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
                         </form>
                     </td>
                 </tr>
@@ -47,16 +47,19 @@ class AdminAutor extends React.Component {
         return rows;
     }
 
-    postAutores=()=>{
+    postAutores=(event)=>{
+        event.preventDefault();
         let autor=document.getElementById('Input').value;
         let id=parseInt(document.getElementById('idInput').value);
         let lang=document.getElementById('languageInput').value;
         let genre={id:id,nombre:autor,idioma:lang,novelas:[1,2]};
-
-        axios.post('https://backwebteam11.herokuapp.com/Autores',genre);
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
+        axios.post('https://backwebteam11.herokuapp.com/Autores',genre).then(res=>window.location.reload());
     }
 
-    putUsuario=()=>{
+    putUsuario=(event)=>{
+        event.preventDefault();
         let username=document.getElementById('editUsernameInput').value;
         let novel=document.getElementById('editNovelInput').value;
         let user={...this.state.actualAut};
@@ -66,16 +69,17 @@ class AdminAutor extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Autores/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Autores/'+user.id,user).then(res=>window.location.reload());
         }
     }
 
-    deleteUsuario=(idUser)=>{
+    deleteUsuario=(idUser,event)=>{
+        event.preventDefault();
         let tok = localStorage.getItem('token');
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.delete('https://backwebteam11.herokuapp.com/Autores/'+idUser);
+        axios.delete('https://backwebteam11.herokuapp.com/Autores/'+idUser).then(res=>window.location.reload());
         }
     }
 

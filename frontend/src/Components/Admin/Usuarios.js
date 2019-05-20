@@ -49,7 +49,7 @@ class AdminUsers extends React.Component {
                     </td>
                     <td>
                         <form>
-                            <a href="" onClick={()=>this.deleteUsuario(el.id)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
+                            <a href="" onClick={(event)=>this.deleteUsuario(el.id,event)} className="btn btn-outline-success btnz" type="button" ><FormattedMessage id="Delete"/></a>
                         </form>
                     </td>
                 </tr>
@@ -58,7 +58,8 @@ class AdminUsers extends React.Component {
         return rows;
     }
 
-    postUsuario=()=>{
+    postUsuario=(event)=>{
+        event.preventDefault();
         let username=document.getElementById('usernameInput').value;
         let userid=parseInt(document.getElementById('idInput').value);
         let user={
@@ -70,22 +71,24 @@ class AdminUsers extends React.Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
-        axios.post('https://backwebteam11.herokuapp.com/Usuarios',user);
+        axios.post('https://backwebteam11.herokuapp.com/Usuarios',user).then(res=>window.location.reload());
     }
 
-    putUsuario=()=>{
+    putUsuario=(event)=>{
+        event.preventDefault();
         let username=document.getElementById('editUsernameInput').value;
         let user={...this.state.actualUser};
         user.nombre=username;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(res=>window.location.reload());
     }
 
-    deleteUsuario=(idUser)=>{
+    deleteUsuario=(idUser,event)=>{
+        event.preventDefault();
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
-        axios.delete('https://backwebteam11.herokuapp.com/Usuarios/'+idUser);
+        axios.delete('https://backwebteam11.herokuapp.com/Usuarios/'+idUser).then(res=>window.location.reload());
     }
 
     render() {
