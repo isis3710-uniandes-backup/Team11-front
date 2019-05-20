@@ -56,7 +56,12 @@ class AdminRecomm extends React.Component {
             novelaRecomendada:novel2,
             novela:novel
         };
+        let tok = localStorage.getItem('token');
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.post('http://localhost:3001/Recomendaciones',genre);
+        }
     }
 
     putUsuario=()=>{
@@ -65,11 +70,21 @@ class AdminRecomm extends React.Component {
         let user={...this.state.actualRecom};
         user.novela=username;
         user.novelaRecomendada=novel;
+        let tok = localStorage.getItem('token');
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Recomendaciones/'+user.id,user);
+        }
     }
 
     deleteUsuario=(idUser)=>{
+        let tok = localStorage.getItem('token');
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.delete('http://localhost:3001/Recomendaciones/'+idUser);
+        }
     }
 
     render() {

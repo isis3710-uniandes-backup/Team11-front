@@ -17,6 +17,8 @@ class AdminUsers extends React.Component {
     }
 
     componentDidMount() {
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
         axios.get('http://localhost:3001/Usuarios')
             .then((response) => {
                 var state = this.state;
@@ -66,6 +68,8 @@ class AdminUsers extends React.Component {
             favoritos:[],
             grupo:-1
         }
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
         axios.post('http://localhost:3001/Usuarios',user);
     }
 
@@ -73,10 +77,14 @@ class AdminUsers extends React.Component {
         let username=document.getElementById('editUsernameInput').value;
         let user={...this.state.actualUser};
         user.nombre=username;
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
     deleteUsuario=(idUser)=>{
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
         axios.delete('http://localhost:3001/Usuarios/'+idUser);
     }
 

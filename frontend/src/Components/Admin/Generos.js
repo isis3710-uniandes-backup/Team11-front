@@ -30,18 +30,33 @@ class AdminGenre extends React.Component {
         let genero=document.getElementById('genreInput').value;
         let id=parseInt(document.getElementById('idInput').value);
         let genre={id:id,genero:genero,novelas:[]};
+        let tok = localStorage.getItem('token');
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.post('http://localhost:3001/Generos',genre);
+        }
     }
 
     putUsuario=()=>{
         let username=document.getElementById('editUsernameInput').value;
         let user={...this.state.actualGen};
         user.genero=username;
+        let tok = localStorage.getItem('token')
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Generos/'+user.id,user);
+        }
     }
 
     deleteUsuario=(idUser)=>{
+        let tok = localStorage.getItem('token')
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.delete('http://localhost:3001/Generos/'+idUser);
+        }
     }
 
 
