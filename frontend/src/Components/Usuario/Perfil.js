@@ -33,7 +33,7 @@ class Perfil extends Component {
             }
         }
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Playlists/'+idList, list);
     }
     putListaNovela=()=>{
@@ -43,7 +43,7 @@ class Perfil extends Component {
             list.novelas.push(idNovela);
         }
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Playlists/'+list.id,list);
     }
 
@@ -149,7 +149,7 @@ class Perfil extends Component {
             novelas:[]
             };
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.post('http://localhost:3001/Playlists',list);
         let user={...this.state.user};
         user.playlists.push(listid);
@@ -165,7 +165,7 @@ class Perfil extends Component {
             }
         }
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
@@ -176,7 +176,7 @@ class Perfil extends Component {
             user.favoritos.push(idNov);
         }
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
@@ -194,7 +194,7 @@ class Perfil extends Component {
         let user = this.state.user;
         user.grupo=groupId;
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
     formatDate=(date)=> {
@@ -235,7 +235,7 @@ class Perfil extends Component {
         let user = this.state.user;
         user.grupo=-1;
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
@@ -243,7 +243,7 @@ class Perfil extends Component {
         let user = this.state.user;
         user.grupo=parseInt(document.getElementById('selectGrupo').value);
         axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token');
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
 
