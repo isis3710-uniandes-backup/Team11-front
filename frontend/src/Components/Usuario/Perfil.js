@@ -259,7 +259,7 @@ class Perfil extends Component {
             let groups=this.state.grupos;
             groups.push(grupo);
             this.setState({grupos:groups});
-            localStorage.setItem('grupos',groups);
+            localStorage.setItem('grupos',JSON.stringify(groups));
             window.location.reload();
         });
         axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(res=>{
