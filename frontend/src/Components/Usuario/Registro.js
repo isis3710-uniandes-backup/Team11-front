@@ -34,10 +34,12 @@ export default class Registro extends React.Component {
             if(bool){
                 alert("Cuenta creada exitosamente");
                 didit=true;
-            }});
-        if(!didit){
-                alert("Correo o nombre de usuario ya en uso");
-        }
+            }}).then(en=>{
+                if(!didit){
+                    alert("Correo o nombre de usuario ya en uso");
+                }
+            });
+        
 
     }
     render() {
