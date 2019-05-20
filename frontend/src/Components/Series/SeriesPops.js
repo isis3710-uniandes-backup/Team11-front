@@ -5,6 +5,7 @@ import axios from 'axios'
 class SeriesPops extends Novelas {
     
     componentDidMount() {
+        this.setState({hide:true});
         axios.get('https://backwebteam11.herokuapp.com/Novelas')
             .then((response) => {
                 var state = this.state;

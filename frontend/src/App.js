@@ -21,6 +21,8 @@ class App extends Component {
   }
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    console.log(localStorage.getItem('user'));
     localStorage.setItem('admin','false');
     localStorage.setItem('userid','-1'); 
     console.log('se borro el token');

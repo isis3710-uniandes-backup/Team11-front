@@ -108,9 +108,42 @@ class NovelaDetail extends React.Component {
             );
         });
     }
+    componentWillUpdate(nextProps,nextState){
+        localStorage.setItem('novelaDetail',JSON.stringify(nextState.novela));
+        localStorage.setItem('autoresDetail',JSON.stringify(nextState.autores));
+        localStorage.setItem('generosDetail',JSON.stringify(nextState.generos));
+        localStorage.setItem('recomendacionesDetail',JSON.stringify(nextState.recomendaciones));
+        localStorage.setItem('publicacionesDetail',JSON.stringify(nextState.publicaciones));
+        localStorage.setItem('gruposDetail',JSON.stringify(nextState.grupos));
+        localStorage.setItem('comentariosDetail',JSON.stringify(nextState.comentarios));
+        localStorage.setItem('usuariosDetail',JSON.stringify(nextState.usuarios));
+    }
+
 
     componentDidMount() {
-        axios.get('https://backwebteam11.herokuapp.com/Novelas/'+this.props.match.params.idNovela)
+        /**
+         *                         novela:{},
+                        autores:[],
+                        generos:[],
+                        recomendaciones:[],
+                        novelas:[],
+                        publicaciones:[],
+                        grupos:[],
+                        comentarios:[],
+                        usuarios:[]
+         */
+        if(localStorage.getItem('usuariosDetail')&&localStorage.getItem('comentariosDetail')&&localStorage.getItem('gruposDetail')&&localStorage.getItem('publicacionesDetail')&&localStorage.getItem('novelasDetail')&&localStorage.getItem('recomendacionesDetail')&&localStorage.getItem('generosDetail')&&localStorage.getItem('autoresDetail')&&localStorage.getItem('novelaDetail')){
+            this.setState({ novela: JSON.parse(localStorage.getItem('novelaDetail')) });
+            this.setState({ autores: JSON.parse(localStorage.getItem('autoresDetail')) });
+            this.setState({ generos: JSON.parse(localStorage.getItem('generosDetail')) });
+            this.setState({ recomendaciones: JSON.parse(localStorage.getItem('recomendacionesDetail')) });
+            this.setState({ publicaciones: JSON.parse(localStorage.getItem('publicacionesDetail')) });
+            this.setState({ grupos: JSON.parse(localStorage.getItem('gruposDetail')) });
+            this.setState({ comentarios: JSON.parse(localStorage.getItem('comentariosDetail')) });
+            this.setState({ usuarios: JSON.parse(localStorage.getItem('usuariosDetail')) });
+        }
+        else{
+            axios.get('https://backwebteam11.herokuapp.com/Novelas/'+this.props.match.params.idNovela)
             .then((response) => {
                 this.setState({novela:response.data});
             });
@@ -151,6 +184,7 @@ class NovelaDetail extends React.Component {
             .then((response) => {
                 this.setState({usuarios:response.data});
             });
+        }
     }
 
     formatDate=(date)=> {
@@ -179,7 +213,7 @@ class NovelaDetail extends React.Component {
             id:id,
             novela:this.state.novela.id,
             estrellas:4.5,
-            usuario:1,
+            usuario:parseInt(localStorage.getItem('userid')),
             fecha:this.formatDate(fech),
             comentario:comment
         }
@@ -187,10 +221,29 @@ class NovelaDetail extends React.Component {
         if(tok){
             axios.defaults.headers.common['Authorization'] = 
                     'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        }axios.post('https://backwebteam11.herokuapp.com/Comentarios',cap);
+        }axios.post('https://backwebteam11.herokuapp.com/Comentarios',cap).then(res=>{
+            localStorage.removeItem('comentariosDetail');
+        });
     }
 
     render() {
+        let tabla ="";
+        console.log(this.state.usuarios);
+        if(this.state.usuarios.length>0){
+            tabla=(                        <table className="table">
+            <thead className="thead-dark">
+                <tr>
+                <th scope="col"><FormattedMessage id="User"/></th>
+                <th scope="col"><FormattedMessage id="Comments"/></th>
+                <th scope="col"><FormattedMessage id="DateEntry"/></th>
+                {/* <th scope="col">Opciones</th> */}
+                </tr>
+            </thead>
+            <tbody>
+                {this.renderComentarios()}
+            </tbody>
+        </table>);
+        }
         return (
             <div role="contentinfo">
                <div className="row">
@@ -223,21 +276,9 @@ class NovelaDetail extends React.Component {
                                 {this.renderPublicaciones()}
                             </tbody>
                         </table>
-                        <h3><FormattedMessage id="Comments"/></h3>
-                        <table className="table">
-                            <thead className="thead-dark">
-                                <tr>
-                                <th scope="col"><FormattedMessage id="User"/></th>
-                                <th scope="col"><FormattedMessage id="Comments"/></th>
-                                <th scope="col"><FormattedMessage id="DateEntry"/></th>
-                                {/* <th scope="col">Opciones</th> */}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderComentarios()}
-                            </tbody>
-                        </table>
-                        <form className="marg-bot-2vw">
+                        <h3 hidden={tabla===""}><FormattedMessage id="Comments"/></h3>
+                        {tabla}
+                        <form className="marg-bot-2vw" hidden={tabla===""}>
                             <input aria-label="id2" type="text" id="commentIdInput" placeholder="id del comentario"/>
                             <input  aria-label="nombre2" type="textarea" id="commentInput" placeholder="comentario"/>
                             <button className="btn btn-info btnz" onClick={this.postComment}><FormattedMessage id="Publish"/></button>

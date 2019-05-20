@@ -6,7 +6,13 @@ import bilbo from '../../assets/img/bilbo.PNG';
 
 import './NavBar.css'
 
-const Navbar = (props) => (
+const Navbar = (props) => {
+    let func=(event)=>{
+        event.preventDefault();
+        localStorage.removeItem('paginaNovela');
+        window.location='/novelas'
+    }
+    return(
     <main>
         <Jumbo fluid className="jumbo">
             <div className="overlay">
@@ -25,8 +31,8 @@ const Navbar = (props) => (
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <a className="nav-link" href="/novelas"><FormattedMessage id="Novels"/> <span className="sr-only">(current)</span></a>
+                    <li className="nav-item" style={{cursor:'pointer'}}>
+                        <a className="nav-link" onClick={func}><FormattedMessage id="Novels"/> <span className="sr-only">(current)</span></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/series"><FormattedMessage id="Series"/></a>
@@ -74,6 +80,6 @@ const Navbar = (props) => (
         </nav>
     </main>
 
-);
+)};
 
 export default Navbar;
