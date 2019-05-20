@@ -38,6 +38,7 @@ export default class Login extends React.Component {
                 if(response.data.userid==='admin'){
                     actualizar(response.data.token,response.data.userid,true);
                 }
+                localStorage.removeItem('user');
                 window.location.reload();
             }
             else{

@@ -41,6 +41,7 @@ class App extends Component {
   }
   actualizar=(token,id,admin)=>{
     localStorage.setItem('admin','true');
+    localStorage.removeItem('user');
     this.setState({
       token: token,
       userid:id,
