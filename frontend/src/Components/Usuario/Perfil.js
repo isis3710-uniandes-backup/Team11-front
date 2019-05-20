@@ -45,6 +45,8 @@ class Perfil extends Component {
                 list.novelas.splice(i,1);
             }
         }
+        let li = this.state.listas;
+        li[idBus]=list;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('https://backwebteam11.herokuapp.com/Playlists/'+idList, list).then(prueb=>{
@@ -199,7 +201,7 @@ class Perfil extends Component {
         var play = this.state.listas;
         play.push(list);
         axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user1.id,user1).then(prueb=>{
-                this.setState({user:user1,listas:play})
+                this.setState({user:user1,listas:play});
                 window.location.reload();});
     }
 
@@ -208,7 +210,6 @@ class Perfil extends Component {
         let user=this.state.user;
         for(let i =0;i<user.favoritos.length;i++){
             if(user.favoritos[i]===idNov){
-
                 user.favoritos.splice(i,1);
             }
         }
@@ -224,6 +225,8 @@ class Perfil extends Component {
         event.preventDefault();
         let user=this.state.user;
         let idNov=parseInt(document.getElementById('selectNovelas2').value);
+        let novls=this.state.novelas;
+        novls.push();
         if(!user.favoritos.includes(idNov)){
             user.favoritos.push(idNov);
         }
@@ -248,6 +251,8 @@ class Perfil extends Component {
         }
         let user = this.state.user;
         user.grupo=groupId;
+        let grups=this.state.grupos;
+        grups.push(grupo);
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.post('https://backwebteam11.herokuapp.com/Fansubs',grupo).then(res=>{
