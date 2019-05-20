@@ -58,6 +58,7 @@ class Perfil extends Component {
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('https://backwebteam11.herokuapp.com/Playlists/'+list.id,list).then(prueb=>{
+                this.setState({actualList:list});
                 window.location.reload();});
     }
 
@@ -188,41 +189,43 @@ class Perfil extends Component {
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.post('https://backwebteam11.herokuapp.com/Playlists',list);
         let user1={...this.state.user};
-        alert(user1);
         user1.playlists.push(listid);
         var play = this.state.listas;
         play.push(list);
         axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user1.id,user1).then(prueb=>{
-                this.setState({user:user1,listas:play})
-                alert("Listas:"+this.state.listas);
+                this.setState({user:user1,listas:play});
                 window.location.reload();});
     }
 
-    deleteFavorito=(idNov)=>{
+    deleteFavorito=(event, idNov)=>{
+        event.preventDefault();
         let user=this.state.user;
         for(let i =0;i<user.favoritos.length;i++){
             if(user.favoritos[i]===idNov){
-
                 user.favoritos.splice(i,1);
             }
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(re=> {this.setState({user:user});window.location.reload();});
     }
 
-    addFavorito=()=>{
+    addFavorito=(event)=>{
+        event.preventDefault();
         let user=this.state.user;
         let idNov=parseInt(document.getElementById('selectNovelas2').value);
+        let novls=this.state.novelas;
+        novls.push();
         if(!user.favoritos.includes(idNov)){
             user.favoritos.push(idNov);
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(re=> {this.setState({user:user});window.location.reload();});
     }
 
-    createGrupo=()=>{
+    createGrupo=(event)=>{
+        event.preventDefault();
         let groupName=document.getElementById('groupNameInput').value;
         let groupId=parseInt(document.getElementById('groupIdInput').value);
         let groupUrl=document.getElementById('groupUrlInput').value;
@@ -234,10 +237,16 @@ class Perfil extends Component {
         }
         let user = this.state.user;
         user.grupo=groupId;
+        let grups=this.state.grupos;
+        grups.push(grupo);
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('https://backwebteam11.herokuapp.com/Fansubs',grupo);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.post('https://backwebteam11.herokuapp.com/Fansubs',grupo).then(
+            axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(re=> 
+                {this.setState({user:user, grupos:grups});
+                window.location.reload();}
+                )
+        );
     }
     formatDate=(date)=> {
       var monthNames = [
@@ -255,7 +264,8 @@ class Perfil extends Component {
 
       return day + '/' + monthNames[monthIndex] + '/' + year+ ' '+hour+":"+minute;
     }
-    postRelease=()=>{
+    postRelease=(event)=>{
+        event.preventDefault();
         let releaseName=document.getElementById('releaseNameInput').value;
         let releaseId=parseInt(document.getElementById('releaseIdInput').value);
         let releaseUrl=document.getElementById('releaseUrlInput').value;
@@ -270,25 +280,27 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('https://backwebteam11.herokuapp.com/Capitulos',cap);
+        axios.post('https://backwebteam11.herokuapp.com/Capitulos',cap).then(er=>{window.location.reload();});
     }
 
 
 
-    exitGrupo=()=>{
+    exitGrupo=(event)=>{
+        event.preventDefault();
         let user = this.state.user;
         user.grupo=-1;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(re=> {this.setState({user:user});window.location.reload();});
     }
 
-    unirseGrupo=()=>{
+    unirseGrupo=(event)=>{
+        event.preventDefault();
         let user = this.state.user;
         user.grupo=parseInt(document.getElementById('selectGrupo').value);
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(re=> {this.setState({user:user});window.location.reload();});
     }
 
     changeHandler=(data)=>{
