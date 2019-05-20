@@ -115,7 +115,7 @@ class Novelas extends React.Component {
 
         }
         else{
-            axios.get('http://localhost:3001/Novelas')
+            axios.get('https://backwebteam11.herokuapp.com/Novelas')
             .then((response) => {
                 var state = this.state;
                 var novelas = response.data;
@@ -126,12 +126,12 @@ class Novelas extends React.Component {
                 state.tablasNovela = this.getTablasNovela(novelas, 5);
                 this.setState(state);
             });
-        axios.get('http://localhost:3001/Generos')
+        axios.get('https://backwebteam11.herokuapp.com/Generos')
             .then((response) => {
                 var gen = response.data.map((el) => [el.genero, el.id, el.novelas]);
                 this.setState({ generos: gen });
             });
-        axios.get('http://localhost:3001/Autores')
+        axios.get('https://backwebteam11.herokuapp.com/Autores')
             .then((response) => {
                 var aut = response.data.map((el) => [el.nombre, el.id, el.novelas]);
                 this.setState({ autores: aut });
@@ -153,7 +153,7 @@ class Novelas extends React.Component {
 
     createTablaGeneros() {
         var data = [];
-        axios.get('http://localhost:3001/Generos')
+        axios.get('https://backwebteam11.herokuapp.com/Generos')
             .then((response) => {
                 data = response.data;
                 console.log(data);

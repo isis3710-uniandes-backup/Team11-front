@@ -19,13 +19,13 @@ class Publicacion extends Component {
             this.setState({ nombreGrupo: JSON.parse(localStorage.getItem('nombreGrupo'+this.props.data.id)) });
         }
         else{
-            axios.get('http://localhost:3001/Novelas/'+this.props.data.novela)
+            axios.get('https://backwebteam11.herokuapp.com/Novelas/'+this.props.data.novela)
             .then((response) => {
                 var nov = response.data;
                 this.setState({tituloNovela:nov.titulo})
             });
     
-            axios.get('http://localhost:3001/Fansubs/'+this.props.data.fansub)
+            axios.get('https://backwebteam11.herokuapp.com/Fansubs/'+this.props.data.fansub)
             .then((response) => {
                 var group = response.data;
                 this.setState({nombreGrupo:group.nombre})

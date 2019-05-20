@@ -17,7 +17,7 @@ class AdminAutor extends React.Component {
 
 
     componentDidMount() {
-        axios.get('http://localhost:3001/Autores')
+        axios.get('https://backwebteam11.herokuapp.com/Autores')
             .then((response) => {
                 var state = this.state;
                 var autores = response.data;
@@ -53,7 +53,7 @@ class AdminAutor extends React.Component {
         let lang=document.getElementById('languageInput').value;
         let genre={id:id,nombre:autor,idioma:lang,novelas:[1,2]};
 
-        axios.post('http://localhost:3001/Autores',genre);
+        axios.post('https://backwebteam11.herokuapp.com/Autores',genre);
     }
 
     putUsuario=()=>{
@@ -66,7 +66,7 @@ class AdminAutor extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Autores/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Autores/'+user.id,user);
         }
     }
 
@@ -75,7 +75,7 @@ class AdminAutor extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.delete('http://localhost:3001/Autores/'+idUser);
+        axios.delete('https://backwebteam11.herokuapp.com/Autores/'+idUser);
         }
     }
 

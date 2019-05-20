@@ -29,7 +29,7 @@ export default class Registro extends React.Component {
         }
         let didit=false;
         console.log("Se envia request registro");
-        axios.post('http://localhost:3001/usuarios',usu).then((response)=>{
+        axios.post('https://backwebteam11.herokuapp.com/usuarios',usu).then((response)=>{
             let bool=(response.status===200);
             if(bool){
                 alert("Cuenta creada exitosamente");

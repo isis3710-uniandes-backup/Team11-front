@@ -25,7 +25,7 @@ class Home extends React.Component {
         }
         else{
             console.log('f');
-            axios.get('http://localhost:3001/Capitulos')
+            axios.get('https://backwebteam11.herokuapp.com/Capitulos')
             .then((response) => {
                 var state = this.state;
                 var caps = response.data;
@@ -56,7 +56,7 @@ class Home extends React.Component {
         var favs = {};
         var nombr = {};
         var rta = {};
-        await axios.get('http://localhost:3001/Novelas')
+        await axios.get('https://backwebteam11.herokuapp.com/Novelas')
             .then((response) => {
                 data = response.data;
                 for (let a of data) {
@@ -67,7 +67,7 @@ class Home extends React.Component {
             });
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1)
-        axios.get('http://localhost:3001/Usuarios')
+        axios.get('https://backwebteam11.herokuapp.com/Usuarios')
             .then((response) => {
                 data = response.data;
                 for (let b of data) {

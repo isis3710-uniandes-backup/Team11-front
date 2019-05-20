@@ -5,7 +5,7 @@ import axios from 'axios'
 class SeriesPops extends Novelas {
     
     componentDidMount() {
-        axios.get('http://localhost:3001/Novelas')
+        axios.get('https://backwebteam11.herokuapp.com/Novelas')
             .then((response) => {
                 var state = this.state;
                 var novelas = response.data;
@@ -18,12 +18,12 @@ class SeriesPops extends Novelas {
             .then((newState) => {
                 this.setState(newState);
             });
-        axios.get('http://localhost:3001/Generos')
+        axios.get('https://backwebteam11.herokuapp.com/Generos')
             .then((response) => {
                 var gen = response.data.map((el)=>[el.genero,el.id,el.novelas]);
                 this.setState({generos:gen});
             });
-        axios.get('http://localhost:3001/Autores')
+        axios.get('https://backwebteam11.herokuapp.com/Autores')
             .then((response) => {
                 var aut = response.data.map((el)=>[el.nombre,el.id,el.novelas]);
                 this.setState({autores:aut});

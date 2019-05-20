@@ -110,35 +110,35 @@ class NovelaDetail extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/Novelas/'+this.props.match.params.idNovela)
+        axios.get('https://backwebteam11.herokuapp.com/Novelas/'+this.props.match.params.idNovela)
             .then((response) => {
                 this.setState({novela:response.data});
             });
-        axios.get('http://localhost:3001/autores/')
+        axios.get('https://backwebteam11.herokuapp.com/autores/')
             .then((response) => {
                 this.setState({autores:response.data});
             });
-        axios.get('http://localhost:3001/generos/')
+        axios.get('https://backwebteam11.herokuapp.com/generos/')
             .then((response) => {
                 this.setState({generos:response.data});
             });
-        axios.get('http://localhost:3001/recomendaciones/')
+        axios.get('https://backwebteam11.herokuapp.com/recomendaciones/')
             .then((response) => {
                 this.setState({recomendaciones:response.data});
             });
-        axios.get('http://localhost:3001/novelas/')
+        axios.get('https://backwebteam11.herokuapp.com/novelas/')
             .then((response) => {
                 this.setState({novelas:response.data});
             });
-        axios.get('http://localhost:3001/Capitulos/')
+        axios.get('https://backwebteam11.herokuapp.com/Capitulos/')
             .then((response) => {
                 this.setState({publicaciones:response.data});
             });
-        axios.get('http://localhost:3001/Fansubs/')
+        axios.get('https://backwebteam11.herokuapp.com/Fansubs/')
             .then((response) => {
                 this.setState({grupos:response.data});
             });
-        axios.get('http://localhost:3001/Comentarios/')
+        axios.get('https://backwebteam11.herokuapp.com/Comentarios/')
             .then((response) => {
                 this.setState({comentarios:response.data});
             });
@@ -147,7 +147,7 @@ class NovelaDetail extends React.Component {
                 axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
             }
-        axios.get('http://localhost:3001/Usuarios/')
+        axios.get('https://backwebteam11.herokuapp.com/Usuarios/')
             .then((response) => {
                 this.setState({usuarios:response.data});
             });
@@ -187,7 +187,7 @@ class NovelaDetail extends React.Component {
         if(tok){
             axios.defaults.headers.common['Authorization'] = 
                     'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        }axios.post('http://localhost:3001/Comentarios',cap);
+        }axios.post('https://backwebteam11.herokuapp.com/Comentarios',cap);
     }
 
     render() {

@@ -46,7 +46,7 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Playlists/'+idList, list);
+        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+idList, list);
     }
     putListaNovela=()=>{
         let idNovela=parseInt(document.getElementById('selectNovelas').value);
@@ -56,7 +56,7 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Playlists/'+list.id,list);
+        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+list.id,list);
     }
 
     cambiarActual=(list)=>{
@@ -140,19 +140,19 @@ class Perfil extends Component {
 
         }
         else{
-            axios.get('http://localhost:3001/Fansubs/')
+            axios.get('https://backwebteam11.herokuapp.com/Fansubs/')
             .then((response) => {
                 var group = response.data;
                 this.setState({grupos:group});
             });
             axios.defaults.headers.common['Authorization'] = 
                                     'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-            axios.get('http://localhost:3001/Usuarios/'+this.props.userid)
+            axios.get('https://backwebteam11.herokuapp.com/Usuarios/'+this.props.userid)
             .then((response) => {
                 var user = response.data;
                 this.setState({user:user});
                 user.playlists.forEach((el)=>{
-                    axios.get('http://localhost:3001/Playlists/'+el)
+                    axios.get('https://backwebteam11.herokuapp.com/Playlists/'+el)
                     .then((response) => {
                         var playlist = response.data;
                         var playlists=[...this.state.listas];
@@ -162,7 +162,7 @@ class Perfil extends Component {
     
                 });
             });
-            axios.get('http://localhost:3001/Novelas/')
+            axios.get('https://backwebteam11.herokuapp.com/Novelas/')
             .then((response) => {
                 var novelas = response.data;
                 this.setState({novelas:novelas});
@@ -183,10 +183,10 @@ class Perfil extends Component {
             };
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('http://localhost:3001/Playlists',list);
+        axios.post('https://backwebteam11.herokuapp.com/Playlists',list);
         let user={...this.state.user};
         user.playlists.push(listid);
-        axios.put('http://localhost:3001/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
     }
 
     deleteFavorito=(idNov)=>{
@@ -199,7 +199,7 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
     }
 
     addFavorito=()=>{
@@ -210,7 +210,7 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
     }
 
     createGrupo=()=>{
@@ -227,8 +227,8 @@ class Perfil extends Component {
         user.grupo=groupId;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('http://localhost:3001/Fansubs',grupo);
-        axios.put('http://localhost:3001/Usuarios/'+user.id,user);
+        axios.post('https://backwebteam11.herokuapp.com/Fansubs',grupo);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
     }
     formatDate=(date)=> {
       var monthNames = [
@@ -261,7 +261,7 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('http://localhost:3001/Capitulos',cap);
+        axios.post('https://backwebteam11.herokuapp.com/Capitulos',cap);
     }
 
 
@@ -271,7 +271,7 @@ class Perfil extends Component {
         user.grupo=-1;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
     }
 
     unirseGrupo=()=>{
@@ -279,7 +279,7 @@ class Perfil extends Component {
         user.grupo=parseInt(document.getElementById('selectGrupo').value);
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
     }
 
     changeHandler=(data)=>{

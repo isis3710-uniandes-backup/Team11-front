@@ -16,7 +16,7 @@ class AdminGroups extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/Fansubs')
+        axios.get('https://backwebteam11.herokuapp.com/Fansubs')
             .then((response) => {
                 var state = this.state;
                 var grupos = response.data;
@@ -33,7 +33,7 @@ class AdminGroups extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Fansubs/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Fansubs/'+user.id,user);
         }
     }
 
@@ -42,7 +42,7 @@ class AdminGroups extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.delete('http://localhost:3001/Fansubs/'+idUser);
+        axios.delete('https://backwebteam11.herokuapp.com/Fansubs/'+idUser);
         }
     }
 

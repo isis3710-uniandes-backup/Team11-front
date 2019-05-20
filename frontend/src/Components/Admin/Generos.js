@@ -17,7 +17,7 @@ class AdminGenre extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/Generos')
+        axios.get('https://backwebteam11.herokuapp.com/Generos')
             .then((response) => {
                 var state = this.state;
                 var generos = response.data;
@@ -34,7 +34,7 @@ class AdminGenre extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('http://localhost:3001/Generos',genre);
+        axios.post('https://backwebteam11.herokuapp.com/Generos',genre);
         }
     }
 
@@ -46,7 +46,7 @@ class AdminGenre extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('http://localhost:3001/Generos/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Generos/'+user.id,user);
         }
     }
 
@@ -55,7 +55,7 @@ class AdminGenre extends React.Component {
         if(tok){
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.delete('http://localhost:3001/Generos/'+idUser);
+        axios.delete('https://backwebteam11.herokuapp.com/Generos/'+idUser);
         }
     }
 

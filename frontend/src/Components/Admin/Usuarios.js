@@ -19,14 +19,14 @@ class AdminUsers extends React.Component {
     componentDidMount() {
         axios.defaults.headers.common['Authorization'] = 
         'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.get('http://localhost:3001/Usuarios')
+        axios.get('https://backwebteam11.herokuapp.com/Usuarios')
             .then((response) => {
                 var state = this.state;
                 var usuarios = response.data;
                 state.usuarios=usuarios;
                 this.setState(state);
             });
-        axios.get('http://localhost:3001/Fansubs')
+        axios.get('https://backwebteam11.herokuapp.com/Fansubs')
             .then((response) => {
                 var state = this.state;
                 var grupos = response.data;
@@ -70,7 +70,7 @@ class AdminUsers extends React.Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
-        axios.post('http://localhost:3001/Usuarios',user);
+        axios.post('https://backwebteam11.herokuapp.com/Usuarios',user);
     }
 
     putUsuario=()=>{
@@ -79,13 +79,13 @@ class AdminUsers extends React.Component {
         user.nombre=username;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
-        axios.put('http://localhost:3001/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
     }
 
     deleteUsuario=(idUser)=>{
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);        
-        axios.delete('http://localhost:3001/Usuarios/'+idUser);
+        axios.delete('https://backwebteam11.herokuapp.com/Usuarios/'+idUser);
     }
 
     render() {
