@@ -45,3 +45,6 @@ ejecutar comando npm start en la carpeta frontend de este repositorio y el backe
 # Url de video demostrando funcionalidad:
 El url demostrando la funcionalidad de la pagina es el siguiente:
 https://youtu.be/UelgsTEtuNI
+# URL del front desplegado en Heroku
+El siguiente es el URL de la pagina desplegada en heroku:
+https://frontwebteam11.firebaseapp.com/
