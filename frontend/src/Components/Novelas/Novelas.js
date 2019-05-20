@@ -282,7 +282,7 @@ class Novelas extends React.Component {
                 </div>
                 <div id="canvas">
                     <div id="botontonton">
-                        <button className="btn btn-primary" onClick={this.createTablaGeneros}>informacion interesante</button>
+                        <button className="btn btn-primary" onClick={this.createTablaGeneros}>Numero de novelas por genero</button>
                     </div>
                 </div>
             </div>

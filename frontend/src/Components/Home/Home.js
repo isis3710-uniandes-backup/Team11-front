@@ -183,7 +183,7 @@ class Home extends React.Component {
                 <div className="row"></div>
                 <div id="canvas">
                     <div id="botontonton" hidden={!this.props.logged}>
-                        <button className="btn btn-primary" onClick={this.tablaNovelasMasGustadas}>informacion interesante</button>
+                        <button className="btn btn-primary" onClick={this.tablaNovelasMasGustadas}>Novelas más gustadas</button>
                     </div>
                 </div>
             </div>
