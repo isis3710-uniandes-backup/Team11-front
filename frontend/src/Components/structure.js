@@ -22,7 +22,7 @@ class Vista extends Component {
         return(
             <div>
                 <Navbar ADMIN={this.props.ADMIN} logged={this.props.logged} logout={this.props.logout}/>
-                <Route path="/" exact component={Home}/>
+                <Route exact path="/" render={(props)=><Home {...this.props}/>} />
                 <Route path="/novelas" exact component={Novelas}/>
                 <Route path="/faq" exact component={Faq}/>
                 <Route path="/contacto" exact component={Contactenos}/>
