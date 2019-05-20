@@ -188,13 +188,11 @@ class Perfil extends Component {
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.post('https://backwebteam11.herokuapp.com/Playlists',list);
         let user1={...this.state.user};
-        alert(user1);
         user1.playlists.push(listid);
         var play = this.state.listas;
         play.push(list);
         axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user1.id,user1).then(prueb=>{
                 this.setState({user:user1,listas:play})
-                alert("Listas:"+this.state.listas);
                 window.location.reload();});
     }
 
