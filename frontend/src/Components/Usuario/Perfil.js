@@ -223,11 +223,11 @@ class Perfil extends Component {
             url:groupUrl,
             novelas:[]
         }
-        axios.post('http://localhost:3001/Fansubs',grupo);
         let user = this.state.user;
         user.grupo=groupId;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
+        axios.post('http://localhost:3001/Fansubs',grupo);
         axios.put('http://localhost:3001/Usuarios/'+user.id,user);
     }
     formatDate=(date)=> {
@@ -259,6 +259,8 @@ class Perfil extends Component {
             fansub:this.state.user.grupo,
             fecha:this.formatDate(fech)
         }
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.post('http://localhost:3001/Capitulos',cap);
     }
 

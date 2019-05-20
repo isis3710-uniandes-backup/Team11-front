@@ -142,8 +142,11 @@ class NovelaDetail extends React.Component {
             .then((response) => {
                 this.setState({comentarios:response.data});
             });
-        axios.defaults.headers.common['Authorization'] = 
+            let tok =localStorage.getItem('token'); 
+            if(tok){
+                axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
+            }
         axios.get('http://localhost:3001/Usuarios/')
             .then((response) => {
                 this.setState({usuarios:response.data});
@@ -180,8 +183,11 @@ class NovelaDetail extends React.Component {
             fecha:this.formatDate(fech),
             comentario:comment
         }
-
-        axios.post('http://localhost:3001/Comentarios',cap);
+        let tok =localStorage.getItem('token'); 
+        if(tok){
+            axios.defaults.headers.common['Authorization'] = 
+                    'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
+        }axios.post('http://localhost:3001/Comentarios',cap);
     }
 
     render() {

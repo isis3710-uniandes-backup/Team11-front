@@ -52,6 +52,7 @@ class AdminAutor extends React.Component {
         let id=parseInt(document.getElementById('idInput').value);
         let lang=document.getElementById('languageInput').value;
         let genre={id:id,nombre:autor,idioma:lang,novelas:[1,2]};
+
         axios.post('http://localhost:3001/Autores',genre);
     }
 
@@ -61,11 +62,21 @@ class AdminAutor extends React.Component {
         let user={...this.state.actualAut};
         user.nombre=username;
         user.idioma=novel;
+        let tok = localStorage.getItem('token');
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('http://localhost:3001/Autores/'+user.id,user);
+        }
     }
 
     deleteUsuario=(idUser)=>{
+        let tok = localStorage.getItem('token');
+        if(tok){
+        axios.defaults.headers.common['Authorization'] = 
+                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.delete('http://localhost:3001/Autores/'+idUser);
+        }
     }
 
     render() {
