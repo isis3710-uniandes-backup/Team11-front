@@ -44,9 +44,16 @@ class Perfil extends Component {
                 list.novelas.splice(i,1);
             }
         }
+        let li = this.state.listas;
+        li[idBus]=list;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+idList, list);
+        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+idList, list).then(ter=>{
+            this.setState({listas:li});
+            window.location.reload();
+            }
+        );
+        
     }
     putListaNovela=(event)=>{
         event.preventDefault();
