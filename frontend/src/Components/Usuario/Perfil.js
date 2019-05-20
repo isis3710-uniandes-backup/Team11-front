@@ -36,7 +36,8 @@ class Perfil extends Component {
 
     }
 
-    deleteListaNovela=(idList,idNov)=>{
+    deleteListaNovela=(idList,idNov,event)=>{
+        event.preventDefault();
         let idBus=this.state.listas.findIndex((el)=>el.id===idList);
         let list=this.state.listas[idBus];
         for(let i =0;i<list.novelas.length;i++){
@@ -46,7 +47,11 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+idList, list);
+        axios.put('https://backwebteam11.herokuapp.com/Playlists/'+idList, list).then(prueb=>{
+            localStorage.removeItem('listas');
+            window.location.reload();
+        });
+        
     }
     putListaNovela=(event)=>{
         event.preventDefault();
@@ -58,7 +63,9 @@ class Perfil extends Component {
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.put('https://backwebteam11.herokuapp.com/Playlists/'+list.id,list).then(prueb=>{
-                window.location.reload();});
+            localStorage.removeItem('listas');
+            window.location.reload();
+        });
     }
 
     cambiarActual=(list)=>{
@@ -91,7 +98,7 @@ class Perfil extends Component {
             <table className="table table-striped">
                 <tbody>
                     {novelas.map((elem)=><tr key={elem.id}><td ><a className="linkNv" href={"/novelas/"+elem.id}>{elem.titulo}</a>
-                    <button onClick={()=>this.deleteListaNovela(el.id,elem.id)}><a href=""><img aria-label="delete"src={iconDelete}></img></a></button>
+                    <button onClick={(event)=>this.deleteListaNovela(el.id,elem.id,event)}><a href=""><img aria-label="delete"src={iconDelete}></img></a></button>
                     </td></tr>)}
                 </tbody>
             </table>
@@ -113,7 +120,7 @@ class Perfil extends Component {
                         <tbody>
                                 {novelas.map((elem)=><tr key={elem.id}><td>
                                     <a className="linkNv" href={"/novelas/"+elem.id}>{elem.titulo}</a>
-                                    <a href=""><button onClick={()=>this.deleteFavorito(elem.id)}><img aria-label="delete" src={iconDelete}></img></button></a>
+                                    <a href=""><button onClick={(event)=>this.deleteFavorito(elem.id,event)}><img aria-label="delete" src={iconDelete}></img></button></a>
                                     </td></tr>)}
                         </tbody>
                     </table>
@@ -196,7 +203,8 @@ class Perfil extends Component {
                 window.location.reload();});
     }
 
-    deleteFavorito=(idNov)=>{
+    deleteFavorito=(idNov,event)=>{
+        event.preventDefault();
         let user=this.state.user;
         for(let i =0;i<user.favoritos.length;i++){
             if(user.favoritos[i]===idNov){
@@ -206,10 +214,14 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(prueb=>{
+            localStorage.removeItem('listas');
+            window.location.reload();
+        });
     }
 
-    addFavorito=()=>{
+    addFavorito=(event)=>{
+        event.preventDefault();
         let user=this.state.user;
         let idNov=parseInt(document.getElementById('selectNovelas2').value);
         if(!user.favoritos.includes(idNov)){
@@ -217,10 +229,14 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(prueb=>{
+            localStorage.removeItem('listas');
+            window.location.reload();
+        });;
     }
 
-    createGrupo=()=>{
+    createGrupo=(event)=>{
+        event.preventDefault();
         let groupName=document.getElementById('groupNameInput').value;
         let groupId=parseInt(document.getElementById('groupIdInput').value);
         let groupUrl=document.getElementById('groupUrlInput').value;
@@ -234,8 +250,18 @@ class Perfil extends Component {
         user.grupo=groupId;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('https://backwebteam11.herokuapp.com/Fansubs',grupo);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.post('https://backwebteam11.herokuapp.com/Fansubs',grupo).then(res=>{
+            let groups=this.state.grupos;
+            groups.push(grupo);
+            this.setState({grupos:groups});
+            localStorage.setItem('grupos',groups);
+            window.location.reload();
+        });
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(res=>{
+            this.setState({grupo:user.grupo});
+            localStorage.setItem('grupo',user.grupo);
+            window.location.reload();
+        });;
     }
     formatDate=(date)=> {
       var monthNames = [
@@ -253,7 +279,8 @@ class Perfil extends Component {
 
       return day + '/' + monthNames[monthIndex] + '/' + year+ ' '+hour+":"+minute;
     }
-    postRelease=()=>{
+    postRelease=(event)=>{
+        event.preventDefault();
         let releaseName=document.getElementById('releaseNameInput').value;
         let releaseId=parseInt(document.getElementById('releaseIdInput').value);
         let releaseUrl=document.getElementById('releaseUrlInput').value;
@@ -268,25 +295,38 @@ class Perfil extends Component {
         }
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.post('https://backwebteam11.herokuapp.com/Capitulos',cap);
+        axios.post('https://backwebteam11.herokuapp.com/Capitulos',cap).then(res=>{
+            localStorage.removeItem('tablasPublicaciones');
+            window.location.reload();
+        });;
     }
 
 
 
-    exitGrupo=()=>{
+    exitGrupo=(event)=>{
+        event.preventDefault()
         let user = this.state.user;
         user.grupo=-1;
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(res=>{
+            this.setState({grupo:user.grupo});
+            localStorage.setItem('grupo',user.grupo);
+            window.location.reload();
+        });;
     }
 
-    unirseGrupo=()=>{
+    unirseGrupo=(event)=>{
+        event.preventDefault();
         let user = this.state.user;
         user.grupo=parseInt(document.getElementById('selectGrupo').value);
         axios.defaults.headers.common['Authorization'] = 
                                 'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user);
+        axios.put('https://backwebteam11.herokuapp.com/Usuarios/'+user.id,user).then(res=>{
+            this.setState({grupo:user.grupo});
+            localStorage.setItem('grupo',user.grupo);
+            window.location.reload();
+        });
     }
 
     changeHandler=(data)=>{
