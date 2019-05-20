@@ -24,6 +24,18 @@ class Perfil extends Component {
         }
     }
 
+    componentWillUpdate(nextProps,nextState){
+        localStorage.setItem('user',JSON.stringify(nextState.user));
+        localStorage.setItem('grupos',JSON.stringify(nextState.grupos));
+        localStorage.setItem('novelas',JSON.stringify(nextState.novelas));
+        localStorage.setItem('listas',JSON.stringify(nextState.listas));
+        localStorage.setItem('actualList',JSON.stringify(nextState.actualList));
+        localStorage.setItem('textId',JSON.stringify(nextState.textId));
+        localStorage.setItem('errorText',JSON.stringify(nextState.errorText));
+        localStorage.setItem('grupo',JSON.stringify(nextState.grupo));
+
+    }
+
     deleteListaNovela=(idList,idNov)=>{
         let idBus=this.state.listas.findIndex((el)=>el.id===idList);
         let list=this.state.listas[idBus];
@@ -107,34 +119,55 @@ class Perfil extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3001/Fansubs/')
-        .then((response) => {
-            var group = response.data;
-            this.setState({grupos:group});
-        });
-        axios.defaults.headers.common['Authorization'] = 
-                                'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.get('http://localhost:3001/Usuarios/'+this.props.userid)
-        .then((response) => {
-            var user = response.data;
-            this.setState({user:user});
-            user.playlists.forEach((el)=>{
-                axios.get('http://localhost:3001/Playlists/'+el)
-                .then((response) => {
-                    var playlist = response.data;
-                    var playlists=[...this.state.listas];
-                    playlists.push(playlist);
-                    this.setState({listas:playlists});
-                });
+        /**             user:{},
+            grupos:[],
+            grupo:"",
+            novelas:[],
+            listas:[],
+            actualList:{},
+            textId:"",
+            errorText:"" */
+        if (localStorage.getItem('errorText')&&localStorage.getItem('textId')&&localStorage.getItem('actualList')&&localStorage.getItem('listas')&&localStorage.getItem('novelas')&&localStorage.getItem('grupo')&&localStorage.getItem('user')&&localStorage.getItem('grupos')) {
+            console.log('t');
+            this.setState({ user: JSON.parse(localStorage.getItem('user')) });
+            this.setState({ grupos: JSON.parse(localStorage.getItem('grupos')) });
+            this.setState({ grupo: JSON.parse(localStorage.getItem('grupo')) });
+            this.setState({ novelas: JSON.parse(localStorage.getItem('novelas')) });
+            this.setState({ listas: JSON.parse(localStorage.getItem('listas')) });
+            this.setState({ actualList: JSON.parse(localStorage.getItem('actualList')) });
+            this.setState({ textId: JSON.parse(localStorage.getItem('textId')) });
+            this.setState({ errorText: JSON.parse(localStorage.getItem('errorText')) });
 
+        }
+        else{
+            axios.get('http://localhost:3001/Fansubs/')
+            .then((response) => {
+                var group = response.data;
+                this.setState({grupos:group});
             });
-        });
-        axios.get('http://localhost:3001/Novelas/')
-        .then((response) => {
-            var novelas = response.data;
-            this.setState({novelas:novelas});
-        });
-
+            axios.defaults.headers.common['Authorization'] = 
+                                    'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
+            axios.get('http://localhost:3001/Usuarios/'+this.props.userid)
+            .then((response) => {
+                var user = response.data;
+                this.setState({user:user});
+                user.playlists.forEach((el)=>{
+                    axios.get('http://localhost:3001/Playlists/'+el)
+                    .then((response) => {
+                        var playlist = response.data;
+                        var playlists=[...this.state.listas];
+                        playlists.push(playlist);
+                        this.setState({listas:playlists});
+                    });
+    
+                });
+            });
+            axios.get('http://localhost:3001/Novelas/')
+            .then((response) => {
+                var novelas = response.data;
+                this.setState({novelas:novelas});
+            });
+        }
     }
 
     postLista=()=>{

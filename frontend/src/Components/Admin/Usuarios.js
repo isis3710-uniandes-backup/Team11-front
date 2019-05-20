@@ -17,6 +17,8 @@ class AdminUsers extends React.Component {
     }
 
     componentDidMount() {
+        axios.defaults.headers.common['Authorization'] = 
+        'Bearer ' + localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
         axios.get('http://localhost:3001/Usuarios')
             .then((response) => {
                 var state = this.state;
