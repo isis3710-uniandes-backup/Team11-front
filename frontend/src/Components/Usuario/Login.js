@@ -20,7 +20,8 @@ export default class Login extends React.Component {
         console.log('el token actual es:'+ localStorage.getItem("token"));
     }
 
-    login=()=>{  
+    login=(event)=>{  
+        event.preventDefault();
         let username1=document.getElementById('usernameInput').value;
         let password1=document.getElementById('passwordInput').value;
         let dats={
@@ -37,6 +38,7 @@ export default class Login extends React.Component {
                 if(response.data.userid==='admin'){
                     actualizar(response.data.token,response.data.userid,true);
                 }
+                window.location.reload();
             }
             else{
                 alert('Usuario o contraseña incorrecto');
